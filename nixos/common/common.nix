@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }: {
   imports = [
     ./greetd/greetd.nix
+    ./pipewire.nix
   ];
 
   hardware.bluetooth.enable = true;
@@ -25,11 +26,6 @@
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
 
   services.printing.enable = true;
-
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
-  };
 
   services.libinput.enable = true;
 
