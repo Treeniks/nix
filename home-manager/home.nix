@@ -40,7 +40,7 @@
     sublime-merge
     gnome-font-viewer
 
-    kdePackages.polkit-kde-agent-1
+    hyprpolkitagent
   ];
 
   home.pointerCursor.package = pkgs.catppuccin-cursors.mochaLavender;
