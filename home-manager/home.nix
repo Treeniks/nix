@@ -17,6 +17,16 @@
 
   xdg.userDirs.createDirectories = true;
   xdg.userDirs.enable = true;
+  xdg.terminal-exec = {
+    enable = true;
+    package = pkgs.kitty;
+  };
+
+  dconf.settings = {
+    "org/cinnamon/desktop/applications/terminal" = {
+      exec = "kitty";
+    };
+  };
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [

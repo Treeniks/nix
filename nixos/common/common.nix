@@ -78,6 +78,8 @@
         no-allow-external-cache = "";
       };
     };
+
+    dconf.enable = true;
   };
 
   security.polkit = {
