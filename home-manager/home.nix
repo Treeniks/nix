@@ -49,6 +49,10 @@
     sublime4
     sublime-merge
     gnome-font-viewer
+    protonmail-desktop
+    proton-pass
+    protonvpn-gui
+    qbittorrent
 
     hyprpolkitagent
   ];
