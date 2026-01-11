@@ -85,4 +85,9 @@
     # unsure why but this looks giga scuffed
     wleave.enable = false;
   };
+
+  qt = {
+    enable = true;
+    style.name = "kvantum";
+  };
 }
