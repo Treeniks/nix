@@ -96,8 +96,6 @@
     gtkgreet
     xwayland-satellite
 
-    wineWowPackages.waylandFull
-
     # dev
     gcc
     rustup

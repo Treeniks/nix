@@ -39,5 +39,7 @@
   environment.systemPackages = with pkgs; [
     steam-run
     vulkan-tools
+
+    wineWowPackages.waylandFull
   ];
 }

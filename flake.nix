@@ -9,6 +9,11 @@
 
     catppuccin.url = "github:catppuccin/nix";
 
+    apple-silicon = {
+      url = "github:nix-community/nixos-apple-silicon";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     dotfiles = {
       url = "github:Treeniks/dotfiles";
       flake = false;
@@ -25,6 +30,7 @@
       nixpkgs,
       home-manager,
       catppuccin,
+      apple-silicon,
       ...
     }@inputs:
     {
@@ -37,11 +43,30 @@
             catppuccin.nixosModules.catppuccin
           ];
         };
+
+        "houjicha-nixos" = nixpkgs.lib.nixosSystem {
+          system = "aarch64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./nixos/laptop-asahi/configuration.nix
+            apple-silicon.nixosModules.apple-silicon-support
+            catppuccin.nixosModules.catppuccin
+          ];
+        };
       };
 
       homeConfigurations = {
         "suteki@matcha-nixos" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages."x86_64-linux";
+          extraSpecialArgs = { inherit inputs; };
+          modules = [
+            ./home-manager/home.nix
+            catppuccin.homeModules.catppuccin
+          ];
+        };
+
+        "suteki@houjicha-nixos" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages."aarch64-linux";
           extraSpecialArgs = { inherit inputs; };
           modules = [
             ./home-manager/home.nix
