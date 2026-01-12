@@ -18,6 +18,22 @@
         "type": "github"
       }
     },
+    "dotfiles": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1768106708,
+        "narHash": "sha256-iMIFMLiVphRVuvk+8e/r9WEvYApdqH+bIi7fNc6Xk+A=",
+        "owner": "Treeniks",
+        "repo": "dotfiles",
+        "rev": "3eae32d58ee8ba3c63bad7e6c32c44ffa010b794",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Treeniks",
+        "repo": "dotfiles",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -73,8 +89,26 @@
     "root": {
       "inputs": {
         "catppuccin": "catppuccin",
+        "dotfiles": "dotfiles",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_2",
+        "sublime-vinimum": "sublime-vinimum"
+      }
+    },
+    "sublime-vinimum": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1702337374,
+        "narHash": "sha256-iCtbiF0uaUBVe/b58PB2GiXErBdzEfGE4MV9tOweyto=",
+        "owner": "Treeniks",
+        "repo": "Vinimum",
+        "rev": "0eef4174c1ed0eace64e350dc925183237ca0b71",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Treeniks",
+        "repo": "Vinimum",
+        "type": "github"
       }
     }
   },

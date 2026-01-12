@@ -5,6 +5,7 @@
     ./kitty.nix
     # ./mpv.nix
     ./waybar/waybar.nix
+    ./sublime.nix
     ./zed.nix
   ];
 
@@ -46,8 +47,6 @@
     brightnessctl
 
     brave
-    sublime4
-    sublime-merge
     gnome-font-viewer
     protonmail-desktop
     proton-pass
