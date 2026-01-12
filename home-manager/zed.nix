@@ -90,7 +90,7 @@ let
     }
   ];
 in
-  {
+{
   programs.zed-editor = {
     enable = true;
     userSettings = userSettings;

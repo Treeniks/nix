@@ -1,6 +1,7 @@
-{ config, lib, pkgs, ... }: {
+{ pkgs, ... }:
+{
   imports = [
-    ./greetd/greetd.nix
+    ./greetd
     ./pipewire.nix
   ];
 
@@ -31,7 +32,12 @@
 
   users.users.suteki = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "video" "audio" ];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "video"
+      "audio"
+    ];
   };
 
   users.defaultUserShell = pkgs.fish;
@@ -97,6 +103,8 @@
     deno
     nodejs-slim
     (python3.withPackages (python-pkgs: with python-pkgs; [ requests ]))
+    nixfmt-rfc-style
+    nixd
 
     # cli
     wget

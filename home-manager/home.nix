@@ -1,10 +1,11 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }:
+{
   imports = [
     ./fish.nix
     ./gtk.nix
     ./kitty.nix
     # ./mpv.nix
-    ./waybar/waybar.nix
+    ./waybar
     ./sublime.nix
     ./zed.nix
   ];
@@ -12,7 +13,7 @@
   home = {
     username = "suteki";
     homeDirectory = "/home/suteki";
-    stateVersion = "25.11";
+    stateVersion = "26.05";
   };
   programs.home-manager.enable = true;
 

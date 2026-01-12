@@ -1,6 +1,7 @@
-{ config, lib, pkgs, ... }: {
+{ pkgs, ... }:
+{
   imports = [
-    ../../common/common.nix
+    ../common
     ./hardware-configuration.nix
   ];
 
@@ -12,7 +13,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = false;
 
-  networking.hostName = "matcha-nixos"; # Define your hostname.
+  networking.hostName = "matcha-nixos";
 
   programs = {
     # gamink

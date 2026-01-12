@@ -20,24 +20,34 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, catppuccin, dotfiles, sublime-vinimum, ... }: {
-    nixosConfigurations.matcha-nixos = nixpkgs.lib.nixosSystem {
-      modules = [
-        ./nixos/hosts/desktop/configuration.nix
-        catppuccin.nixosModules.catppuccin
-      ];
-    };
-
-    homeConfigurations.suteki = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.x86_64-linux;
-      extraSpecialArgs = {
-        inherit sublime-vinimum;
-        inherit dotfiles;
+  outputs =
+    {
+      nixpkgs,
+      home-manager,
+      catppuccin,
+      ...
+    }@inputs:
+    {
+      nixosConfigurations = {
+        "matcha-nixos" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./nixos/desktop/configuration.nix
+            catppuccin.nixosModules.catppuccin
+          ];
+        };
       };
-      modules = [
-        ./home-manager/home.nix
-        catppuccin.homeModules.catppuccin
-      ];
+
+      homeConfigurations = {
+        "suteki@matcha-nixos" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages."x86_64-linux";
+          extraSpecialArgs = { inherit inputs; };
+          modules = [
+            ./home-manager/home.nix
+            catppuccin.homeModules.catppuccin
+          ];
+        };
+      };
     };
-  };
 }

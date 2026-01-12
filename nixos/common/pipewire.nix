@@ -4,7 +4,7 @@ let
   # ideally nix installs these for us in a convenient location...but this is ok for now
   hrirFile = "/home/suteki/hrir/atmos.wav";
 in
-  {
+{
   services.pipewire = {
     enable = true;
 
