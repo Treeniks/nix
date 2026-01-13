@@ -49,8 +49,6 @@
 
     brave
     gnome-font-viewer
-    protonmail-desktop
-    proton-pass
     protonvpn-gui
     qbittorrent
 
@@ -76,8 +74,6 @@
     wleave.enable = true;
 
     neovide.enable = true;
-
-    discord.enable = true;
   };
 
   services = {
@@ -98,6 +94,8 @@
 
     # unsure why but this looks giga scuffed
     wleave.enable = false;
+
+    gtk.icon.enable = false;
   };
 
   qt = {
