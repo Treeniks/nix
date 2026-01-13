@@ -93,6 +93,12 @@
   environment.systemPackages = with pkgs; [
     home-manager
 
+    llvm
+    clang
+    clang-tools
+    lld
+    lldb
+
     gtkgreet
     xwayland-satellite
 
