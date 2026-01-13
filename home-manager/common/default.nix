@@ -52,6 +52,8 @@
     protonvpn-gui
     qbittorrent
 
+    evince
+
     hyprpolkitagent
   ];
 
