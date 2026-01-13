@@ -40,6 +40,7 @@
     mpv
 
     btop
+    wl-clipboard-rs
 
     nwg-look
     pavucontrol
