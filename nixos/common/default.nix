@@ -65,8 +65,10 @@
       enable = true;
       libraries = with pkgs; [
         libxkbcommon
-        vulkan-loader
         libGL
+        fontconfig
+
+        vulkan-loader
         wayland
       ];
     };
