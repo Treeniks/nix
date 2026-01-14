@@ -77,6 +77,8 @@
     wleave.enable = true;
 
     neovide.enable = true;
+
+    obsidian.enable = true;
   };
 
   services = {
