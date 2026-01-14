@@ -104,9 +104,11 @@
 
     # dev
     gcc
+    gdb
     rustup
     tree-sitter
     deno
+    mono
     nodejs-slim
     (python3.withPackages (python-pkgs: with python-pkgs; [ requests ]))
     nixfmt-rfc-style

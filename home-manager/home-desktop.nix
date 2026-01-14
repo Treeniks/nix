@@ -7,6 +7,8 @@
   home.packages = with pkgs; [
     protonmail-desktop
     proton-pass
+
+    olympus
   ];
 
   programs = {
