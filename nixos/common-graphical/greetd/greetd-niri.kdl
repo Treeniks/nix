@@ -17,6 +17,9 @@ output "DP-2" {
     position x=5120 y=150
 }
 
+spawn-at-startup "gammastep" "-O" "4500"
+prefer-no-csd
+
 input {
     keyboard {
         xkb {
