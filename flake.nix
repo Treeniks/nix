@@ -14,11 +14,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    dotfiles = {
-      url = "github:Treeniks/dotfiles";
-      flake = false;
-    };
-
     sublime-vinimum = {
       url = "github:Treeniks/Vinimum";
       flake = false;
@@ -34,6 +29,26 @@
       ...
     }@inputs:
     {
+      overlays = (
+        final: prev: {
+          fkorpsvart-catppuccin-icons = final.stdenv.mkDerivation {
+            pname = "fkorpsvart-catppuccin-icons";
+            version = "0.1";
+            src = final.fetchFromGitHub {
+              owner = "Fausto-Korpsvart";
+              repo = "Catppuccin-GTK-Theme";
+              rev = "f25d8cf688d8f224f0ce396689ffcf5767eb647e";
+              hash = "sha256-W+NGyPnOEKoicJPwnftq26iP7jya1ZKq38lMjx/k9ss=";
+            };
+
+            installPhase = ''
+              mkdir -p $out/share/icons/Catppuccin-Mocha/
+              cp -r icons/Catppuccin-Mocha/* $out/share/icons/Catppuccin-Mocha/
+            '';
+          };
+        }
+      );
+
       nixosConfigurations = {
         "matcha-nixos" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";

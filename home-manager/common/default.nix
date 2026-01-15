@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
   imports = [
     ./fish.nix
@@ -9,6 +9,13 @@
     ./sublime.nix
     ./zed.nix
   ];
+
+  nixpkgs = {
+    overlays = [
+      inputs.self.overlays
+    ];
+    config.allowUnfree = true;
+  };
 
   home = {
     username = "suteki";
@@ -24,39 +31,22 @@
     package = pkgs.kitty;
   };
 
+  xdg.desktopEntries."brave-browser" = {
+    name = "Brave";
+    exec = "brave --password-store=basic %U";
+    terminal = false;
+    icon = "brave-browser";
+    categories = [
+      "Network"
+      "WebBrowser"
+    ];
+  };
+
   dconf.settings = {
     "org/cinnamon/desktop/applications/terminal" = {
       exec = "kitty";
     };
   };
-
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.permittedInsecurePackages = [
-    "openssl-1.1.1w"
-  ];
-
-  home.packages = with pkgs; [
-    # TODO
-    mpv
-
-    btop
-    wl-clipboard-rs
-
-    nwg-look
-    pavucontrol
-
-    nemo-with-extensions
-    brightnessctl
-
-    brave
-    gnome-font-viewer
-    protonvpn-gui
-    qbittorrent
-
-    evince
-
-    hyprpolkitagent
-  ];
 
   home.pointerCursor.package = pkgs.catppuccin-cursors.mochaLavender;
   home.pointerCursor.name = "catppuccin-mocha-lavender-cursors";
@@ -81,17 +71,6 @@
     obsidian.enable = true;
   };
 
-  services = {
-    dunst.enable = true;
-    gammastep = {
-      enable = true;
-      temperature.day = 4500;
-      temperature.night = 4500;
-      latitude = 51.0;
-      longitude = 9.0;
-    };
-  };
-
   catppuccin = {
     enable = true;
     accent = "lavender";
@@ -103,6 +82,7 @@
     gtk.icon.enable = false;
   };
 
+  # I'm not fully convinced by this one yet
   qt = {
     enable = true;
     style.name = "kvantum";

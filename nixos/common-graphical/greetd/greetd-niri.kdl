@@ -17,8 +17,6 @@ output "DP-2" {
     position x=5120 y=150
 }
 
-spawn-sh-at-startup "gtkgreet --layer-shell --command niri-session; niri msg action quit --skip-confirmation"
-
 input {
     keyboard {
         xkb {
@@ -43,9 +41,9 @@ input {
     }
 }
 
-environment {
-    GTK_THEME "Catppuccin-GTK-Purple-Dark"
-}
+// environment {
+//     GTK_THEME "Catppuccin-GTK-Purple-Dark"
+// }
 
 layout {
     gaps 0

@@ -1,11 +1,17 @@
 { config, lib, pkgs, modulesPath, ... }:
 {
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = false;
+
+  boot.extraModprobeConfig = ''
+    options hid_apple fnmode=2 iso_layout=0 swap_opt_cmd=1 swap_fn_leftctrl=1
+  '';
 
   boot.initrd.availableKernelModules = [ "usb_storage" ];
   boot.initrd.kernelModules = [ ];
+
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 

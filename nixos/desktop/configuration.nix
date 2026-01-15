@@ -2,6 +2,7 @@
 {
   imports = [
     ../common
+    ../common-graphical
     ./hardware-configuration.nix
   ];
 
@@ -9,9 +10,6 @@
     enable = true;
     enable32Bit = true;
   };
-
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = false;
 
   networking.hostName = "matcha-nixos";
 
@@ -38,8 +36,6 @@
 
   environment.systemPackages = with pkgs; [
     steam-run
-    vulkan-tools
-
     wineWowPackages.waylandFull
   ];
 }
