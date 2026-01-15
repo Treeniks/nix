@@ -13,10 +13,10 @@
 
     xwayland-satellite
     hyprpolkitagent
-
     gammastep
     dunst
     brightnessctl
+    swww
 
     nwg-look
     pavucontrol

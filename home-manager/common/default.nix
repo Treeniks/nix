@@ -71,6 +71,19 @@
     obsidian.enable = true;
   };
 
+  services = {
+    swww.enable = true;
+    gammastep = {
+      enable = true;
+      temperature.day = 4500;
+      temperature.night = 4500;
+      latitude = 51.0;
+      longitude = 9.0;
+    };
+    dunst.enable = true;
+    hyprpolkitagent.enable = true;
+  };
+
   catppuccin = {
     enable = true;
     accent = "lavender";
