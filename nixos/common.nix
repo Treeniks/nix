@@ -1,8 +1,6 @@
 { inputs, pkgs, ... }:
 {
-  imports = [
-    ./packages.nix
-  ];
+  imports = [ ];
 
   nix.settings.experimental-features = "nix-command flakes";
 
@@ -49,6 +47,10 @@
 
     nix-index.enable = true;
   };
+
+  environment.systemPackages = with pkgs; [
+    wget
+  ];
 
   system.stateVersion = "26.05";
 }

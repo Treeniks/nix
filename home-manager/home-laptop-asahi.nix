@@ -2,5 +2,6 @@
 {
   imports = [
     ./common
+    ./common-graphical
   ];
 }

@@ -2,7 +2,7 @@
 {
   imports = [
     ./greetd
-    ./packages.nix # also includes packages
+    ./desktop.nix
     ./fonts.nix
     ./pipewire.nix
     ./theme.nix

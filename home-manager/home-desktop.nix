@@ -2,6 +2,7 @@
 {
   imports = [
     ./common
+    ./common-graphical
   ];
 
   home.packages = with pkgs; [
