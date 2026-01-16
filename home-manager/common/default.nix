@@ -1,4 +1,9 @@
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  pkgs,
+  lib,
+  ...
+}:
 {
   imports = [
     ./fish.nix
@@ -73,15 +78,30 @@
 
   services = {
     swww.enable = true;
-    gammastep = {
-      enable = true;
-      temperature.day = 4500;
-      temperature.night = 4500;
-      latitude = 51.0;
-      longitude = 9.0;
-    };
     dunst.enable = true;
     hyprpolkitagent.enable = true;
+  };
+
+  # gammastep
+  # the default home-manager module doesn't allow just setting a constant temperature
+  # and the time-awareness causes insane microstutters
+  # https://github.com/nix-community/home-manager/blob/master/modules/services/redshift-gammastep/lib/options.nix
+  home.packages = [ pkgs.gammastep ];
+  systemd.user.services.gammastep = {
+    Unit = {
+      Description = "Gammastep without useless time bullshit";
+      After = [ "graphical-session.target" ];
+      PartOf = [ "graphical-session.target" ];
+    };
+
+    Service = {
+      ExecStart = "${lib.getExe pkgs.gammastep} -P -O 4500";
+      Restart = "on-failure";
+    };
+
+    Install = {
+      WantedBy = [ "graphical-session.target" ];
+    };
   };
 
   catppuccin = {
