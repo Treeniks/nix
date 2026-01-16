@@ -34,9 +34,6 @@
     };
   };
 
-  home.pointerCursor.package = pkgs.catppuccin-cursors.mochaLavender;
-  home.pointerCursor.name = "catppuccin-mocha-lavender-cursors";
-
   programs = {
     fuzzel.enable = true;
     wleave.enable = true;
@@ -103,6 +100,8 @@
     wleave.enable = false;
 
     gtk.icon.enable = false;
+
+    cursors.enable = true;
   };
 
   # I'm not fully convinced by this one yet
