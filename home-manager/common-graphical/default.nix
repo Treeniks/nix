@@ -75,6 +75,7 @@
     # as it's not available on arm currently
     qbittorrent
     signal-desktop
+    thunderbird
 
     gammastep
   ];

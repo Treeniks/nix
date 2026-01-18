@@ -71,6 +71,8 @@
     just
 
     texliveFull
+    # not just for graphical as it's used by tex's svg package
+    inkscape
   ];
 
   catppuccin = {
