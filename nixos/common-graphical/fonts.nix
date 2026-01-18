@@ -12,5 +12,7 @@
     jetbrains-mono
     julia-mono
     maple-mono.variable
+
+    stix-two
   ];
 }
