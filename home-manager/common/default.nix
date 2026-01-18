@@ -1,4 +1,9 @@
-{ inputs, pkgs, lib, ... }:
+{
+  inputs,
+  pkgs,
+  lib,
+  ...
+}:
 {
   imports = [
     ./fish.nix
@@ -64,4 +69,10 @@
 
     texliveFull
   ];
+
+  catppuccin = {
+    enable = true;
+    accent = "lavender";
+    flavor = "mocha";
+  };
 }

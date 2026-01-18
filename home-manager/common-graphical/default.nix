@@ -92,15 +92,9 @@
   };
 
   catppuccin = {
-    enable = true;
-    accent = "lavender";
-    flavor = "mocha";
-
     # unsure why but this looks giga scuffed
     wleave.enable = false;
-
     gtk.icon.enable = false;
-
     cursors.enable = true;
   };
 
