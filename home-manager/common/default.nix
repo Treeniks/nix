@@ -28,7 +28,10 @@
     bat.enable = true;
     starship.enable = true;
     eza.enable = true;
-    yazi.enable = true;
+    yazi = {
+      enable = true;
+      enableFishIntegration = true;
+    };
     zoxide = {
       enable = true;
       enableFishIntegration = true;

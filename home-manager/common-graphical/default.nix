@@ -40,6 +40,22 @@
 
     neovide.enable = true;
     obsidian.enable = true;
+
+    # already enabled in common
+    yazi = {
+      keymap = {
+        mgr.prepend_keymap = [
+          {
+            on = [
+              "g"
+              "b"
+            ];
+            run = "shell -- swww img \"$0\"";
+            desc = "Make Background";
+          }
+        ];
+      };
+    };
   };
 
   home.packages = with pkgs; [

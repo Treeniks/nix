@@ -32,6 +32,8 @@
       cat = "bat";
     };
 
+    # this happens by itself thanks to programs.yazi.enableFishIntegration
+    #
     # functions = {
     #   # yazi
     #   # from https://yazi-rs.github.io/docs/quick-start#shell-wrapper
