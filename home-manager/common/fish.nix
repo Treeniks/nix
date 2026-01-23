@@ -2,6 +2,10 @@
   programs.fish = {
     enable = true;
 
+    shellInit = ''
+      fish_add_path -g "$HOME/.cargo/bin/"
+    '';
+
     interactiveShellInit = ''
       # https://github.com/fish-shell/fish-shell/issues/11251
       set fish_color_command blue
