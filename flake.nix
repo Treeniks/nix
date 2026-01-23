@@ -46,6 +46,37 @@
               cp -r icons/Catppuccin-Mocha/* $out/share/icons/Catppuccin-Mocha/
             '';
           };
+
+          chameleos = final.rustPlatform.buildRustPackage rec {
+            pname = "chameleos";
+            version = "0.1.2";
+            src = final.fetchFromGitHub {
+              owner = "Treeniks";
+              repo = "chameleos";
+              rev = "faca3aef0497bf14fc09ad154ab59862b5db4795";
+              hash = "sha256-suOYeHBS9bIzyMvk6mviXXZVPviDhKdDvAyxSUNft3s=";
+            };
+
+            cargoLock.lockFile = "${src}/Cargo.lock";
+
+            nativeBuildInputs = [
+              final.makeWrapper
+              final.pkg-config
+              final.gitMinimal
+            ];
+            buildInputs = [ final.wayland ];
+
+            postInstall = ''
+              wrapProgram $out/bin/chameleos \
+                --prefix LD_LIBRARY_PATH : "${
+                  final.lib.makeLibraryPath [
+                    final.wayland
+                    final.libGL
+                    final.vulkan-loader
+                  ]
+                }"
+            '';
+          };
         }
       );
 

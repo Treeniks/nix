@@ -78,6 +78,8 @@
     thunderbird
 
     gammastep
+
+    chameleos
   ];
 
   services = {
