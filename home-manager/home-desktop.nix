@@ -5,6 +5,8 @@
     ./common-graphical
   ];
 
+  nixpkgs.config.rocmSupport = true;
+
   home.packages = with pkgs; [
     # NOTE: This app segfaults on wayland. To fix, start it once with x11:
     # XDG_SESSION_TYPE=x11 proton-mail

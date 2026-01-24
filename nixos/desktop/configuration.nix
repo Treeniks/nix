@@ -10,6 +10,7 @@
     enable = true;
     enable32Bit = true;
   };
+  nixpkgs.config.rocmSupport = true;
 
   networking.hostName = "matcha-nixos";
 
