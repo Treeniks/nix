@@ -16,6 +16,8 @@
     proton-pass
 
     olympus
+
+    dolphin-emu
   ];
 
   programs = {
