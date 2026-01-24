@@ -20,5 +20,6 @@
 
   programs = {
     discord.enable = true;
+    obs-studio.enable = true;
   };
 }
