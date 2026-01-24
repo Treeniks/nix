@@ -29,6 +29,8 @@
 
         vulkan-loader
         wayland
+
+        openssl
       ];
     };
 
