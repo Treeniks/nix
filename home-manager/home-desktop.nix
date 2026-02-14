@@ -21,7 +21,13 @@
   ];
 
   programs = {
-    discord.enable = true;
+    discord = {
+      enable = true;
+      settings = {
+        "MINIMIZE_TO_TRAY" = false;
+        "OPEN_ON_STARTUP" = false;
+      };
+    };
     obs-studio.enable = true;
   };
 }
