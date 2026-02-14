@@ -67,6 +67,7 @@
     wl-clipboard-rs
 
     brave
+    eog
     mpv
     gnome-font-viewer
     evince
