@@ -12,6 +12,8 @@
   };
   nixpkgs.config.rocmSupport = true;
 
+  hardware.xpadneo.enable = true;
+
   networking.hostName = "matcha-nixos";
 
   programs = {
