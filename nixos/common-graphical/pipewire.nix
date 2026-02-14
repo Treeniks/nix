@@ -18,6 +18,25 @@ in
         };
       };
 
+      "vb-cable" = {
+        "context.modules" = [
+          {
+            "name" = "libpipewire-module-loopback";
+            args = {
+              "node.description" = "Virtual Audio Cable";
+              "capture.props" = {
+                "node.name" = "vbcable_sink";
+                "media.class" = "Audio/Sink";
+              };
+              "playback.props" = {
+                "node.name" = "vbcable_source";
+                "media.class" = "Audio/Source";
+              };
+            };
+          }
+        ];
+      };
+
       # taken from https://gitlab.freedesktop.org/pipewire/pipewire/-/blob/master/src/daemon/filter-chain/sink-virtual-surround-7.1-hesuvi.conf
       "hesuvi-7.1" = {
         "context.modules" = [
