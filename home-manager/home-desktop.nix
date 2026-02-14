@@ -22,6 +22,8 @@
     kdePackages.kdenlive
 
     teamspeak6-client
+
+    uxplay
   ];
 
   programs = {

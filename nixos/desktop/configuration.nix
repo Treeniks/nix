@@ -16,6 +16,18 @@
 
   networking.hostName = "matcha-nixos";
 
+  # only for uplay
+  # networking.firewall.enable = false;
+  # services.avahi = {
+  #   enable = true;
+  #   nssmdns4 = true;
+  #   publish = {
+  #     enable = true;
+  #     userServices = true;
+  #     domain = true;
+  #   };
+  # };
+
   programs = {
     # gamink
     steam = {
