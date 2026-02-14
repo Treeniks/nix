@@ -15,15 +15,18 @@
     protonmail-desktop
     proton-pass
 
-    olympus
-
-    dolphin-emu
-
     kdePackages.kdenlive
-
     teamspeak6-client
-
     uxplay
+
+    # game stuff
+    archipelago # has some issues, so probably prefer to use the manual download
+    olympus
+    dolphin-emu
+    protontricks
+    poptracker
+    mangohud
+    lumafly
   ];
 
   programs = {

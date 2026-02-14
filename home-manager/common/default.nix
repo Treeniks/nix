@@ -58,6 +58,7 @@
     (python3.withPackages (python-pkgs: with python-pkgs; [ requests ]))
     nixfmt
     nixd
+    taplo
 
     # cli
     wget
@@ -69,10 +70,14 @@
     yazi
     zoxide
     just
+    gnumake
+    ffmpeg
 
     texliveFull
     # not just for graphical as it's used by tex's svg package
     inkscape
+
+    typst
   ];
 
   catppuccin = {

@@ -63,8 +63,12 @@
 
     nwg-look
     pavucontrol
+    coppwr
     nemo-with-extensions
     wl-clipboard-rs
+    xwininfo
+    hyprpicker
+    blueberry
 
     brave
     eog
@@ -77,10 +81,15 @@
     qbittorrent
     signal-desktop
     thunderbird
+    gimp
+    firefox
 
     gammastep
 
     chameleos
+
+    appimage-run
+    sdl-jstest # testing joysticks with sdl
   ];
 
   services = {
