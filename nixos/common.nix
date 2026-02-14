@@ -53,7 +53,12 @@
     wget
     qemu
     quickemu
+
+    man-pages
+    man-pages-posix
   ];
+
+  documentation.dev.enable = true;
 
   system.stateVersion = "26.05";
 }
