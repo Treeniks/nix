@@ -7,6 +7,7 @@
   nixpkgs = {
     overlays = [
       inputs.self.overlays
+      inputs.quickemu.overlays.default
     ];
     config.allowUnfree = true;
   };
@@ -50,6 +51,8 @@
 
   environment.systemPackages = with pkgs; [
     wget
+    qemu
+    quickemu
   ];
 
   system.stateVersion = "26.05";

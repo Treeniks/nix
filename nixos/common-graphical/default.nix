@@ -47,6 +47,13 @@
     dconf.enable = true;
   };
 
+  virtualisation.spiceUSBRedirection.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    spice-gtk
+    quickgui
+  ];
+
   services.flatpak.enable = true;
 
   security.polkit = {
