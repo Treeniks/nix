@@ -18,6 +18,10 @@
     olympus
 
     dolphin-emu
+
+    kdePackages.kdenlive
+
+    teamspeak6-client
   ];
 
   programs = {
