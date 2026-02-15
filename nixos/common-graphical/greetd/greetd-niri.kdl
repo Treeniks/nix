@@ -45,7 +45,7 @@ input {
 }
 
 // environment {
-//     GTK_THEME "Catppuccin-GTK-Purple-Dark"
+//     GTK_THEME "Catppuccin-GTK-Lavender-Dark"
 // }
 
 layout {

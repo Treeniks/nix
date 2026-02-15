@@ -56,7 +56,7 @@
       ];
     })
     steam-run
-    wineWowPackages.waylandFull
+    wineWow64Packages.waylandFull
   ];
 
   # NixOS's mesa drivers are quite monolithic and will in particular include the software "GPU" llvmpipe.

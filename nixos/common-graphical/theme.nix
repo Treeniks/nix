@@ -1,7 +1,9 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    (magnetic-catppuccin-gtk.override { accent = [ "purple" ]; })
+    (magnetic-catppuccin-gtk.override {
+      accent = [ "lavender" ];
+    })
     catppuccin-cursors.mochaLavender
     fkorpsvart-catppuccin-icons
   ];

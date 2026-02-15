@@ -5,10 +5,10 @@
     theme = {
       package = (
         pkgs.magnetic-catppuccin-gtk.override {
-          accent = [ "purple" ];
+          accent = [ "lavender" ];
         }
       );
-      name = "Catppuccin-GTK-Purple-Dark";
+      name = "Catppuccin-GTK-Lavender-Dark";
     };
     colorScheme = "dark";
 

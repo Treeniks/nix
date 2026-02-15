@@ -10,7 +10,7 @@ in
 {
   programs.regreet = {
     enable = true;
-    theme.name = "Catppuccin-GTK-Purple-Dark";
+    theme.name = "Catppuccin-GTK-Lavender-Dark";
     cursorTheme.name = "catppuccin-mocha-lavender-cursors";
     iconTheme.name = "Catppuccin-Mocha";
   };
