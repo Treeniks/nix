@@ -55,7 +55,7 @@
     deno
     mono
     nodejs-slim
-    (python3.withPackages (python-pkgs: with python-pkgs; [ requests ]))
+    (python3.withPackages (python-pkgs: with python-pkgs; [ requests dbus ]))
     nixfmt
     nixd
     taplo
