@@ -27,6 +27,8 @@
     poptracker
     mangohud
     lumafly
+
+    filen-desktop
   ];
 
   programs = {
