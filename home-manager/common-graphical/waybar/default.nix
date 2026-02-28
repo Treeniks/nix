@@ -121,11 +121,11 @@
         "bluetooth#1" = {
           format = "󰂯";
           tooltip = false;
-          on-click = "blueberry";
+          on-click = "blueman-manager";
         };
         "bluetooth#2" = {
           format = "{status}";
-          on-click = "blueberry";
+          on-click = "blueman-manager";
         };
       };
     };
