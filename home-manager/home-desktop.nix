@@ -25,7 +25,6 @@
     dolphin-emu
     protontricks
     poptracker
-    mangohud
     lumafly
 
     filen-desktop
@@ -40,5 +39,41 @@
       };
     };
     obs-studio.enable = true;
+
+    mangohud = {
+      enable = true;
+      settings = {
+        legacy_layout = false;
+
+        font_size = 32;
+        font_file = /home/suteki/.local/share/fonts/MapleMono-Bold.ttf;
+        text_outline = true;
+        text_outline_color = 000000;
+        text_outline_thickness = 1;
+
+        horizontal = true;
+        background_alpha = 0;
+        horizontal_stretch = 0;
+        position = "top-left";
+        hud_compact = true;
+        round_corners = 16;
+
+        fps = true;
+        frame_timing = true;
+        cpu_stats = true;
+        gpu_stats = true;
+        # resolution = true
+
+        text_color = "ffffff";
+
+        engine_color = "f38ba8";
+        frametime_color = "fab387";
+
+        cpu_color = "89b4fa";
+        gpu_color = "a6e3a1";
+        horizontal_separator_color = "29263c";
+        background_color = "15141b";
+      };
+    };
   };
 }
