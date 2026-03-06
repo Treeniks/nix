@@ -65,18 +65,38 @@
   fileSystems."/mnt/d" = {
     device = "/dev/disk/by-uuid/6128BBCC5CA3C48E";
     fsType = "ntfs3";
+    options = [
+      "uid=1000"
+      "gid=1000"
+      "windows_names"
+    ];
   };
   fileSystems."/mnt/e" = {
     device = "/dev/disk/by-uuid/0AAA6E7BAA6E62E5";
     fsType = "ntfs3";
+    options = [
+      "uid=1000"
+      "gid=1000"
+      "windows_names"
+    ];
   };
   fileSystems."/mnt/f" = {
     device = "/dev/disk/by-uuid/C07EDEBF7EDEAD82";
     fsType = "ntfs3";
+    options = [
+      "uid=1000"
+      "gid=1000"
+      "windows_names"
+    ];
   };
   fileSystems."/mnt/q" = {
     device = "/dev/disk/by-uuid/77D4EF3025CC26ED";
     fsType = "ntfs3";
+    options = [
+      "uid=1000"
+      "gid=1000"
+      "windows_names"
+    ];
   };
 
   swapDevices = [ ];
