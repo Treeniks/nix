@@ -51,7 +51,6 @@
 
   environment.systemPackages = with pkgs; [
     spice-gtk
-    quickgui
   ];
 
   services.flatpak.enable = true;

@@ -5,10 +5,7 @@
   nix.settings.experimental-features = "nix-command flakes";
 
   nixpkgs = {
-    overlays = [
-      inputs.self.overlays
-      inputs.quickemu.overlays.default
-    ];
+    overlays = [ inputs.self.overlays ];
     config.allowUnfree = true;
   };
 

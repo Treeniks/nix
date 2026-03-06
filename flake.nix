@@ -18,11 +18,6 @@
       url = "github:Treeniks/Vinimum";
       flake = false;
     };
-
-    # temporary until the latest version is in nixpkgs
-    quickemu = {
-      url = "github:quickemu-project/quickemu";
-    };
   };
 
   outputs =
