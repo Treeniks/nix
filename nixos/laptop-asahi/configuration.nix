@@ -6,6 +6,16 @@
     ./hardware-configuration.nix
   ];
 
+  networking.wireless.iwd = {
+    enable = true;
+    settings = {
+      General = {
+        AddressRandomization = "once";
+      };
+    };
+  };
+  networking.networkmanager.wifi.backend = "iwd";
+
   # https://github.com/nix-community/nixos-apple-silicon/issues/299#issuecomment-2901508921
   hardware.asahi.peripheralFirmwareDirectory = pkgs.requireFile {
     name = "asahi";
