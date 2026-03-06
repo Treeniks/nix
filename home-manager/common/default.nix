@@ -31,6 +31,7 @@
     yazi = {
       enable = true;
       enableFishIntegration = true;
+      shellWrapperName = "yy";
     };
     zoxide = {
       enable = true;
@@ -55,7 +56,12 @@
     deno
     mono
     nodejs-slim
-    (python3.withPackages (python-pkgs: with python-pkgs; [ requests dbus ]))
+    (python3.withPackages (
+      python-pkgs: with python-pkgs; [
+        requests
+        dbus
+      ]
+    ))
     nixfmt
     nixd
     taplo
