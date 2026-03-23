@@ -1,4 +1,8 @@
+{ lib, ... }:
 {
+  # make waybar only start on niri, not on KDE
+  systemd.user.services.waybar.Unit.ConditionEnvironment = lib.mkForce "XDG_CURRENT_DESKTOP=niri";
+
   programs.waybar = {
     enable = true;
 
@@ -7,8 +11,16 @@
     settings = {
       mainBar = {
         layer = "top";
-        modules-left = [ "niri/workspaces" "custom/separator" "niri/window" ];
-        modules-center = [ "clock#1" "clock#2" "clock#3" ];
+        modules-left = [
+          "niri/workspaces"
+          "custom/separator"
+          "niri/window"
+        ];
+        modules-center = [
+          "clock#1"
+          "clock#2"
+          "clock#3"
+        ];
         modules-right = [
           "bluetooth#1"
           "bluetooth#2"
@@ -63,7 +75,17 @@
           interval = 10;
           format = "{icon}";
           format-icons = [
-            "󰂃" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"
+            "󰂃"
+            "󰁺"
+            "󰁻"
+            "󰁼"
+            "󰁽"
+            "󰁾"
+            "󰁿"
+            "󰂀"
+            "󰂁"
+            "󰂂"
+            "󰁹"
           ];
           format-charging = "󰂄";
           format-charging-alt = "{time} 󰂄";
