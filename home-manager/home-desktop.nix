@@ -26,6 +26,8 @@
     protontricks
     poptracker
     lumafly
+    cemu
+    eden
 
     filen-desktop
   ];
