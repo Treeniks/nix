@@ -60,6 +60,7 @@
       python-pkgs: with python-pkgs; [
         requests
         dbus
+        pip
       ]
     ))
     nixfmt
