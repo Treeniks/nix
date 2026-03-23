@@ -17,5 +17,8 @@
 
     # causes issues otherwise
     gtk4.theme.name = "";
+
+    # KDE loves replacing this file
+    gtk2.force = true;
   };
 }
