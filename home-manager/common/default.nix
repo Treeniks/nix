@@ -66,6 +66,7 @@
     nixfmt
     nixd
     taplo
+    pre-commit
 
     # cli
     wget
@@ -79,6 +80,8 @@
     just
     gnumake
     ffmpeg
+    net-tools
+    usbutils
 
     texliveFull
     # not just for graphical as it's used by tex's svg package
