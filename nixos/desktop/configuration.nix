@@ -73,5 +73,11 @@
 
   services.udev = {
     packages = [ pkgs.zsa-udev-rules ];
+    # WLMouse
+    # I think this one also requires the specific product id, either way it didn't work for me
+    # SUBSYSTEM=="hidraw", ATTRS{idVendor}=="36a7", TAG+="uaccess"
+    extraRules = ''
+      SUBSYSTEM=="hidraw", ATTRS{idVendor}=="36a7", MODE="0777"
+    '';
   };
 }
