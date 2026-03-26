@@ -22,12 +22,14 @@
     # game stuff
     archipelago # has some issues, so probably prefer to use the manual download
     olympus
+    r2modman
     dolphin-emu
     protontricks
     poptracker
     lumafly
     cemu
     eden
+    prismlauncher
 
     filen-desktop
   ];
