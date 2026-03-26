@@ -68,7 +68,6 @@
     wl-clipboard-rs
     xwininfo
     hyprpicker
-    blueberry
     nautilus
 
     brave
@@ -76,7 +75,7 @@
     mpv
     gnome-font-viewer
     evince
-    protonvpn-gui
+    proton-vpn
     # other proton stuff is system specific
     # as it's not available on arm currently
     qbittorrent
