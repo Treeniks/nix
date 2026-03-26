@@ -69,6 +69,7 @@
     xwininfo
     hyprpicker
     blueberry
+    nautilus
 
     brave
     eog
