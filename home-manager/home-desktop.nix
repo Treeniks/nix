@@ -31,6 +31,8 @@
     eden
     prismlauncher
 
+    godot
+
     filen-desktop
   ];
 
