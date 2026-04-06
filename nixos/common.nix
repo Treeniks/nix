@@ -10,11 +10,11 @@
   };
 
   # nix-collect-garbage -d
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 7d";
-  };
+  # nix.gc = {
+  #   automatic = true;
+  #   dates = "weekly";
+  #   options = "--delete-older-than 7d";
+  # };
 
   networking.networkmanager.enable = true;
 
