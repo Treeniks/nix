@@ -42,6 +42,7 @@
       defaultEditor = true;
     };
     vim.enable = true;
+    firejail.enable = true;
 
     nix-index.enable = true;
   };
