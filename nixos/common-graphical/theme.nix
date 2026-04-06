@@ -5,6 +5,7 @@
       accent = [ "lavender" ];
     })
     catppuccin-cursors.mochaLavender
+    catppuccin-cursors.mochaMaroon
     fkorpsvart-catppuccin-icons
   ];
 

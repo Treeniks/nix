@@ -50,7 +50,7 @@
               "g"
               "b"
             ];
-            run = "shell -- swww img \"$0\"";
+            run = "shell -- awww img \"$0\"";
             desc = "Make Background";
           }
         ];
@@ -93,7 +93,7 @@
   ];
 
   services = {
-    swww.enable = true;
+    awww.enable = true;
     dunst.enable = true;
     hyprpolkitagent.enable = true;
     # no gammastep, see below
