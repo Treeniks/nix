@@ -88,6 +88,8 @@
     inkscape
 
     typst
+
+    proton-vpn-cli
   ];
 
   catppuccin = {
