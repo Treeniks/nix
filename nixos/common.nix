@@ -48,6 +48,8 @@
   };
 
   environment.systemPackages = with pkgs; [
+    inputs.self.packages."x86_64-linux".neovim
+
     killall
     wget
     qemu

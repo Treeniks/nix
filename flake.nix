@@ -7,6 +7,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    wrappers = {
+      url = "github:BirdeeHub/nix-wrapper-modules";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     catppuccin.url = "github:catppuccin/nix";
 
     apple-silicon = {
@@ -24,10 +29,14 @@
     {
       nixpkgs,
       home-manager,
+      wrappers,
       catppuccin,
       apple-silicon,
       ...
     }@inputs:
+    let
+      forAllSystems = nixpkgs.lib.genAttrs nixpkgs.lib.platforms.all;
+    in
     {
       overlays = (
         final: prev: {
@@ -79,6 +88,47 @@
           };
         }
       );
+
+      packages = forAllSystems (system: {
+        neovim = wrappers.wrappers.neovim.wrap (
+          {
+            pkgs,
+            ...
+          }:
+          {
+            config = {
+              pkgs = import nixpkgs { inherit system; };
+              settings.config_directory = ./nvim;
+              binName = "e";
+              hosts.neovide.nvim-host.enable = true;
+
+              specs.themes = {
+                data = with pkgs.vimPlugins; [
+                  catppuccin-nvim
+                  rose-pine
+                ];
+                config = "vim.cmd.colorscheme('catppuccin-mocha')";
+              };
+
+              specs.treesitter.data = with pkgs.vimPlugins; [
+                nvim-treesitter.withAllGrammars
+                nvim-treesitter-textobjects
+              ];
+
+              specs.telescope.data = with pkgs.vimPlugins; [ telescope-nvim ];
+
+              specs.mini.data = with pkgs.vimPlugins; [
+                mini-files
+              ];
+
+              specs.lsp.data = with pkgs.vimPlugins; [
+                nvim-lspconfig
+                blink-cmp
+              ];
+            };
+          }
+        );
+      });
 
       nixosConfigurations = {
         "matcha-nixos" = nixpkgs.lib.nixosSystem {
