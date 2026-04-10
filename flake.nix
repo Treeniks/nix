@@ -110,6 +110,25 @@
                 config = "vim.cmd.colorscheme('catppuccin-mocha')";
               };
 
+              # for complete manual treesitter grammar install:
+              # specs.treesitter-manual.data =
+              #   let
+              #     mkTS =
+              #       lang: grammar:
+              #       pkgs.runCommand "ts-${lang}-nvim" { } ''
+              #         mkdir -p $out/parser
+              #         mkdir -p $out/queries/${lang}
+              #
+              #         cp ${grammar}/parser $out/parser/${lang}.so
+              #         cp -r ${grammar}/queries/* $out/queries/${lang}/
+              #       '';
+              #   in
+              #   with pkgs.tree-sitter-grammars;
+              #   [
+              #     (mkTS "rust" tree-sitter-rust)
+              #     (mkTS "nix" tree-sitter-nix)
+              #   ];
+
               specs.treesitter.data = with pkgs.vimPlugins; [
                 nvim-treesitter.withAllGrammars
                 nvim-treesitter-textobjects
@@ -124,6 +143,11 @@
               specs.lsp.data = with pkgs.vimPlugins; [
                 nvim-lspconfig
                 blink-cmp
+              ];
+
+              extraPackages = with pkgs; [
+                rust-analyzer
+                nixd
               ];
             };
           }

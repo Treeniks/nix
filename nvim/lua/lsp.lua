@@ -3,6 +3,7 @@ local telescope_builtin = require('telescope.builtin')
 
 local servers = {
   rust_analyzer = {},
+  nixd = {},
 }
 
 for server,config in pairs(servers) do

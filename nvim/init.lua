@@ -68,6 +68,5 @@ vim.opt.guifont = 'JetBrainsMono Nerd Font:h14'
 vim.g.neovide_opacity = 0.95
 
 require('plugins')
-require('catppuccin')
 require('lsp')
 require('treesitter')
