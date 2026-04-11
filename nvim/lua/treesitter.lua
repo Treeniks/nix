@@ -1,3 +1,5 @@
+vim.opt.foldlevelstart = 99
+
 vim.api.nvim_create_autocmd('FileType', {
   callback = function(ev)
     if vim.treesitter.language.add(ev.match) then
