@@ -33,6 +33,7 @@
       wrappers,
       catppuccin,
       apple-silicon,
+      sublime-vinimum,
       ...
     }:
     let
@@ -69,6 +70,7 @@
           home = home-manager.lib.homeManagerConfiguration {
             pkgs = nixpkgs.legacyPackages.${system};
             extraSpecialArgs = {
+              inherit sublime-vinimum;
               mypkgs = self.packages.${system};
             };
             modules = [

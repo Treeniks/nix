@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ pkgs, sublime-vinimum, ... }:
 {
   # should get fixed soon(TM)
   nixpkgs.config.permittedInsecurePackages = [ "openssl-1.1.1w" ];
@@ -8,5 +8,5 @@
     sublime-merge
   ];
   # xdg.configFile."sublime-text/Packages/User".source = "${inputs.dotfiles}/sublime/User";
-  xdg.configFile."sublime-text/Packages/Vinimum".source = inputs.sublime-vinimum;
+  xdg.configFile."sublime-text/Packages/Vinimum".source = sublime-vinimum;
 }
