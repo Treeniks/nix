@@ -1,5 +1,4 @@
 {
-  inputs,
   pkgs,
   lib,
   ...
@@ -8,11 +7,6 @@
   imports = [
     ./fish.nix
   ];
-
-  nixpkgs = {
-    overlays = [ inputs.self.overlays ];
-    config.allowUnfree = true;
-  };
 
   home = {
     username = "suteki";

@@ -27,15 +27,69 @@
 
   outputs =
     {
+      self,
       nixpkgs,
       home-manager,
       wrappers,
       catppuccin,
       apple-silicon,
       ...
-    }@inputs:
+    }:
     let
       forAllSystems = nixpkgs.lib.genAttrs nixpkgs.lib.platforms.all;
+      nixpkgsConfig = {
+        nixpkgs = {
+          overlays = [ self.overlays ];
+          config.allowUnfree = true;
+        };
+      };
+
+      mkHost =
+        {
+          hostname,
+          system,
+          extraModule ? { },
+        }:
+        {
+          inherit hostname;
+
+          nixos = nixpkgs.lib.nixosSystem {
+            inherit system;
+            specialArgs = {
+              mypkgs = self.packages.${system};
+            };
+            modules = [
+              ./nixos/${hostname}
+              catppuccin.nixosModules.catppuccin
+              nixpkgsConfig
+              extraModule
+            ];
+          };
+
+          home = home-manager.lib.homeManagerConfiguration {
+            pkgs = nixpkgs.legacyPackages.${system};
+            extraSpecialArgs = {
+              mypkgs = self.packages.${system};
+            };
+            modules = [
+              ./home-manager/${hostname}.nix
+              catppuccin.homeModules.catppuccin
+              nixpkgsConfig
+            ];
+          };
+        };
+
+      hosts = {
+        desktop = mkHost {
+          hostname = "matcha-nixos";
+          system = "x86_64-linux";
+        };
+        asahi = mkHost {
+          hostname = "houjicha-nixos";
+          system = "aarch64-linux";
+          extraModule = apple-silicon.nixosModules.apple-silicon-support;
+        };
+      };
     in
     {
       overlays = (
@@ -154,45 +208,12 @@
         );
       });
 
-      nixosConfigurations = {
-        "matcha-nixos" = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./nixos/desktop/configuration.nix
-            catppuccin.nixosModules.catppuccin
-          ];
-        };
+      nixosConfigurations = nixpkgs.lib.mapAttrs' (
+        _: host: nixpkgs.lib.nameValuePair host.hostname host.nixos
+      ) hosts;
 
-        "houjicha-nixos" = nixpkgs.lib.nixosSystem {
-          system = "aarch64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./nixos/laptop-asahi/configuration.nix
-            apple-silicon.nixosModules.apple-silicon-support
-            catppuccin.nixosModules.catppuccin
-          ];
-        };
-      };
-
-      homeConfigurations = {
-        "suteki@matcha-nixos" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages."x86_64-linux";
-          extraSpecialArgs = { inherit inputs; };
-          modules = [
-            ./home-manager/home-desktop.nix
-            catppuccin.homeModules.catppuccin
-          ];
-        };
-
-        "suteki@houjicha-nixos" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages."aarch64-linux";
-          extraSpecialArgs = { inherit inputs; };
-          modules = [
-            ./home-manager/home-laptop-asahi.nix
-            catppuccin.homeModules.catppuccin
-          ];
-        };
-      };
+      homeConfigurations = nixpkgs.lib.mapAttrs' (
+        _: host: nixpkgs.lib.nameValuePair "suteki@${host.hostname}" host.home
+      ) hosts;
     };
 }

@@ -1,13 +1,8 @@
-{ inputs, pkgs, ... }:
+{ pkgs, mypkgs, ... }:
 {
   imports = [ ];
 
   nix.settings.experimental-features = "nix-command flakes";
-
-  nixpkgs = {
-    overlays = [ inputs.self.overlays ];
-    config.allowUnfree = true;
-  };
 
   # nix-collect-garbage -d
   # nix.gc = {
@@ -48,7 +43,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    inputs.self.packages."x86_64-linux".neovim
+    mypkgs.neovim
 
     killall
     wget

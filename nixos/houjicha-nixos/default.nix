@@ -1,9 +1,9 @@
 { pkgs, ... }:
 {
   imports = [
-    ../common.nix
+    ../common
     ../common-graphical
-    ./hardware-configuration.nix
+    ./hardware.nix
   ];
 
   networking.wireless.iwd = {
