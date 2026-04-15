@@ -20,14 +20,15 @@
     uxplay
 
     # game stuff
-    archipelago # has some issues, so probably prefer to use the manual download
+    archipelago
     olympus
     r2modman
     dolphin-emu
     protontricks
     poptracker
     lumafly
-    cemu
+    # https://github.com/NixOS/nixpkgs/issues/510173
+    # cemu
     eden
     prismlauncher
 
