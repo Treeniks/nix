@@ -58,6 +58,7 @@
     gcc
     gdb
     rustup
+    mdbook
     tree-sitter
     deno
     mono
