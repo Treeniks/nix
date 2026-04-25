@@ -92,6 +92,8 @@
     gimp
     firefox
 
+    eduvpn-client
+
     gammastep
 
     chameleos

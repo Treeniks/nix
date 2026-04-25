@@ -44,6 +44,7 @@
 
   environment.systemPackages = with pkgs; [
     mypkgs.neovim
+    helix
 
     killall
     wget
