@@ -13,6 +13,10 @@
     };
 
     catppuccin.url = "github:catppuccin/nix";
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     apple-silicon = {
       url = "github:nix-community/nixos-apple-silicon";
@@ -32,6 +36,7 @@
       home-manager,
       wrappers,
       catppuccin,
+      noctalia,
       apple-silicon,
       sublime-vinimum,
       ...
@@ -71,6 +76,7 @@
             pkgs = nixpkgs.legacyPackages.${system};
             extraSpecialArgs = {
               inherit sublime-vinimum;
+              inherit noctalia;
               mypkgs = self.packages.${system};
             };
             modules = [

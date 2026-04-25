@@ -27,8 +27,7 @@
     protontricks
     poptracker
     lumafly
-    # https://github.com/NixOS/nixpkgs/issues/510173
-    # cemu
+    cemu
     eden
     prismlauncher
 

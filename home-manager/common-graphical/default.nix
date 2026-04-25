@@ -1,7 +1,15 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  noctalia,
+  ...
+}:
 {
   imports = [
-    ./waybar
+    noctalia.homeModules.default
+
+    ./noctalia.nix
+    # ./waybar
     ./gtk.nix
     ./kitty.nix
     # ./mpv.nix
