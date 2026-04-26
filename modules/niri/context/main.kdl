@@ -149,6 +149,7 @@ layout {
     }
 
     border {
+        on
         width 2
         active-color "#A277FF" // Aura Theme Primary
         inactive-color "#29263C" // Aura Theme Selections
