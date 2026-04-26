@@ -1,4 +1,13 @@
+{ self, ... }:
 {
+  flake.nixosModules.noctalia-shell =
+    { pkgs, ... }:
+    {
+      environment.systemPackages = [
+        self.packages.${pkgs.stdenv.hostPlatform.system}.noctalia-shell
+      ];
+    };
+
   flake.wrappers.noctalia-shell =
     { wlib, ... }:
     {

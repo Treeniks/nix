@@ -1,0 +1,49 @@
+{ self, ... }:
+{
+  flake.nixosModules.fuzzel =
+    { pkgs, ... }:
+    {
+      environment.systemPackages = [
+        self.packages.${pkgs.stdenv.hostPlatform.system}.fuzzel
+      ];
+    };
+
+  flake.wrappers.fuzzel =
+    { wlib, ... }:
+    {
+      imports = [ wlib.wrapperModules.fuzzel ];
+
+      settings = {
+        main = {
+          font = "Maple Mono Normal:size=15";
+          use-bold = true;
+
+          match-mode = "fzf";
+          match-counter = true;
+
+          width = 50;
+          lines = 20;
+        };
+        colors = {
+          background = "31324480";
+          text = "cdd6f4ff";
+          prompt = "a6adc8ff";
+          # TODO I don't get how to do this
+          # placeholder =;
+          input = "cdd6f4ff";
+          match = "f38ba8ff";
+          selection = "b4befeff";
+          selection-text = "11111bff";
+          selection-match = "a2113aff";
+          counter = "fab387ff";
+          border = "a277ffff";
+        };
+
+        border = {
+          width = 2;
+          radius = 20;
+          selection-radius = 10;
+        };
+      };
+    };
+}

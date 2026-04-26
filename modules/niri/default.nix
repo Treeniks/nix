@@ -1,5 +1,15 @@
-{ self, ... }:
+{ self, withSystem, ... }:
 let
+  extraPackages =
+    pkgs:
+    withSystem pkgs.stdenv.hostPlatform.system (
+      { self', ... }:
+      [
+        self'.packages.noctalia-shell
+        self'.packages.fuzzel
+      ]
+    );
+
   mkNiriWrappers = device: {
     "niri-${device}-greetd" =
       {
@@ -29,10 +39,7 @@ let
       { pkgs, wlib, ... }:
       {
         imports = [ wlib.wrapperModules.niri ];
-
-        extraPackages = [
-          self.packages.${pkgs.stdenv.hostPlatform.system}.noctalia-shell
-        ];
+        extraPackages = extraPackages pkgs;
 
         "config.kdl".content = ''
           include "/home/suteki/nix/modules/niri/common.kdl"
@@ -47,10 +54,7 @@ let
       { pkgs, wlib, ... }:
       {
         imports = [ wlib.wrapperModules.niri ];
-
-        extraPackages = [
-          self.packages.${pkgs.stdenv.hostPlatform.system}.noctalia-shell
-        ];
+        extraPackages = extraPackages pkgs;
 
         "config.kdl".content =
           builtins.readFile ./common.kdl
@@ -68,4 +72,25 @@ in
   # config.flake.wrappers = lib.mkMerge (map mkNiriWrappers config.niri.wrappers.devices);
 
   flake.wrappers = mkNiriWrappers "desktop" // mkNiriWrappers "asahi";
+
+  flake.nixosModules.niri =
+    { config, lib, ... }:
+    {
+      imports = [
+        self.nixosModules.fuzzel
+        self.nixosModules.noctalia-shell
+      ];
+
+      options = {
+        niriPackage = lib.mkOption {
+          type = lib.types.package;
+        };
+      };
+
+      config = {
+        environment.systemPackages = [
+          config.niriPackage
+        ];
+      };
+    };
 }

@@ -37,6 +37,7 @@ in
   flake.nixosModules.${hostname} =
     { pkgs, ... }:
     {
+      niriPackage = self.packages.${pkgs.stdenv.hostPlatform.system}.niri-desktop-hot-reload;
       greetd.niriPackage = self.packages.${pkgs.stdenv.hostPlatform.system}.niri-desktop-greetd;
 
       networking.hostName = hostname;
@@ -83,8 +84,6 @@ in
       };
 
       environment.systemPackages = with pkgs; [
-        self.packages.${pkgs.stdenv.hostPlatform.system}.niri-desktop-hot-reload
-
         (heroic.override {
           extraPkgs = pkgs: [
             pkgs.gamescope

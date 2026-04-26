@@ -7,6 +7,7 @@
       self.nixosModules.graphicalFonts
       self.nixosModules.graphicalTheme
 
+      self.nixosModules.niri
       self.nixosModules.greetdNiriReGreet
     ];
   };
@@ -92,7 +93,6 @@
       };
 
       programs = {
-        fuzzel.enable = true;
         wleave.enable = true;
 
         neovide.enable = true;
@@ -116,8 +116,6 @@
       };
 
       home.packages = with pkgs; [
-        self.packages.${pkgs.stdenv.hostPlatform.system}.noctalia-shell
-
         vulkan-tools
 
         nwg-look
