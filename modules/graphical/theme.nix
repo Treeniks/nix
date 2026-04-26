@@ -31,8 +31,6 @@ in
     { pkgs, ... }:
     {
       catppuccin = {
-        # unsure why but this looks giga scuffed
-        wleave.enable = false;
         gtk.icon.enable = false;
         mangohud.enable = false;
         cursors.enable = true;

@@ -5,10 +5,10 @@ binds {
     Mod+B       { toggle-overview; }
     Mod+Slash   { show-hotkey-overlay; }
 
-    Mod+Return      { spawn "kitty"; }
+    Mod+Return  { spawn "kitty"; }
     Mod+D       { spawn "nemo"; }
     Mod+Space   { spawn "fuzzel"; }
-    Mod+E       { spawn "wleave"; }
+    Mod+E       { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
     Mod+Q       repeat=false { close-window; }
 
     Mod+Shift+A { spawn "~/.config/niri/animemode.fish" "on"; }
