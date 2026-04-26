@@ -25,7 +25,7 @@
           lines = 20;
         };
         colors = {
-          background = "31324480";
+          background = "313244D0";
           text = "cdd6f4ff";
           prompt = "a6adc8ff";
           # TODO I don't get how to do this
