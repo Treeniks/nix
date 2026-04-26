@@ -1,0 +1,40 @@
+prefer-no-csd
+
+input {
+    keyboard {
+        xkb {
+            layout "us"
+            options "fkeys:basic_13-24"
+            variant "altgr-intl"
+        }
+        repeat-delay 200
+        numlock
+    }
+
+    touchpad {
+        tap
+        dwt
+        natural-scroll
+        scroll-factor 0.6
+    }
+
+    mouse {
+        accel-speed -0.45
+        accel-profile "flat"
+    }
+}
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+gestures {
+    hot-corners {
+        off
+    }
+}
+
+cursor {
+    xcursor-theme "catppuccin-mocha-maroon-cursors"
+    xcursor-size 24
+}

@@ -1,0 +1,21 @@
+output "HDMI-A-1" {
+    mode "3840x2160@119.880"
+    scale 1.5
+    position x=0 y=150
+    variable-refresh-rate on-demand=true
+}
+
+output "DP-1" {
+    mode "2560x1440@300"
+    scale 1
+    position x=2560 y=0
+    variable-refresh-rate on-demand=true
+    focus-at-startup
+}
+
+output "DP-2" {
+    mode "1920x1080@143.980"
+    scale 1
+    position x=5120 y=150
+    variable-refresh-rate on-demand=true
+}

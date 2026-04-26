@@ -1,0 +1,18 @@
+spawn-at-startup "gammastep" "-O" "4500"
+
+layout {
+    gaps 0
+    background-color "#15141B"
+
+    focus-ring {
+        off
+    }
+
+    border {
+        off
+    }
+
+    shadow {
+        off
+    }
+}
