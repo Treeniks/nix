@@ -56,6 +56,11 @@ vim.keymap.set('', '<C-b>', '10k')
 
 vim.keymap.set('n', '<ESC>', vim.cmd.nohlsearch)
 
+vim.keymap.set('n', '<leader>n', vim.cmd.tabnew, { desc = 'New Tab' })
+vim.keymap.set('n', '<leader>k', vim.cmd.tabprev, { desc = 'Prev Tab' })
+vim.keymap.set('n', '<leader>j', vim.cmd.tabnext, { desc = 'Next Tab' })
+vim.keymap.set('n', '<leader>q', vim.cmd.tabclose, { desc = 'Close Tab' })
+
 vim.diagnostic.config({
   jump = { on_jump = function(_, bufnr) vim.diagnostic.open_float({ bufnr = bufnr }) end }
 })
