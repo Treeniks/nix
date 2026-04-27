@@ -60,6 +60,7 @@
       };
 
       environment.systemPackages = with pkgs; [
+        self.packages.${pkgs.stdenv.hostPlatform.system}.neovim-hot-reload
         helix
 
         killall
