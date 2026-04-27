@@ -184,12 +184,21 @@
         # These wrapper modules are imported above.
         templates = {
           activeTemplates = [
+            # these are not managed by home manager or wrappers
+            # so this will just work
             {
-              # not managed by home manager or wrappers
-              # so this will just work
               id = "btop";
               enabled = true;
             }
+            {
+              id = "hyprtoolkit";
+              enabled = true;
+            }
+            # TODO waiting for https://github.com/NixOS/nixpkgs/pull/487045
+            # {
+            #   id = "steam";
+            #   enabled = true;
+            # }
           ];
         };
 
