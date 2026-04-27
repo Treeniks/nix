@@ -6,6 +6,10 @@
 
       settings = {
         main = {
+          # noctalia theme include
+          # mostly overwrites the colors defined below
+          include = "~/.config/fuzzel/themes/noctalia";
+
           font = "Maple Mono Normal:size=15";
           use-bold = true;
 
@@ -34,6 +38,24 @@
           width = 2;
           radius = 20;
           selection-radius = 10;
+        };
+      };
+    };
+
+  perSystem.wrappers.packages.noctalia-shell-fuzzel = true;
+  flake.wrappers.noctalia-shell-fuzzel =
+    { wlib, ... }:
+    {
+      imports = [ wlib.wrapperModules.noctalia-shell ];
+
+      settings = {
+        templates = {
+          activeTemplates = [
+            {
+              id = "fuzzel";
+              enabled = true;
+            }
+          ];
         };
       };
     };

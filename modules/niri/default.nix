@@ -106,8 +106,6 @@ in
   # };
   # config.flake.wrappers = lib.mkMerge (map mkNiriWrappers config.niri.wrappers.devices);
 
-  flake.wrappers = mkNiriWrappers "desktop" true // mkNiriWrappers "asahi" false;
-
   flake.nixosModules.niri =
     {
       config,
@@ -126,5 +124,28 @@ in
           config.niriPackage
         ];
       };
+    };
+
+  perSystem.wrappers.packages.noctalia-shell-niri = true;
+  flake.wrappers =
+    mkNiriWrappers "desktop" true
+    // mkNiriWrappers "asahi" false
+    // {
+      noctalia-shell-niri =
+        { wlib, ... }:
+        {
+          imports = [ wlib.wrapperModules.noctalia-shell ];
+
+          settings = {
+            templates = {
+              activeTemplates = [
+                {
+                  id = "niri";
+                  enabled = true;
+                }
+              ];
+            };
+          };
+        };
     };
 }

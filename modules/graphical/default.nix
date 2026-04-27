@@ -18,6 +18,7 @@
       self.homeModules.graphicalTheme
 
       self.homeModules.kitty
+
       # TODO
       # self.homeModules.mpv
       self.homeModules.sublime
@@ -67,11 +68,6 @@
   flake.homeModules.graphicalBase =
     { pkgs, ... }:
     {
-      xdg.terminal-exec = {
-        enable = true;
-        package = pkgs.kitty;
-      };
-
       # make brave use basic password store to avoid issues with switching
       # between different desktop environments
       xdg.desktopEntries."brave-browser" = {
@@ -95,22 +91,6 @@
       programs = {
         neovide.enable = true;
         obsidian.enable = true;
-
-        # already enabled in common
-        yazi = {
-          keymap = {
-            mgr.prepend_keymap = [
-              {
-                on = [
-                  "g"
-                  "b"
-                ];
-                run = "shell -- awww img \"$0\"";
-                desc = "Make Background";
-              }
-            ];
-          };
-        };
       };
 
       home.packages = with pkgs; [

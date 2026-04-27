@@ -1,8 +1,14 @@
+{ self, ... }:
 {
   flake.wrappers.noctalia-shell =
     { wlib, ... }:
     {
-      imports = [ wlib.wrapperModules.noctalia-shell ];
+      imports = [
+        wlib.wrapperModules.noctalia-shell
+        self.wrapperModules.noctalia-shell-niri
+        self.wrapperModules.noctalia-shell-yazi
+        self.wrapperModules.noctalia-shell-fuzzel
+      ];
 
       settings = {
         general = {
@@ -166,6 +172,21 @@
           syncGsettings = true;
           useWallpaperColors = true;
           generationMethod = "content";
+        };
+
+        # These are theme files exported by noctalia to keep themes of different applications in sync with noctalias colors.
+        # This is a bit scuffed when it comes to nix. Basically, we know where noctalia writes these, and then import them in the respective configs.
+        # These templates are typically enabled within the respective app's own file through a wrapper module called "noctalia-shell-XXX".
+        # These wrapper modules are imported above.
+        templates = {
+          activeTemplates = [
+            {
+              # not managed by home manager or wrappers
+              # so this will just work
+              id = "btop";
+              enabled = true;
+            }
+          ];
         };
 
         location = {

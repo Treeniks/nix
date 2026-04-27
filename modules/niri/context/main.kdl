@@ -259,3 +259,7 @@ window-rule {
     match app-id="steam_app"
     variable-refresh-rate true
 }
+
+// noctalia shell theme include
+// FIXME replace with ~ once niri 26.04 is packaged
+include "/home/suteki/.config/niri/noctalia.kdl"

@@ -17,6 +17,7 @@
       self.homeModules.common
       self.homeModules.theme
       self.homeModules.fish
+      self.homeModules.yazi
     ];
   };
 
@@ -90,11 +91,6 @@
         bat.enable = true;
         starship.enable = true;
         eza.enable = true;
-        yazi = {
-          enable = true;
-          enableFishIntegration = true;
-          shellWrapperName = "yy";
-        };
         zoxide = {
           enable = true;
           enableFishIntegration = true;
