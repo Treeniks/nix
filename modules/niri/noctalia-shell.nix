@@ -5,9 +5,13 @@
     {
       imports = [
         wlib.wrapperModules.noctalia-shell
+
         self.wrapperModules.noctalia-shell-niri
         self.wrapperModules.noctalia-shell-yazi
         self.wrapperModules.noctalia-shell-fuzzel
+        self.wrapperModules.noctalia-shell-zed
+
+        self.wrapperModules.noctalia-shell-gtk-qt
       ];
 
       settings = {

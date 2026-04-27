@@ -33,22 +33,24 @@ in
       catppuccin = {
         gtk.icon.enable = false;
         mangohud.enable = false;
+        kvantum.enable = false;
+
         cursors.enable = true;
       };
 
       gtk = {
         enable = true;
-        theme = {
-          package = accentedCatppuccin pkgs;
-          name = gtkThemeName;
-        };
+        # theme = {
+        #   package = accentedCatppuccin pkgs;
+        #   name = gtkThemeName;
+        # };
         colorScheme = "dark";
 
         iconTheme.name = iconThemeName;
         iconTheme.package = self.packages.${pkgs.stdenv.hostPlatform.system}.fkorpsvart-catppuccin-icons;
 
         # causes issues otherwise
-        gtk4.theme.name = "";
+        # gtk4.theme.name = "";
 
         # KDE loves replacing this file
         gtk2.force = true;
@@ -57,7 +59,29 @@ in
       # I'm not fully convinced by this one yet
       qt = {
         enable = true;
-        style.name = "kvantum";
+        style.name = "qt6ct";
+      };
+    };
+
+  perSystem.wrappers.packages.noctalia-shell-gtk-qt = true;
+  flake.wrappers.noctalia-shell-gtk-qt =
+    { wlib, ... }:
+    {
+      imports = [ wlib.wrapperModules.noctalia-shell ];
+
+      settings = {
+        templates = {
+          activeTemplates = [
+            {
+              id = "gtk";
+              enabled = true;
+            }
+            {
+              id = "qt";
+              enabled = true;
+            }
+          ];
+        };
       };
     };
 }
