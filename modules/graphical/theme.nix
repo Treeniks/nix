@@ -6,7 +6,6 @@ let
       accent = [ "lavender" ];
     });
 
-  gtkThemeName = "Catppuccin-GTK-Lavender-Dark";
   iconThemeName = "Catppuccin-Mocha";
 in
 {
@@ -18,17 +17,20 @@ in
         catppuccin-cursors.mochaLavender
         catppuccin-cursors.mochaMaroon
         self.packages.${pkgs.stdenv.hostPlatform.system}.fkorpsvart-catppuccin-icons
+
+        adw-gtk3
+        kdePackages.qt6ct
       ];
 
       programs.regreet = {
-        theme.name = gtkThemeName;
+        theme.name = "Catppuccin-GTK-Lavender-Dark";
         cursorTheme.name = "catppuccin-mocha-maroon-cursors";
         iconTheme.name = iconThemeName;
       };
     };
 
   flake.homeModules.graphicalTheme =
-    { pkgs, ... }:
+    { config, pkgs, ... }:
     {
       catppuccin = {
         gtk.icon.enable = false;
@@ -40,10 +42,11 @@ in
 
       gtk = {
         enable = true;
-        # theme = {
-        #   package = accentedCatppuccin pkgs;
-        #   name = gtkThemeName;
-        # };
+        theme = {
+          # the theme used by noctalia
+          package = pkgs.adw-gtk3;
+          name = "adw-gtk3";
+        };
         colorScheme = "dark";
 
         iconTheme.name = iconThemeName;
@@ -56,10 +59,16 @@ in
         gtk2.force = true;
       };
 
-      # I'm not fully convinced by this one yet
       qt = {
         enable = true;
-        style.name = "qt6ct";
+        qt6ctSettings = {
+          Appearance = {
+            style = "Breeze";
+            custom_palette = true;
+            standard_dialogs = "xdgdesktopportal";
+            color_scheme_path = "${config.home.homeDirectory}/.config/qt6ct/colors/noctalia.conf";
+          };
+        };
       };
     };
 
@@ -78,6 +87,10 @@ in
             }
             {
               id = "qt";
+              enabled = true;
+            }
+            {
+              id = "kcolorscheme";
               enabled = true;
             }
           ];
