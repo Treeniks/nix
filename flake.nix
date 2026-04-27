@@ -27,12 +27,6 @@
       url = "github:Treeniks/Vinimum";
       flake = false;
     };
-
-    # HACK my own noctalia fork that adds nightlight force/disable ipc until v5 is out
-    noctalia-shell-fork = {
-      url = "github:Treeniks/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =

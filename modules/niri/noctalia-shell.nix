@@ -13,9 +13,6 @@
     {
       imports = [ wlib.wrapperModules.noctalia-shell ];
 
-      # HACK my own noctalia fork that adds nightlight force/disable ipc until v5 is out
-      package = inputs.noctalia-shell-fork.packages.${pkgs.stdenv.hostPlatform.system}.default;
-
       settings = {
         general = {
           clockFormat = "HH:mm:ss";

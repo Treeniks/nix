@@ -85,13 +85,11 @@ in
         #!${pkgs.fish}/bin/fish
         switch $argv[1]
           case on
+            # HACK until noctalia v5 is out
             # 1st toggle => Normal mode
             # 2nd toggle => Disabled
-            # noctalia-shell ipc call nightLight toggle
-            # noctalia-shell ipc call nightLight toggle
-
-            # from my own fork until noctalia v5 is out
-            noctalia-shell ipc call nightLight disable
+            noctalia-shell ipc call nightLight toggle
+            noctalia-shell ipc call nightLight toggle
 
             niri msg output HDMI-A-1 scale 2
             niri msg output DP-1 off
@@ -102,10 +100,7 @@ in
             niri msg output DP-2 on
 
             # 3rd toggle => Enabled
-            # noctalia-shell ipc call nightLight toggle
-
-            # from my own fork until noctalia v5 is out
-            noctalia-shell ipc call nightLight force
+            noctalia-shell ipc call nightLight toggle
         end
       '';
     in
