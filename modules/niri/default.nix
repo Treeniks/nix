@@ -74,7 +74,41 @@ in
   flake.wrappers = mkNiriWrappers "desktop" // mkNiriWrappers "asahi";
 
   flake.nixosModules.niri =
-    { config, lib, ... }:
+    {
+      config,
+      pkgs,
+      lib,
+      ...
+    }:
+    let
+      animemode = pkgs.writeScriptBin "animemode" ''
+        #!${pkgs.fish}/bin/fish
+        switch $argv[1]
+          case on
+            # 1st toggle => Normal mode
+            # 2nd toggle => Disabled
+            # noctalia-shell ipc call nightLight toggle
+            # noctalia-shell ipc call nightLight toggle
+
+            # from my own fork until noctalia v5 is out
+            noctalia-shell ipc call nightLight disable
+
+            niri msg output HDMI-A-1 scale 2
+            niri msg output DP-1 off
+            niri msg output DP-2 off
+          case off
+            niri msg output HDMI-A-1 scale 1.5
+            niri msg output DP-1 on
+            niri msg output DP-2 on
+
+            # 3rd toggle => Enabled
+            # noctalia-shell ipc call nightLight toggle
+
+            # from my own fork until noctalia v5 is out
+            noctalia-shell ipc call nightLight force
+        end
+      '';
+    in
     {
       imports = [
         self.nixosModules.fuzzel
@@ -85,11 +119,18 @@ in
         niriPackage = lib.mkOption {
           type = lib.types.package;
         };
+        animemode = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+        };
       };
 
       config = {
         environment.systemPackages = [
           config.niriPackage
+        ]
+        ++ lib.optionals config.animemode [
+          animemode
         ];
       };
     };

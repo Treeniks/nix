@@ -19,3 +19,8 @@ output "DP-2" {
     position x=5120 y=150
     variable-refresh-rate on-demand=true
 }
+
+binds {
+    Mod+Shift+A { spawn "animemode" "on"; }
+    Mod+Shift+Z { spawn "animemode" "off"; }
+}
