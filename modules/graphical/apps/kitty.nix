@@ -84,4 +84,22 @@
         "background_opacity" = 0.98;
       };
     };
+
+  perSystem.wrappers.packages.noctalia-shell-kitty = true;
+  flake.wrappers.noctalia-shell-kitty =
+    { wlib, ... }:
+    {
+      imports = [ wlib.wrapperModules.noctalia-shell ];
+
+      settings = {
+        templates = {
+          activeTemplates = [
+            {
+              id = "kitty";
+              enabled = true;
+            }
+          ];
+        };
+      };
+    };
 }
