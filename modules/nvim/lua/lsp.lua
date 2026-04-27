@@ -17,7 +17,7 @@ end
 vim.diagnostic.config({
     jump = { on_jump = function(_, bufnr) vim.diagnostic.open_float({ bufnr = bufnr }) end }
 })
-vim.keymap.set('n', '<leader>k', vim.diagnostic.open_float, { desc = 'Diagnostic Float' })
+vim.keymap.set('n', '<leader>g', vim.diagnostic.open_float, { desc = 'Diagnostic Float' })
 -- I've tried vim.diagnostic.jump but it's just way less reliable than [d and ]d and idk why
 vim.keymap.set('n', '<leader>d', '[d', { desc = 'Prev Diagnostic', remap = true })
 vim.keymap.set('n', '<leader>f', ']d', { desc = 'Next Diagnositc', remap = true })
