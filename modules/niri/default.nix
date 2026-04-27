@@ -48,16 +48,17 @@ let
         imports = [ wlib.wrapperModules.niri ];
         binName = "niri-greetd";
 
-        "config.kdl".content =
-          builtins.readFile ./common.kdl
-          + builtins.readFile ./context/greetd.kdl
-          + builtins.readFile ./device/${device}.kdl
-          +
-            # config.wrapperPaths.placeholder should contain the path to the binary of the currently defined wrapper
-            # we could probably just use pkgs.niri here and be fine, but that would also be scuff
-            ''
-              spawn-sh-at-startup "${lib.getExe pkgs.regreet}; ${config.wrapperPaths.placeholder} msg action quit --skip-confirmation"
-            '';
+        "config.kdl".content = ''
+          include "${./common.kdl}"
+          include "${./context/greetd.kdl}"
+          include "${./device/${device}.kdl}"
+        ''
+        +
+          # config.wrapperPaths.placeholder should contain the path to the binary of the currently defined wrapper
+          # we could probably just use pkgs.niri here and be fine, but that would also be scuff
+          ''
+            spawn-sh-at-startup "${lib.getExe pkgs.regreet}; ${config.wrapperPaths.placeholder} msg action quit --skip-confirmation"
+          '';
       };
 
     "niri-${device}-hot-reload" =
@@ -75,6 +76,7 @@ let
           include "/home/suteki/nix/modules/niri/common.kdl"
           include "/home/suteki/nix/modules/niri/context/main.kdl"
           include "/home/suteki/nix/modules/niri/device/${device}.kdl"
+          include "/home/suteki/nix/modules/niri/noctalia.kdl"
         '';
 
         disableConfigValidation = true;
@@ -91,10 +93,11 @@ let
         imports = [ wlib.wrapperModules.niri ];
         extraPackages = extraPackages pkgs ++ lib.optionals animemode [ (animemodePkg pkgs) ];
 
-        "config.kdl".content =
-          builtins.readFile ./common.kdl
-          + builtins.readFile ./context/main.kdl
-          + builtins.readFile ./device/${device}.kdl;
+        "config.kdl".content = ''
+          include "${./common.kdl}"
+          include "${./context/main.kdl}"
+          include "${./device/${device}.kdl}"
+        '';
       };
   };
 in

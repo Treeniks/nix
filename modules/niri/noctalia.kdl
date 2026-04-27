@@ -1,0 +1,3 @@
+// noctalia shell theme include
+// FIXME replace with ~ once niri 26.04 is packaged
+include "/home/suteki/.config/niri/noctalia.kdl"
