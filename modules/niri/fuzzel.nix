@@ -1,13 +1,4 @@
-{ self, ... }:
 {
-  flake.nixosModules.fuzzel =
-    { pkgs, ... }:
-    {
-      environment.systemPackages = [
-        self.packages.${pkgs.stdenv.hostPlatform.system}.fuzzel
-      ];
-    };
-
   flake.wrappers.fuzzel =
     { wlib, ... }:
     {

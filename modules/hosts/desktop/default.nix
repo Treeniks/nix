@@ -38,7 +38,6 @@ in
     { pkgs, ... }:
     {
       niriPackage = self.packages.${system}.niri-desktop-hot-reload;
-      animemode = true;
       greetd.niriPackage = self.packages.${system}.niri-desktop-greetd;
 
       networking.hostName = hostname;
