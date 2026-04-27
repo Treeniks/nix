@@ -61,7 +61,7 @@
                 id = "Volume";
                 displayMode = "alwaysShow";
               }
-              { id = "Trav"; }
+              { id = "Tray"; }
               { id = "NotificationHistory"; }
               {
                 id = "ControlCenter";
