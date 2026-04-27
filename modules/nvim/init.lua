@@ -61,12 +61,6 @@ vim.keymap.set('n', '<leader>k', vim.cmd.tabprev, { desc = 'Prev Tab' })
 vim.keymap.set('n', '<leader>j', vim.cmd.tabnext, { desc = 'Next Tab' })
 vim.keymap.set('n', '<leader>q', vim.cmd.tabclose, { desc = 'Close Tab' })
 
-vim.diagnostic.config({
-  jump = { on_jump = function(_, bufnr) vim.diagnostic.open_float({ bufnr = bufnr }) end }
-})
-vim.keymap.set('n', '<leader>d', function() vim.diagnostic.jump({count = -1}) end)
-vim.keymap.set('n', '<leader>f', function() vim.diagnostic.jump({count = 1}) end)
-
 -- ===== Neovide =====
 -- cannot be JetBrains Mono at the time of writing for some reason, as that makes Neovide segfault...
 vim.opt.guifont = 'JetBrainsMono Nerd Font:h14'

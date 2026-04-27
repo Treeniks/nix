@@ -10,6 +10,10 @@
 
       hosts.neovide.nvim-host.enable = true;
 
+      specs.general.data = with pkgs.vimPlugins; [
+        nvim-surround
+      ];
+
       specs.themes = {
         data = with pkgs.vimPlugins; [
           catppuccin-nvim
@@ -25,18 +29,18 @@
 
       specs.telescope.data = with pkgs.vimPlugins; [ telescope-nvim ];
 
-      specs.mini.data = with pkgs.vimPlugins; [
-        mini-files
-      ];
+      specs.mini.data = with pkgs.vimPlugins; [ mini-nvim ];
 
       specs.lsp.data = with pkgs.vimPlugins; [
         nvim-lspconfig
         blink-cmp
+        lazydev-nvim
       ];
 
       extraPackages = with pkgs; [
         rust-analyzer
         nixd
+        lua-language-server
       ];
     };
 
