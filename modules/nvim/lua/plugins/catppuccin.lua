@@ -7,4 +7,6 @@ require('catppuccin').setup({
         mini = { enabled = true },
         blink_cmp = true,
     },
+
+    transparent_background = true,
 })

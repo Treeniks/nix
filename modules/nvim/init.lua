@@ -29,8 +29,8 @@ vim.opt.signcolumn = 'yes' -- or 'number'
 -- whitespace visuals
 vim.opt.list = true
 vim.opt.listchars:append({
-    tab = '>-',
-    trail = '⋅',
+  tab = '>-',
+  trail = '⋅',
 })
 
 vim.opt.undofile = true

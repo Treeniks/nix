@@ -11,8 +11,11 @@
         self.wrapperModules.noctalia-shell-fuzzel
         self.wrapperModules.noctalia-shell-kitty
         self.wrapperModules.noctalia-shell-zed
+        self.wrapperModules.noctalia-shell-neovim
         self.wrapperModules.noctalia-shell-gtk-qt
       ];
+
+      outOfStoreConfig = "/home/suteki/.config/noctalia";
 
       settings = {
         general = {
@@ -183,6 +186,8 @@
         # These templates are typically enabled within the respective app's own file through a wrapper module called "noctalia-shell-XXX".
         # These wrapper modules are imported above.
         templates = {
+          enableUserTheming = true;
+
           activeTemplates = [
             # these are not managed by home manager or wrappers
             # so this will just work

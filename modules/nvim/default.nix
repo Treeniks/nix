@@ -57,4 +57,33 @@
     settings.config_directory = "/home/suteki/nix/modules/nvim/";
     binName = "e";
   };
+
+  perSystem.wrappers.packages.noctalia-shell-neovim = true;
+  flake.wrappers.noctalia-shell-neovim =
+    { wlib, ... }:
+    {
+      imports = [ wlib.wrapperModules.noctalia-shell ];
+
+      user-templates = {
+        config = { };
+        templates = {
+          neovim = {
+            input_path = "${./matugen-template.lua}";
+            output_path = "~/nix/modules/nvim/lua/plugins/catppuccin-matugen.lua";
+            post_hook = "pkill -SIGUSR1 nvim";
+          };
+        };
+      };
+
+      settings = {
+        templates = {
+          activeTemplates = [
+            {
+              id = "neovim";
+              enabled = true;
+            }
+          ];
+        };
+      };
+    };
 }

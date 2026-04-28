@@ -1,4 +1,4 @@
-{ self, withSystem, ... }:
+{ withSystem, ... }:
 let
   animemodePkg =
     pkgs:
@@ -112,6 +112,7 @@ in
   flake.nixosModules.niri =
     {
       config,
+      pkgs,
       lib,
       ...
     }:
@@ -123,9 +124,12 @@ in
       };
 
       config = {
-        environment.systemPackages = [
-          config.niriPackage
-        ];
+        environment.systemPackages = (
+          [
+            config.niriPackage
+          ]
+          ++ (extraPackages pkgs)
+        );
       };
     };
 
