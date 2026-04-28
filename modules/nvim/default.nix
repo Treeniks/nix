@@ -1,5 +1,15 @@
 { self, ... }:
 {
+  flake.nixosModules.neovim =
+    { pkgs, ... }:
+    {
+      programs.neovim = {
+        enable = true;
+        defaultEditor = true;
+        package = self.packages.${pkgs.stdenv.hostPlatform.system}.neovim-hot-reload;
+      };
+    };
+
   # this is the base that hot-reload and standalone derive from
   # but is itself useless, hence why we disable its export into self.packages
   perSystem.wrappers.packages.neovim-base = true;
@@ -46,16 +56,12 @@
 
   flake.wrappers.neovim-standalone = {
     imports = [ self.wrapperModules.neovim-base ];
-
     settings.config_directory = ./.;
-    binName = "e";
   };
 
   flake.wrappers.neovim-hot-reload = {
     imports = [ self.wrapperModules.neovim-base ];
-
     settings.config_directory = "/home/suteki/nix/modules/nvim/";
-    binName = "e";
   };
 
   perSystem.wrappers.packages.noctalia-shell-neovim = true;

@@ -5,6 +5,7 @@
       inputs.catppuccin.nixosModules.catppuccin
 
       self.nixosModules.common
+      self.nixosModules.neovim
       self.nixosModules.gpg
       self.nixosModules.theme
     ];
@@ -50,10 +51,6 @@
       programs = {
         git.enable = true;
         fish.enable = true;
-        neovim = {
-          enable = true;
-          defaultEditor = true;
-        };
         vim.enable = true;
         firejail.enable = true;
 
@@ -61,7 +58,6 @@
       };
 
       environment.systemPackages = with pkgs; [
-        self.packages.${pkgs.stdenv.hostPlatform.system}.neovim-hot-reload
         helix
 
         killall

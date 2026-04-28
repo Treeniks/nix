@@ -128,4 +128,6 @@ hipatterns.setup({
 
 require('mini.icons').setup({})
 
+require('mini.statusline').setup({})
+
 require('mini.trailspace').setup({})
