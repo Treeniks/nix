@@ -1,5 +1,6 @@
 {
   flake.homeModules.zed =
+    { config, lib, ... }:
     let
       userSettings = {
         base_keymap = "SublimeText";
@@ -92,8 +93,19 @@
     {
       programs.zed-editor = {
         enable = true;
-        inherit userSettings;
+
         inherit userKeymaps;
+
+        userSettings = lib.mkMerge [
+          userSettings
+          (lib.mkIf config.my.noctalia-themeing {
+            theme = lib.mkForce {
+              mode = "dark";
+              dark = "Noctalia Dark";
+              light = "Noctalia Light";
+            };
+          })
+        ];
       };
     };
 }
