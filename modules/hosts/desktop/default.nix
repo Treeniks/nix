@@ -7,6 +7,8 @@
 let
   hostname = "matcha-nixos";
   system = "x86_64-linux";
+
+  noctalia-themeing = true;
 in
 {
   flake.nixosConfigurations.${hostname} = lib.nixosSystem {
@@ -37,9 +39,11 @@ in
   flake.nixosModules.${hostname} =
     { pkgs, ... }:
     {
-      my.niri.extraIncludes = [ "~/nix/modules/hosts/desktop/desktop.kdl" ];
-      my.greetd.niri.extraIncludes = [ ./desktop.kdl ];
-      my.noctalia-themeing = true;
+      my = {
+        inherit noctalia-themeing;
+        niri.extraIncludes = [ "~/nix/modules/hosts/desktop/desktop.kdl" ];
+        greetd.niri.extraIncludes = [ ./desktop.kdl ];
+      };
 
       networking.hostName = hostname;
 
@@ -122,7 +126,9 @@ in
   flake.homeModules.${hostname} =
     { pkgs, ... }:
     {
-      my.noctalia-themeing = true;
+      my = {
+        inherit noctalia-themeing;
+      };
 
       home.packages = with pkgs; [
         (import ./_animemode.nix { inherit pkgs; })
