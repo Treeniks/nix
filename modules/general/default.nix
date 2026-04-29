@@ -116,7 +116,8 @@
         rustup
         mdbook
         tree-sitter
-        deno
+        # FIXME replace with mpv once deno build failures are fixed
+        (import inputs.nixpkgs-mpv-downgrade { system = pkgs.stdenv.hostPlatform.system; }).deno
         mono
         nodejs-slim
         (python3.withPackages (

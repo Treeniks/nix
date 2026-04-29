@@ -1,4 +1,4 @@
-{ self, ... }:
+{ inputs, self, ... }:
 {
   flake.nixosModules.stackGraphical =
     { lib, ... }:
@@ -128,7 +128,8 @@
 
         brave
         eog
-        mpv
+        # FIXME replace with mpv once deno build failures are fixed
+        (import inputs.nixpkgs-mpv-downgrade { system = pkgs.stdenv.hostPlatform.system; }).mpv
         gnome-font-viewer
         evince
         proton-vpn

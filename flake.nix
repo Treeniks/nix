@@ -2,6 +2,12 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    # https://github.com/NixOS/nixpkgs/issues/511900
+    # mpv relies on yt-dlp
+    # yt-dlp relies on deno
+    # deno fails to build
+    nixpkgs-mpv-downgrade.url = "github:NixOS/nixpkgs/dc72a9d2282085d97d5a2cc8e7103a68ed4de188";
+
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
