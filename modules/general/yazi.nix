@@ -1,37 +1,21 @@
 {
-  flake.homeModules.yazi = {
-    programs.yazi = {
-      enable = true;
-      enableFishIntegration = true;
-      shellWrapperName = "yy";
-
-      theme = {
-        flavor = {
-          dark = "noctalia";
-          light = "noctalia";
-        };
-      };
-    };
-
-    catppuccin.yazi.enable = false;
-    xdg.configFile."yazi/theme.toml".force = true;
-  };
-
-  perSystem.wrappers.packages.noctalia-shell-yazi = true;
-  flake.wrappers.noctalia-shell-yazi =
-    { wlib, ... }:
+  flake.homeModules.yazi =
+    { config, lib, ... }:
     {
-      imports = [ wlib.wrapperModules.noctalia-shell ];
+      programs.yazi = {
+        enable = true;
+        enableFishIntegration = true;
+        shellWrapperName = "yy";
 
-      settings = {
-        templates = {
-          activeTemplates = [
-            {
-              id = "yazi";
-              enabled = true;
-            }
-          ];
+        theme = lib.mkIf config.my.noctalia-themeing {
+          flavor = {
+            dark = "noctalia";
+            light = "noctalia";
+          };
         };
       };
+
+      catppuccin.yazi.enable = !config.my.noctalia-themeing;
+      xdg.configFile."yazi/theme.toml".force = true;
     };
 }

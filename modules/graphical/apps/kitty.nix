@@ -1,8 +1,8 @@
 # so this ones annoying
-# I want to use the wrapper, but noctalia runs "kitty +runpy" to get the config to reload on theme change
-# which for some reason just...doesn't work
+# I want to use the wrapper, but things like "kitty +runpy" is broken with it
 # no idea why
-{ self, ... }:
+#
+# noctalia uses that to reload config on theme change so that causes issues
 let
   font = {
     name = "JetBrains Mono";
@@ -20,9 +20,6 @@ let
   };
 
   settings = {
-    # noctalia shell theme
-    include = "~/.config/kitty/themes/noctalia.conf";
-
     "cursor_blink_interval" = 0;
 
     "hide_window_decorations" = "titlebar-only";
@@ -37,39 +34,39 @@ let
 in
 {
   flake.homeModules.kitty =
-    { pkgs, ... }:
+    {
+      config,
+      lib,
+      pkgs,
+      ...
+    }:
     {
       xdg.terminal-exec = {
         enable = true;
         package = pkgs.kitty;
       };
 
-      programs.kitty = {
-        enable = true;
+      programs.kitty = lib.mkMerge [
+        {
+          enable = true;
 
-        inherit font;
-        inherit keybindings;
-        inherit settings;
-      };
+          inherit font;
+          inherit keybindings;
+          settings = lib.mkMerge [
+            settings
+            (lib.mkIf config.my.noctalia-themeing {
+              include = "~/.config/kitty/themes/noctalia.conf";
+            })
+          ];
+        }
+        (lib.mkIf config.my.noctalia-themeing {
+          themeFile = lib.mkForce null;
+        })
+      ];
+
     };
 
   # unused
-  flake.homeModules.kittyWrapper =
-    { pkgs, ... }:
-    let
-      kitty = self.packages.${pkgs.stdenv.hostPlatform.system}.kitty;
-    in
-    {
-      xdg.terminal-exec = {
-        enable = true;
-        package = kitty;
-      };
-
-      home.packages = [
-        kitty
-      ];
-    };
-
   flake.wrappers.kitty =
     { wlib, ... }:
     {
@@ -80,23 +77,5 @@ in
       inherit font;
       inherit keybindings;
       inherit settings;
-    };
-
-  perSystem.wrappers.packages.noctalia-shell-kitty = true;
-  flake.wrappers.noctalia-shell-kitty =
-    { wlib, ... }:
-    {
-      imports = [ wlib.wrapperModules.noctalia-shell ];
-
-      settings = {
-        templates = {
-          activeTemplates = [
-            {
-              id = "kitty";
-              enabled = true;
-            }
-          ];
-        };
-      };
     };
 }

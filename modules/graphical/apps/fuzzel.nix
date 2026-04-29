@@ -1,4 +1,24 @@
+{ self, ... }:
 {
+  flake.homeModules.fuzzel =
+    {
+      config,
+      pkgs,
+      lib,
+      ...
+    }:
+    {
+      home.packages = [
+        (self.wrappers.fuzzel.wrap {
+          inherit pkgs;
+          settings.main = lib.mkIf config.my.noctalia-themeing {
+            # mostly overwrites the colors defined below
+            include = "~/.config/fuzzel/themes/noctalia";
+          };
+        })
+      ];
+    };
+
   flake.wrappers.fuzzel =
     { wlib, ... }:
     {
@@ -6,11 +26,7 @@
 
       settings = {
         main = {
-          # noctalia theme include
-          # mostly overwrites the colors defined below
-          include = "~/.config/fuzzel/themes/noctalia";
-
-          font = "Maple Mono Normal:size=15";
+          font = "Maple Mono:size=15";
           use-bold = true;
 
           match-mode = "fzf";
@@ -19,6 +35,7 @@
           width = 50;
           lines = 20;
         };
+
         colors = {
           background = "313244D0";
           text = "cdd6f4ff";
@@ -38,24 +55,6 @@
           width = 2;
           radius = 20;
           selection-radius = 10;
-        };
-      };
-    };
-
-  perSystem.wrappers.packages.noctalia-shell-fuzzel = true;
-  flake.wrappers.noctalia-shell-fuzzel =
-    { wlib, ... }:
-    {
-      imports = [ wlib.wrapperModules.noctalia-shell ];
-
-      settings = {
-        templates = {
-          activeTemplates = [
-            {
-              id = "fuzzel";
-              enabled = true;
-            }
-          ];
         };
       };
     };

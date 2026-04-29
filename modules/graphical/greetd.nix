@@ -1,3 +1,4 @@
+{ self, ... }:
 {
   flake.nixosModules.greetdNiriReGreet =
     {
@@ -6,11 +7,24 @@
       lib,
       ...
     }:
+    let
+      niriPackage = self.wrappers.niri-greetd.wrap {
+        inherit pkgs;
+        extraSettings = (map (include: { inherit include; }) config.my.greetd.niri.extraIncludes);
+      };
+    in
     {
       options = {
-        greetd.niriPackage = lib.mkOption {
-          type = lib.types.package;
-          description = "The niri wrapper to use for the greetd session.";
+        my.greetd.niri = {
+          extraIncludes = lib.mkOption {
+            type = lib.types.listOf lib.types.path;
+            default = [ ];
+            description = ''
+              Same as my.niri.extraIncludes except that it is used for greetd.
+              Useful primarily because the greetd version should be a proper path,
+              whereas we want hot reloading for the normal niri.
+            '';
+          };
         };
       };
 
@@ -22,7 +36,7 @@
           settings = {
             default_session = {
               # see also https://github.com/NixOS/nixpkgs/blob/1412caf7bf9e660f2f962917c14b1ea1c3bc695e/nixos/modules/programs/regreet.nix#L154
-              command = "${pkgs.dbus}/bin/dbus-run-session ${lib.getExe config.greetd.niriPackage}";
+              command = "${pkgs.dbus}/bin/dbus-run-session ${lib.getExe niriPackage}";
             };
           };
         };

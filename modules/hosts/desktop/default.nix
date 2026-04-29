@@ -37,8 +37,9 @@ in
   flake.nixosModules.${hostname} =
     { pkgs, ... }:
     {
-      niriPackage = self.packages.${system}.niri-desktop-hot-reload;
-      greetd.niriPackage = self.packages.${system}.niri-desktop-greetd;
+      my.niri.extraIncludes = [ "~/nix/modules/hosts/desktop/desktop.kdl" ];
+      my.greetd.niri.extraIncludes = [ ./desktop.kdl ];
+      my.noctalia-themeing = true;
 
       networking.hostName = hostname;
 
@@ -121,7 +122,11 @@ in
   flake.homeModules.${hostname} =
     { pkgs, ... }:
     {
+      my.noctalia-themeing = true;
+
       home.packages = with pkgs; [
+        (import ./_animemode.nix { inherit pkgs; })
+
         # NOTE: This app segfaults on wayland. To fix, start it once with x11:
         # XDG_SESSION_TYPE=x11 proton-mail
         # Subsequent starts will then work with wayland.
@@ -204,5 +209,4 @@ in
         stateVersion = "26.05";
       };
     };
-
 }

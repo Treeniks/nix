@@ -1,30 +1,51 @@
 { self, ... }:
 {
-  flake.nixosModules.stackGraphical = {
-    imports = [
-      self.nixosModules.graphicalBase
-      self.nixosModules.graphicalDesktop
-      self.nixosModules.graphicalFonts
-      self.nixosModules.graphicalTheme
+  flake.nixosModules.stackGraphical =
+    { lib, ... }:
+    {
+      imports = [
+        self.nixosModules.graphicalBase
+        self.nixosModules.graphicalDesktop
+        self.nixosModules.graphicalFonts
+        self.nixosModules.graphicalTheme
 
-      self.nixosModules.niri
-      self.nixosModules.greetdNiriReGreet
-    ];
-  };
+        self.nixosModules.niri
+        self.nixosModules.greetdNiriReGreet
+      ];
 
-  flake.homeModules.stackGraphical = {
-    imports = [
-      self.homeModules.graphicalBase
-      self.homeModules.graphicalTheme
+      options = {
+        my.noctalia-themeing = lib.mkOption {
+          type = lib.types.bool;
+        };
+      };
+    };
 
-      self.homeModules.kitty
+  flake.homeModules.stackGraphical =
+    { lib, ... }:
+    {
+      imports = [
+        self.homeModules.graphicalBase
+        self.homeModules.graphicalTheme
 
-      # TODO
-      # self.homeModules.mpv
-      self.homeModules.sublime
-      self.homeModules.zed
-    ];
-  };
+        self.homeModules.noctalia
+
+        self.homeModules.kitty
+        self.homeModules.fuzzel
+
+        # TODO
+        # self.homeModules.mpv
+        self.homeModules.sublime
+        self.homeModules.zed
+      ];
+
+      options = {
+        my = {
+          noctalia-themeing = lib.mkOption {
+            type = lib.types.bool;
+          };
+        };
+      };
+    };
 
   flake.nixosModules.graphicalBase =
     { pkgs, ... }:

@@ -6,17 +6,26 @@
       programs.neovim = {
         enable = true;
         defaultEditor = true;
-        package = self.packages.${pkgs.stdenv.hostPlatform.system}.neovim-hot-reload;
+        package = (
+          self.wrappers.neovim.wrap {
+            inherit pkgs;
+            settings.config_directory = "/home/suteki/nix/modules/nvim/";
+          }
+        );
       };
     };
 
-  # this is the base that hot-reload and standalone derive from
-  # but is itself useless, hence why we disable its export into self.packages
-  perSystem.wrappers.packages.neovim-base = true;
-  flake.wrappers.neovim-base =
-    { pkgs, wlib, ... }:
+  flake.wrappers.neovim =
+    {
+      pkgs,
+      lib,
+      wlib,
+      ...
+    }:
     {
       imports = [ wlib.wrapperModules.neovim ];
+
+      settings.config_directory = lib.mkDefault ./.;
 
       hosts.neovide.nvim-host.enable = true;
 
@@ -52,44 +61,5 @@
         nixd
         lua-language-server
       ];
-    };
-
-  flake.wrappers.neovim-standalone = {
-    imports = [ self.wrapperModules.neovim-base ];
-    settings.config_directory = ./.;
-  };
-
-  flake.wrappers.neovim-hot-reload = {
-    imports = [ self.wrapperModules.neovim-base ];
-    settings.config_directory = "/home/suteki/nix/modules/nvim/";
-  };
-
-  perSystem.wrappers.packages.noctalia-shell-neovim = true;
-  flake.wrappers.noctalia-shell-neovim =
-    { wlib, ... }:
-    {
-      imports = [ wlib.wrapperModules.noctalia-shell ];
-
-      user-templates = {
-        config = { };
-        templates = {
-          neovim = {
-            input_path = "${./matugen-template.lua}";
-            output_path = "~/nix/modules/nvim/lua/plugins/catppuccin-matugen.lua";
-            post_hook = "pkill -SIGUSR1 nvim";
-          };
-        };
-      };
-
-      settings = {
-        templates = {
-          activeTemplates = [
-            {
-              id = "neovim";
-              enabled = true;
-            }
-          ];
-        };
-      };
     };
 }

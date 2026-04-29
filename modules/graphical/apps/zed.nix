@@ -1,6 +1,5 @@
 {
   flake.homeModules.zed =
-    { lib, ... }:
     let
       userSettings = {
         base_keymap = "SublimeText";
@@ -8,7 +7,6 @@
         buffer_font_family = "Maple Mono";
         buffer_font_size = 18.0;
         icon_theme = "Catppuccin Mocha";
-        theme = lib.mkForce "Noctalia Dark";
         ui_font_size = 16;
 
         disable_ai = true;
@@ -94,29 +92,8 @@
     {
       programs.zed-editor = {
         enable = true;
-        userSettings = userSettings;
-        userKeymaps = userKeymaps;
-      };
-
-      # we keep it enabled, but force noctalia above
-      catppuccin.zed.enable = true;
-    };
-
-  perSystem.wrappers.packages.noctalia-shell-zed = true;
-  flake.wrappers.noctalia-shell-zed =
-    { wlib, ... }:
-    {
-      imports = [ wlib.wrapperModules.noctalia-shell ];
-
-      settings = {
-        templates = {
-          activeTemplates = [
-            {
-              id = "zed";
-              enabled = true;
-            }
-          ];
-        };
+        inherit userSettings;
+        inherit userKeymaps;
       };
     };
 }

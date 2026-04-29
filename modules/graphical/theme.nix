@@ -7,6 +7,8 @@ let
     });
 
   iconThemeName = "Catppuccin-Mocha";
+  cursorThemeName = "catppuccin-mocha-maroon-cursors";
+  themeName = "Catppuccin-GTK-Lavender-Dark";
 in
 {
   flake.nixosModules.graphicalTheme =
@@ -23,8 +25,8 @@ in
       ];
 
       programs.regreet = {
-        theme.name = "Catppuccin-GTK-Lavender-Dark";
-        cursorTheme.name = "catppuccin-mocha-maroon-cursors";
+        theme.name = themeName;
+        cursorTheme.name = cursorThemeName;
         iconTheme.name = iconThemeName;
       };
     };
@@ -35,8 +37,8 @@ in
       catppuccin = {
         gtk.icon.enable = false;
         mangohud.enable = false;
-        kvantum.enable = false;
 
+        kvantum.enable = true;
         cursors.enable = true;
       };
 
@@ -44,13 +46,15 @@ in
         enable = true;
         theme = {
           # the theme used by noctalia
-          package = pkgs.adw-gtk3;
-          name = "adw-gtk3";
+          package = if config.my.noctalia-themeing then pkgs.adw-gtk3 else (accentedCatppuccin pkgs);
+          name = if config.my.noctalia-themeing then "adw-gtk3" else themeName;
         };
         colorScheme = "dark";
 
-        iconTheme.name = iconThemeName;
+        # TODO might wanna try out papirus dark again
+        # particularly for noctalia
         iconTheme.package = self.packages.${pkgs.stdenv.hostPlatform.system}.fkorpsvart-catppuccin-icons;
+        iconTheme.name = iconThemeName;
 
         # causes issues otherwise
         # gtk4.theme.name = "";
@@ -61,40 +65,25 @@ in
 
       qt = {
         enable = true;
-        qt6ctSettings = {
-          Appearance = {
-            style = "Breeze";
-            custom_palette = true;
-            standard_dialogs = "xdgdesktopportal";
-            color_scheme_path = "${config.home.homeDirectory}/.config/qt6ct/colors/noctalia.conf";
-          };
-        };
-      };
-    };
-
-  perSystem.wrappers.packages.noctalia-shell-gtk-qt = true;
-  flake.wrappers.noctalia-shell-gtk-qt =
-    { wlib, ... }:
-    {
-      imports = [ wlib.wrapperModules.noctalia-shell ];
-
-      settings = {
-        templates = {
-          activeTemplates = [
+        style.name = "kvantum";
+        qt6ctSettings =
+          if config.my.noctalia-themeing then
             {
-              id = "gtk";
-              enabled = true;
+              Appearance = {
+                style = "kvantum";
+                custom_palette = true;
+                standard_dialogs = "xdgdesktopportal";
+                color_scheme_path = "${config.home.homeDirectory}/.config/qt6ct/colors/noctalia.conf";
+              };
             }
+          else
             {
-              id = "qt";
-              enabled = true;
-            }
-            {
-              id = "kcolorscheme";
-              enabled = true;
-            }
-          ];
-        };
+              Appearance = {
+                style = "kvantum";
+                custom_palette = true;
+                standard_dialogs = "xdgdesktopportal";
+              };
+            };
       };
     };
 }
