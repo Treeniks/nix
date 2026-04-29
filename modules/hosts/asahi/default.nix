@@ -7,6 +7,8 @@
 let
   hostname = "houjicha-nixos";
   system = "aarch64-linux";
+
+  noctalia-themeing = true;
 in
 {
   flake.nixosConfigurations.${hostname} = lib.nixosSystem {
@@ -14,6 +16,7 @@ in
 
     modules = [
       ./_hardware.nix
+      inputs.apple-silicon.nixosModules.apple-silicon-support
       self.nixosModules.${hostname}
 
       self.nixosModules.stackCommon
@@ -37,8 +40,11 @@ in
   flake.nixosModules.${hostname} =
     { pkgs, ... }:
     {
-      niriPackage = self.packages.${system}.niri-asahi-hot-reload;
-      greetd.niriPackage = self.packages.${system}.niri-asahi-greetd;
+      my = {
+        inherit noctalia-themeing;
+        niri.extraIncludes = [ "~/nix/modules/hosts/asahi/asahi.kdl" ];
+        greetd.niri.extraIncludes = [ ./asahi.kdl ];
+      };
 
       networking.hostName = hostname;
 
@@ -61,9 +67,15 @@ in
           nix-store --add-fixed sha256 --recursive /boot/asahi
         '';
       };
+
+      system.stateVersion = "26.05";
     };
 
   flake.homeModules.${hostname} = {
+    my = {
+      inherit noctalia-themeing;
+    };
+
     home = {
       username = "suteki";
       homeDirectory = "/home/suteki";
