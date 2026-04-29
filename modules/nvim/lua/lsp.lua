@@ -32,6 +32,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, { desc = 'Code Action' })
         vim.keymap.set('n', '<leader>lt', vim.lsp.buf.type_definition, { desc = 'Type Definition' })
 
+        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'Goto Definition' })
+        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = 'Goto Declaration' })
+
         vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, { desc = 'Rename' })
 
         -- telescope related
