@@ -28,6 +28,10 @@
           position = "anywhere";
           expansion = "nixos-rebuild switch --flake ~/nix/";
         };
+        ngc = {
+          position = "anywhere";
+          expansion = "nix-collect-garbage --delete-older-than 7d";
+        };
         hms = "home-manager switch --flake ~/nix/";
       };
 
