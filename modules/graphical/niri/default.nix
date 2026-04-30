@@ -1,4 +1,14 @@
 { inputs, ... }:
+let
+  extraPackages =
+    pkgs: with pkgs; [
+      xwayland-satellite
+
+      xdg-desktop-portal
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-gnome
+    ];
+in
 {
   flake.nixosModules.niri =
     {
@@ -18,8 +28,10 @@
       };
 
       config = {
-        environment.systemPackages = [
-          (inputs.wrappers.wrappers.niri.wrap {
+        programs.xwayland.enable = true;
+        programs.niri = {
+          enable = true;
+          package = inputs.wrappers.wrappers.niri.wrap {
             inherit pkgs;
 
             disableConfigValidation = true;
@@ -34,8 +46,9 @@
                 "~/.config/niri/noctalia.kdl"
               ];
             });
-          })
-        ];
+          };
+        };
+        environment.systemPackages = extraPackages pkgs;
       };
     };
 
@@ -66,9 +79,11 @@
     };
 
   flake.wrappers.niri =
-    { wlib, ... }:
+    { pkgs, wlib, ... }:
     {
       imports = [ wlib.wrapperModules.niri ];
+
+      extraPackages = extraPackages pkgs;
 
       extraSettings = [
         { include = ./common.kdl; }

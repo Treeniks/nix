@@ -78,14 +78,11 @@
       };
     };
 
-  flake.nixosModules.graphicalDesktop =
-    { pkgs, ... }:
-    {
-      programs.xwayland.enable = true;
-      services.desktopManager.plasma6.enable = true;
-      services.desktopManager.cosmic.enable = true;
-      environment.systemPackages = [ pkgs.xwayland-satellite ];
-    };
+  flake.nixosModules.graphicalDesktop = {
+    programs.xwayland.enable = true;
+    services.desktopManager.plasma6.enable = true;
+    services.desktopManager.cosmic.enable = true;
+  };
 
   flake.homeModules.graphicalBase =
     { pkgs, ... }:
