@@ -31,6 +31,7 @@
 
         self.homeModules.kitty
         self.homeModules.fuzzel
+        self.homeModules.nemo
 
         # TODO
         # self.homeModules.mpv
@@ -102,13 +103,6 @@
         ];
       };
 
-      # make nemo's "Open in Termianl" action open kitty
-      dconf.settings = {
-        "org/cinnamon/desktop/applications/terminal" = {
-          exec = "kitty";
-        };
-      };
-
       programs = {
         neovide.enable = true;
         obsidian.enable = true;
@@ -120,7 +114,6 @@
         nwg-look
         pavucontrol
         coppwr
-        nemo-with-extensions
         wl-clipboard-rs
         xwininfo
         hyprpicker
