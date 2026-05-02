@@ -103,6 +103,7 @@ in
           ];
           extraCompatPackages = with pkgs; [
             proton-ge-bin
+            dwproton-bin
           ];
         };
         gamescope.enable = true;
@@ -111,12 +112,14 @@ in
 
       environment.systemPackages = with pkgs; [
         (heroic.override {
-          extraPkgs = pkgs: [
-            pkgs.gamescope
+          extraPkgs = pkgs': [
+            pkgs'.gamescope
+            pkgs'.gamemode
           ];
         })
         steam-run
         wineWow64Packages.full
+        protonplus
       ];
 
       # NixOS's mesa drivers are quite monolithic and will in particular include the software "GPU" llvmpipe.
