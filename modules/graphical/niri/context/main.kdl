@@ -183,7 +183,7 @@ window-rule {
     draw-border-with-background false
 }
 
-screenshot-path "~/Pictures/Screenshots/Screenshot %Y-%m-%d %H-%M-%S.png"
+screenshot-path "~/Pictures/Screenshots/Screenshot %Y-%m-%d %H.%M.%S.png"
 
 environment {
     // SSH
