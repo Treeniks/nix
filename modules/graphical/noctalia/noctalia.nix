@@ -173,6 +173,7 @@ let
       autoLocate = false;
       use12hourFormat = false;
       weatherEnabled = false;
+      firstDayOfWeek = 1; # Monday
     };
 
     dock.enabled = false;
