@@ -156,6 +156,10 @@ in
 
       home.packages = with pkgs; [
         (import ./_animemode.nix { inherit pkgs; })
+        (import ./_niri_global_keybinds.nix {
+          inherit pkgs;
+          inherit lib;
+        })
 
         # NOTE: This app segfaults on wayland. To fix, start it once with x11:
         # XDG_SESSION_TYPE=x11 proton-mail
