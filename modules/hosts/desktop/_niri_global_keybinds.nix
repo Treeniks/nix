@@ -13,8 +13,6 @@ pkgs.writeScriptBin "niri-global-keybind" ''
       return subprocess.run(cmd, capture_output=True, text=True).stdout
 
   focused_window = json.loads(run(["niri", "msg", "-j", "focused-window"]))
-  prev_focus_id = focused_window["id"]
-
   windows = json.loads(run(["niri", "msg", "-j", "windows"]))
 
   obs_id = None
@@ -24,10 +22,15 @@ pkgs.writeScriptBin "niri-global-keybind" ''
           obs_id = w["id"]
 
   if obs_id is None:
-      print("OBS not found")
+      print(f"{sys.argv[1]} not found")
       exit(1)
 
   run(["niri", "msg", "action", "focus-window", "--id", str(obs_id)])
   run(["${lib.getExe pkgs.wtype}", "-k", sys.argv[2]])
-  run(["niri", "msg", "action", "focus-window", "--id", str(prev_focus_id)])
+  try:
+      prev_focus_id = focused_window["id"]
+      run(["niri", "msg", "action", "focus-window", "--id", str(prev_focus_id)])
+  except:
+      # there was no window focused
+      pass
 ''
