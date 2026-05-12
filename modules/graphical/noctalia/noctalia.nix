@@ -274,6 +274,12 @@ in
           };
         };
       };
+
+      home.activation.removeNvimThemeIfDisabled = lib.mkIf (!config.my.noctalia-themeing) (
+        lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+          rm -f "$HOME/nix/modules/nvim/lua/plugins/catppuccin-matugen.lua"
+        ''
+      );
     };
 
   # unused in this config
