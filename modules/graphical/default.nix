@@ -33,8 +33,7 @@
         self.homeModules.fuzzel
         self.homeModules.nemo
 
-        # TODO
-        # self.homeModules.mpv
+        self.homeModules.mpv
         self.homeModules.sublime
         self.homeModules.zed
       ];
@@ -118,7 +117,6 @@
 
         brave
         eog
-        mpv
         gnome-font-viewer
         evince
         proton-vpn
