@@ -66,7 +66,6 @@ in
 
     };
 
-  # unused
   flake.wrappers.kitty =
     { wlib, ... }:
     {
