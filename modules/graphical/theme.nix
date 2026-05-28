@@ -47,7 +47,7 @@ in
         theme = {
           # the theme used by noctalia
           package = if config.my.noctalia-themeing then pkgs.adw-gtk3 else (accentedCatppuccin pkgs);
-          name = if config.my.noctalia-themeing then "adw-gtk3" else themeName;
+          name = if config.my.noctalia-themeing then "adw-gtk3-dark" else themeName;
         };
         colorScheme = "dark";
 
