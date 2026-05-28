@@ -122,6 +122,18 @@ in
             pkgs'.gamemode
           ];
         })
+        (
+          (import inputs.nixpkgs-lutris {
+            inherit system;
+            config.allowUnfree = true;
+          }).pkgs.lutris.override
+          {
+            extraPkgs = pkgs': [
+              pkgs'.gamescope
+              pkgs'.gamemode
+            ];
+          }
+        )
         steam-run
         wineWow64Packages.full
         protonplus
