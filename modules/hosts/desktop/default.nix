@@ -101,10 +101,11 @@ in
             sdl3
             steam-run
           ];
-          extraCompatPackages = with pkgs; [
-            proton-ge-bin
-            dwproton-bin
-          ];
+          # manage with protonplus instead
+          # extraCompatPackages = with pkgs; [
+          #   proton-ge-bin
+          #   dwproton-bin
+          # ];
         };
         gamescope.enable = true;
         gamemode.enable = true;
