@@ -31,7 +31,8 @@
 
             # Can be: never, no-border, always
             top_bar = "always";
-            top_bar_controls = "yes";
+            # Can be: no, left, right
+            top_bar_controls = "right";
             top_bar_persistency = "paused";
 
             destination_time = "total";
