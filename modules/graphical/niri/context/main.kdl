@@ -112,11 +112,11 @@ binds {
     Mod+Shift+Semicolon { spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
     Mod+Shift+P { power-off-monitors; }
 
-    Mod+F1 { spawn "chamel" "toggle"; }
-    Mod+F2 { spawn "chamel" "undo"; }
-    Mod+F3 { spawn "chamel" "clear"; }
-    Mod+F4 { spawn "chamel" "clear-and-deactivate"; }
-    Mod+F5 { spawn "sh" "-c" "pkill chameleos; sleep 1; chameleos"; }
+    Mod+1 { spawn "chamel" "toggle"; }
+    Mod+2 { spawn "chamel" "undo"; }
+    Mod+3 { spawn "chamel" "clear"; }
+    Mod+4 { spawn "chamel" "clear-and-deactivate"; }
+    Mod+5 { spawn "sh" "-c" "pkill chameleos; sleep 1; chameleos"; }
 }
 
 layout {
