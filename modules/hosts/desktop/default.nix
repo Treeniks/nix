@@ -59,6 +59,7 @@ in
           });
         })
       ];
+      nixpkgs.config.rocmSupport = true;
 
       my = {
         inherit noctalia-themeing;
@@ -72,7 +73,6 @@ in
         enable = true;
         enable32Bit = true;
       };
-      nixpkgs.config.rocmSupport = true;
 
       hardware.xpadneo.enable = true;
 
@@ -150,6 +150,8 @@ in
   flake.homeModules.${hostname} =
     { pkgs, ... }:
     {
+      nixpkgs.config.rocmSupport = true;
+
       my = {
         inherit noctalia-themeing;
       };
