@@ -112,6 +112,10 @@ in
       };
 
       environment.systemPackages = with pkgs; [
+        # wsi layer for gamescope
+        # otherwise HDR no worky
+        gamescope-wsi
+
         (heroic.override {
           extraPkgs = pkgs': [
             pkgs'.gamescope
