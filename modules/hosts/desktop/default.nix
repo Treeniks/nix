@@ -139,6 +139,15 @@ in
         protonplus
       ];
 
+      virtualisation = {
+        containers.enable = true;
+        podman = {
+          enable = true;
+          dockerCompat = true;
+          defaultNetwork.settings.dns_enabled = true;
+        };
+      };
+
       # NixOS's mesa drivers are quite monolithic and will in particular include the software "GPU" llvmpipe.
       # This "disables" llvmpipe in hopes of preventing Steam from shitting itself.
       # It probably does nothing though.
