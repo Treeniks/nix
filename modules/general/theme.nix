@@ -1,16 +1,16 @@
 {
   flake.nixosModules.theme = {
     catppuccin = {
+      autoEnable = true;
+      enable = true;
       accent = "lavender";
       flavor = "mocha";
-
-      # global enable
-      enable = true;
     };
   };
 
   flake.homeModules.theme = {
     catppuccin = {
+      autoEnable = true;
       enable = true;
       accent = "lavender";
       flavor = "mocha";

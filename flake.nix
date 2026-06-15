@@ -7,12 +7,12 @@
     # this is the last nixpkgs commit where both x86_64-linux and aarch64-linux built sucessfully on hydra
     #
     # check with:
-    # https://hydra.nixos.org/job/nixos/unstable/nixpkgs.deno.x86_64-linux
-    # https://hydra.nixos.org/job/nixos/unstable/nixpkgs.deno.aarch64-linux
-    nixpkgs.url = "github:NixOS/nixpkgs/657e2fa0760e27167cdacb1ec5d84782be312013";
-    # https://hydra.nixos.org/job/nixos/unstable/nixpkgs.lutris-free.x86_64-linux
-    nixpkgs-lutris.url = "github:NixOS/nixpkgs/b12141ef619e0a9c1c84dc8c684040326f27cdcc";
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # # https://hydra.nixos.org/job/nixos/unstable/nixpkgs.deno.x86_64-linux
+    # # https://hydra.nixos.org/job/nixos/unstable/nixpkgs.deno.aarch64-linux
+    # nixpkgs.url = "github:NixOS/nixpkgs/657e2fa0760e27167cdacb1ec5d84782be312013";
+    # # https://hydra.nixos.org/job/nixos/unstable/nixpkgs.lutris-free.x86_64-linux
+    # nixpkgs-lutris.url = "github:NixOS/nixpkgs/b12141ef619e0a9c1c84dc8c684040326f27cdcc";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -33,8 +33,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # TODO should update to v5 at some point
     noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
+      url = "github:noctalia-dev/noctalia-shell/legacy-v4";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

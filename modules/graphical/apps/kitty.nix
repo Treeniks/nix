@@ -52,6 +52,7 @@ in
 
           inherit font;
           inherit keybindings;
+
           settings = lib.mkMerge [
             settings
             (lib.mkIf config.my.noctalia-themeing {

@@ -69,7 +69,7 @@ in
     {
       imports = [ wlib.wrapperModules.fish ];
 
-      extraPackages = [
+      runtimePkgs = [
         pkgs.yazi
         pkgs.starship
         pkgs.zoxide

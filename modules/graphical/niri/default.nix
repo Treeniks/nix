@@ -4,7 +4,7 @@
   ...
 }:
 let
-  extraPackages =
+  runtimePkgs =
     pkgs: with pkgs; [
       xwayland-satellite
 
@@ -52,7 +52,7 @@ in
             });
           };
         };
-        environment.systemPackages = extraPackages pkgs;
+        environment.systemPackages = runtimePkgs pkgs;
       };
     };
 
@@ -87,7 +87,7 @@ in
     {
       imports = [ wlib.wrapperModules.niri ];
 
-      extraPackages = extraPackages pkgs;
+      runtimePkgs = runtimePkgs pkgs;
 
       extraSettings = [
         { include = ./common.kdl; }
@@ -132,7 +132,7 @@ in
     {
       imports = [ wlib.wrapperModules.niri ];
 
-      extraPackages = extraPackages pkgs ++ [
+      runtimePkgs = runtimePkgs pkgs ++ [
         fish
         selfPackages.neovim
         selfPackages.mpv

@@ -56,7 +56,7 @@
         lazydev-nvim
       ];
 
-      extraPackages = with pkgs; [
+      runtimePkgs = with pkgs; [
         rust-analyzer
         nixd
         lua-language-server
