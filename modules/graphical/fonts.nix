@@ -14,6 +14,7 @@
         jetbrains-mono
         julia-mono
         maple-mono.variable
+        ioskeley-mono.normal
 
         roboto
         roboto-mono
