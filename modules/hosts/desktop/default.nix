@@ -8,7 +8,7 @@ let
   hostname = "matcha-nixos";
   system = "x86_64-linux";
 
-  noctalia-themeing = true;
+  noctalia-themeing = false;
 in
 {
   flake.nixosConfigurations.${hostname} = lib.nixosSystem {
