@@ -61,6 +61,11 @@ vim.keymap.set('n', '<leader>k', vim.cmd.tabprev, { desc = 'Prev Tab' })
 vim.keymap.set('n', '<leader>j', vim.cmd.tabnext, { desc = 'Next Tab' })
 vim.keymap.set('n', '<leader>q', vim.cmd.tabclose, { desc = 'Close Tab' })
 
+-- normal mode alt keybind
+-- particularly useful when in term mode
+-- see `:help map-modes` for the list of modes
+vim.keymap.set({ 'n', 'i', 'c', 'x', 's', 'o', 't' }, '<C-\'>', '<C-\\><C-n>')
+
 -- ===== Neovide =====
 -- cannot be JetBrains Mono at the time of writing for some reason, as that makes Neovide segfault...
 vim.opt.guifont = 'JetBrainsMono Nerd Font:h14'
