@@ -181,6 +181,13 @@ let
   };
 in
 {
+  flake.nixosModules.noctalia = {
+    networking.networkmanager.enable = true;
+    hardware.bluetooth.enable = true;
+    services.tuned.enable = true;
+    services.upower.enable = true;
+  };
+
   flake.homeModules.noctalia =
     { config, lib, ... }:
     {

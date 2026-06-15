@@ -11,6 +11,8 @@
 
         self.nixosModules.niri
         self.nixosModules.greetdNiriReGreet
+
+        self.nixosModules.noctalia
       ];
 
       options = {
