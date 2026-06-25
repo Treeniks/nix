@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   modulesPath,
   ...
@@ -14,10 +15,10 @@
   '';
 
   boot.initrd.availableKernelModules = [ "usb_storage" ];
-  boot.initrd.kernelModules = [ ];
+  boot.initrd.kernelModules = [ "evdi" ];
 
   boot.kernelModules = [ ];
-  boot.extraModulePackages = [ ];
+  boot.extraModulePackages = [ config.boot.kernelPackages.evdi ];
 
   fileSystems."/" = {
     device = "/dev/mapper/cryptroot";
