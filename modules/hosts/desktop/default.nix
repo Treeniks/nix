@@ -205,6 +205,7 @@ in
         lumafly
         cemu
         eden
+        ryubing
         prismlauncher
         uzdoom
 
