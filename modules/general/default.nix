@@ -126,6 +126,7 @@
             pip
           ]
         ))
+        julia
         nixfmt
         nixd
         taplo
