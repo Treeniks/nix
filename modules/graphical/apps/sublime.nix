@@ -3,8 +3,9 @@
   flake.homeModules.sublime =
     { pkgs, ... }:
     {
-      # should get fixed soon(TM)
-      nixpkgs.config.permittedInsecurePackages = [ "openssl-1.1.1w" ];
+      nixpkgs.config.problems.handlers = {
+        sublimetext4.broken = "warn"; # or "ignore"
+      };
 
       home.packages = with pkgs; [
         sublime4
