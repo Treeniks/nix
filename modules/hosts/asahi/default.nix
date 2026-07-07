@@ -8,7 +8,7 @@ let
   hostname = "houjicha-nixos";
   system = "aarch64-linux";
 
-  noctalia-themeing = true;
+  noctalia-themeing = false;
 in
 {
   flake.nixosConfigurations.${hostname} = lib.nixosSystem {
