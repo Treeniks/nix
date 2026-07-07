@@ -46,6 +46,16 @@ in
         greetd.niri.extraIncludes = [ ./asahi.kdl ];
       };
 
+      # asahi binary cache
+      nix.settings = {
+        extra-substituters = [
+          "https://nixos-apple-silicon.cachix.org"
+        ];
+        extra-trusted-public-keys = [
+          "nixos-apple-silicon.cachix.org-1:8psDu5SA5dAD7qA0zMy5UT292TxeEPzIz8VVEr2Js20="
+        ];
+      };
+
       networking.hostName = hostname;
 
       networking.wireless.iwd = {
@@ -60,11 +70,12 @@ in
 
       # https://github.com/nix-community/nixos-apple-silicon/issues/299#issuecomment-2901508921
       hardware.asahi.peripheralFirmwareDirectory = pkgs.requireFile {
-        name = "asahi";
+        name = "vendorfw";
         hashMode = "recursive";
-        hash = "sha256-JDEd6dDVRK1SfVLGfX97KgFbVGN0S5wmgNREn2rLVA0=";
+        # nix hash path --algo sha256 /boot/vendorfw
+        hash = "sha256-PrS7+CFNtfHhDGHyDwe57AOyarPigGO9bebyRQW9kOg=";
         message = ''
-          nix-store --add-fixed sha256 --recursive /boot/asahi
+          nix-store --add-fixed sha256 --recursive /boot/vendorfw
         '';
       };
 
