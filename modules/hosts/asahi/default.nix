@@ -17,6 +17,11 @@ in
     modules = [
       ./_hardware.nix
       inputs.apple-silicon.nixosModules.apple-silicon-support
+      {
+        nixpkgs.overlays = [
+          self.overlays.asahi-fairydust
+        ];
+      }
       self.nixosModules.${hostname}
 
       self.nixosModules.stackCommon
