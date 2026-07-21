@@ -140,7 +140,15 @@ in
           dockerCompat = true;
           defaultNetwork.settings.dns_enabled = true;
         };
+
+        libvirtd = {
+          enable = true;
+          qemu.vhostUserPackages = [ pkgs.virtiofsd ];
+          qemu.swtpm.enable = true;
+        };
       };
+      programs.virt-manager.enable = true;
+      services.samba.enable = true;
 
       # NixOS's mesa drivers are quite monolithic and will in particular include the software "GPU" llvmpipe.
       # This "disables" llvmpipe in hopes of preventing Steam from shitting itself.
