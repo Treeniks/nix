@@ -6,6 +6,7 @@
 
       self.nixosModules.common
       self.nixosModules.neovim
+      self.nixosModules.helix
       self.nixosModules.gpg
       self.nixosModules.theme
     ];
@@ -58,7 +59,7 @@
       };
 
       environment.systemPackages = with pkgs; [
-        helix
+        emacs
 
         killall
         wget
