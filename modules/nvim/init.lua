@@ -1,3 +1,7 @@
+vim.filetype.add({
+    extension = { styx = "styx" },
+})
+
 -- ===== opt =====
 -- line numbers
 vim.opt.number = true
