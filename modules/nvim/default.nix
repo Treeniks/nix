@@ -31,6 +31,8 @@
 
       specs.general.data = with pkgs.vimPlugins; [
         nvim-surround
+        yazi-nvim
+        lazygit-nvim
       ];
 
       specs.themes = {

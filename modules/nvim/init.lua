@@ -1,3 +1,6 @@
+-- see `:help map-modes` for the list of modes
+local all_modes = { 'n', 'i', 'c', 'x', 's', 'o', 't' }
+
 vim.filetype.add({
     extension = { styx = "styx" },
 })
@@ -33,8 +36,8 @@ vim.opt.signcolumn = 'yes' -- or 'number'
 -- whitespace visuals
 vim.opt.list = true
 vim.opt.listchars:append({
-  tab = '>-',
-  trail = '⋅',
+    tab = '>-',
+    trail = '⋅',
 })
 
 vim.opt.undofile = true
@@ -61,20 +64,56 @@ vim.keymap.set('', '<C-b>', '10k')
 vim.keymap.set('n', '<ESC>', vim.cmd.nohlsearch)
 
 vim.keymap.set('n', '<leader>n', vim.cmd.tabnew, { desc = 'New Tab' })
-vim.keymap.set('n', '<leader>k', vim.cmd.tabprev, { desc = 'Prev Tab' })
-vim.keymap.set('n', '<leader>j', vim.cmd.tabnext, { desc = 'Next Tab' })
 vim.keymap.set('n', '<leader>q', vim.cmd.tabclose, { desc = 'Close Tab' })
+vim.keymap.set('n', '<leader>j', vim.cmd.tabnext, { desc = 'Next Tab' })
+vim.keymap.set('n', '<leader>k', vim.cmd.tabprev, { desc = 'Prev Tab' })
+
+vim.keymap.set(all_modes, '<C-S-T>', vim.cmd.tabnew, { desc = 'New Tab' })
+vim.keymap.set(all_modes, '<C-S-W>', vim.cmd.tabclose, { desc = 'Close Tab' })
+vim.keymap.set(all_modes, '<C-Tab>', vim.cmd.tabnext, { desc = 'Next Tab' })
+vim.keymap.set(all_modes, '<C-S-Tab>', vim.cmd.tabprev, { desc = 'Prev Tab' })
 
 -- normal mode alt keybind
 -- particularly useful when in term mode
--- see `:help map-modes` for the list of modes
-vim.keymap.set({ 'n', 'i', 'c', 'x', 's', 'o', 't' }, '<C-\'>', '<C-\\><C-n>')
+vim.keymap.set(all_modes, '<C-\'>', '<C-\\><C-n>')
 
 -- ===== Neovide =====
 -- cannot be JetBrains Mono at the time of writing for some reason, as that makes Neovide segfault...
 vim.opt.guifont = 'JetBrainsMono Nerd Font:h14'
 vim.g.neovide_opacity = 0.95
+vim.g.neovide_refresh_rate = 300
+vim.api.nvim_create_autocmd('VimEnter', {
+    desc = 'Make neovide a terminal emulator',
+    once = true,
+    callback = function(_)
+        if vim.g.neovide and vim.fn.argc() == 0 then
+            vim.schedule(function()
+                vim.cmd('terminal')
+                vim.cmd('startinsert')
+            end)
+        end
+    end,
+})
+-- https://github.com/neovide/neovide/discussions/2301#discussioncomment-8223203
+if vim.g.neovide then
+    vim.keymap.set(
+        all_modes,
+        '<C-+>',
+        function() vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1 end
+    )
+    vim.keymap.set(
+        all_modes,
+        '<C-_>',
+        function() vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1 end
+    )
+    vim.keymap.set(
+        all_modes,
+        '<C-)>',
+        function() vim.g.neovide_scale_factor = 1 end
+    )
+end
 
 require('plugins')
 require('lsp')
 require('treesitter')
+require('terminal')

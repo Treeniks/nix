@@ -5,8 +5,8 @@ binds {
     Mod+B       { toggle-overview; }
     Mod+Slash   { show-hotkey-overlay; }
 
-    Mod+Return      { spawn "kitty"; }
-    Mod+Backspace   { spawn "kitty"; }
+    Mod+Return      { spawn "neovide"; }
+    Mod+Backspace   { spawn "neovide"; }
 
     Mod+D       { spawn "nemo"; }
     Mod+Space   { spawn "fuzzel"; }

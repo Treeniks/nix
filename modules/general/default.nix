@@ -93,6 +93,7 @@
           enableFishIntegration = true;
           options = [ "--cmd d" ];
         };
+        lazygit.enable = true;
 
         direnv = {
           enable = true;

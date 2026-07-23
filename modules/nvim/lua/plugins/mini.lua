@@ -99,8 +99,19 @@ require('mini.files').setup({
     },
 })
 
-vim.keymap.set('n', '<leader>e', function() MiniFiles.open(vim.api.nvim_buf_get_name(0), false) end,
-    { desc = 'Mini Files' })
+vim.keymap.set(
+    'n',
+    '<leader>e',
+    function()
+        local dir = vim.api.nvim_buf_get_name(0)
+        if vim.fn.isdirectory(dir) == 1 then
+            MiniFiles.open(vim.api.nvim_buf_get_name(0), false)
+        else
+            MiniFiles.open(vim.fn.getcwd(), false)
+        end
+    end,
+    { desc = 'Mini Files' }
+)
 
 require('mini.git').setup({})
 
