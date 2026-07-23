@@ -67,11 +67,24 @@ vim.keymap.set('n', '<leader>n', vim.cmd.tabnew, { desc = 'New Tab' })
 vim.keymap.set('n', '<leader>q', vim.cmd.tabclose, { desc = 'Close Tab' })
 vim.keymap.set('n', '<leader>j', vim.cmd.tabnext, { desc = 'Next Tab' })
 vim.keymap.set('n', '<leader>k', vim.cmd.tabprev, { desc = 'Prev Tab' })
+vim.keymap.set('n', '<leader>J', function() vim.cmd.tabmove('-1') end, { desc = 'Move Tab Left' })
+vim.keymap.set('n', '<leader>K', function() vim.cmd.tabmove('+1') end, { desc = 'Move Tab Right' })
 
-vim.keymap.set(all_modes, '<C-S-T>', vim.cmd.tabnew, { desc = 'New Tab' })
+-- this one is different to <leader>n above, because it starts the new tab in terminal mode
+vim.keymap.set(
+    all_modes,
+    '<C-S-T>',
+    function()
+        vim.cmd.tabnew()
+        vim.cmd.terminal()
+    end,
+    { desc = 'New Tab' }
+)
 vim.keymap.set(all_modes, '<C-S-W>', vim.cmd.tabclose, { desc = 'Close Tab' })
 vim.keymap.set(all_modes, '<C-Tab>', vim.cmd.tabnext, { desc = 'Next Tab' })
 vim.keymap.set(all_modes, '<C-S-Tab>', vim.cmd.tabprev, { desc = 'Prev Tab' })
+vim.keymap.set(all_modes, '<C-<>', function() vim.cmd.tabmove('-1') end, { desc = 'Move Tab Left' })
+vim.keymap.set(all_modes, '<C->>', function() vim.cmd.tabmove('+1') end, { desc = 'Move Tab Right' })
 
 -- normal mode alt keybind
 -- particularly useful when in term mode
