@@ -33,6 +33,8 @@
         w = "move_next_sub_word_start";
         e = "move_next_sub_word_end";
         b = "move_prev_sub_word_start";
+        D = "kill_to_line_end";
+        "$" = "extend_to_line_end";
       };
       keys.insert = {
         "C-s" = ":w";
