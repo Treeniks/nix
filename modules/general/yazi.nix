@@ -13,6 +13,23 @@
             light = "noctalia";
           };
         };
+
+        settings = {
+          opener = {
+            extract = [
+              {
+                run = "ya pub extract --list %s";
+                desc = "Extract here";
+              }
+            ];
+          };
+        };
+
+        initLua = ''
+          require("session"):setup {
+            sync_yanked = true,
+          }
+        '';
       };
 
       catppuccin.yazi.enable = !config.my.noctalia-themeing;
