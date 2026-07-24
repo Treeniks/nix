@@ -103,10 +103,9 @@ vim.keymap.set(
     'n',
     '<leader>e',
     function()
-        local dir = vim.api.nvim_buf_get_name(0)
-        if vim.fn.isdirectory(dir) == 1 then
-            MiniFiles.open(vim.api.nvim_buf_get_name(0), false)
-        else
+        local path = vim.api.nvim_buf_get_name(0)
+        local ok, _ = pcall(MiniFiles.open, path, false)
+        if not ok then
             MiniFiles.open(vim.fn.getcwd(), false)
         end
     end,
