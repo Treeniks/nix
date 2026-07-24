@@ -15,6 +15,8 @@ let
     "ctrl+shift+t" = "new_tab_with_cwd";
     "ctrl+shift+enter" = "new_window_with_cwd";
 
+    "ctrl+shift+m" = "detach_window ask";
+
     "cmd+w" = "close_window";
     "cmd+shift+w" = "close_tab";
   };
