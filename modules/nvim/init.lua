@@ -95,6 +95,12 @@ vim.keymap.set(all_modes, '<C-\'>', '<C-\\><C-n>')
 vim.opt.guifont = 'JetBrainsMono Nerd Font:h14'
 vim.g.neovide_opacity = 0.95
 vim.g.neovide_refresh_rate = 300
+
+-- cursor settings
+vim.g.neovide_cursor_trail_size = 0.1
+vim.g.neovide_cursor_animation_length = 0.05
+vim.g.neovide_cursor_short_animation_length = 0.025
+
 vim.api.nvim_create_autocmd('VimEnter', {
     desc = 'Make neovide a terminal emulator',
     once = true,
