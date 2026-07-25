@@ -33,6 +33,7 @@
         nvim-surround
         yazi-nvim
         lazygit-nvim
+        direnv-vim
       ];
 
       specs.themes = {

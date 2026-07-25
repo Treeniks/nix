@@ -2,6 +2,9 @@ local osc7_sequence = '\x1b\x5d\x37\x3b'
 
 vim.api.nvim_create_autocmd('TermRequest', {
     desc = 'Sync nvim cwd with shell cwd via OSC 7',
+    -- allow triggering other autocmds
+    -- in particular 'DirChanged' for direnv
+    nested = true,
     callback = function(event)
         if string.sub(event.data.sequence, 1, 4) == osc7_sequence then
             -- remove the OSC 7 sequence
@@ -16,7 +19,7 @@ vim.api.nvim_create_autocmd('TermRequest', {
 
             vim.api.nvim_buf_set_var(event.buf, 'last_osc7_payload', dir)
             if vim.api.nvim_get_current_buf() == event.buf then
-                vim.cmd.cd(dir)
+                vim.cmd.tcd(dir)
             end
         end
     end,
@@ -27,7 +30,7 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'WinEnter', 'DirChanged' }, {
         if vim.b.last_osc7_payload ~= nil
             and vim.fn.isdirectory(vim.b.last_osc7_payload) == 1
         then
-            vim.cmd.cd(vim.b.last_osc7_payload)
+            vim.cmd.tcd(vim.b.last_osc7_payload)
         end
     end
 })
