@@ -1,5 +1,17 @@
 local builtin = require('telescope.builtin')
+local actions = require('telescope.actions')
+
 vim.keymap.set('n', '<leader>tf', builtin.find_files, { desc = 'Find Files' })
 vim.keymap.set('n', '<leader>tg', builtin.live_grep, { desc = 'Live Grep' })
 vim.keymap.set('n', '<leader>tb', builtin.buffers, { desc = 'Buffers' })
 vim.keymap.set('n', '<leader>th', builtin.help_tags, { desc = 'Help Tags' })
+
+require('telescope').setup({
+    defaults = {
+        mappings = {
+            i = {
+                ["<C-d>"] = actions.delete_buffer,
+            }
+        }
+    }
+})
