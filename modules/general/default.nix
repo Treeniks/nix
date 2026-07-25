@@ -59,7 +59,7 @@
       };
 
       environment.systemPackages = with pkgs; [
-        emacs
+        emacs-pgtk
 
         killall
         wget
