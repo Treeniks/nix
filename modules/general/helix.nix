@@ -18,6 +18,15 @@
       };
       keys.normal = {
         "C-s" = ":w";
+        # integrate yazi
+        # see https://github.com/helix-editor/helix/discussions/12934#discussioncomment-12438498
+        "C-y" = [
+          ":sh rm -f /tmp/helix-yazi-integration"
+          '':insert-output yazi "%{buffer_name}" --chooser-file=/tmp/helix-yazi-integration''
+          '':sh printf "\x1b[?1049h\x1b[?2004h" > /dev/tty''
+          ":open %sh{cat /tmp/helix-yazi-integration}"
+          ":redraw"
+        ];
         "S-s" = [
           "extend_to_line_bounds"
           "change_selection"
