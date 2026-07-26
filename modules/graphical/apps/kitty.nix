@@ -39,6 +39,7 @@ let
     "cursor_trail" = 1;
     "cursor_trail_decay" = "0.1 0.2";
     "cursor_trail_start_threshold" = 1;
+    "shell_integration" = "no-cursor";
   };
 in
 {

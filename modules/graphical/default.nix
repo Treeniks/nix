@@ -101,6 +101,19 @@
         ];
       };
 
+      xdg.mimeApps = {
+        enable = true;
+        defaultApplications = {
+          "text/plain" = "Helix.desktop";
+          "text/html" = "brave-browser.desktop";
+
+          "image/*" = "org.gnome.eog.desktop";
+          "video/*" = "mpv.desktop";
+
+          "application/pdf" = "org.gnome.Evince.desktop";
+        };
+      };
+
       programs = {
         neovide.enable = true;
         obsidian.enable = true;

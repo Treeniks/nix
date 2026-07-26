@@ -1,12 +1,13 @@
 spawn-at-startup "noctalia-shell"
 spawn-at-startup "chameleos" "-c" "#FF0020"
 
+
 binds {
     Mod+B       { toggle-overview; }
     Mod+Slash   { show-hotkey-overlay; }
 
-    Mod+Return      { spawn "neovide"; }
-    Mod+Backspace   { spawn "neovide"; }
+    Mod+Return      { spawn "kitty"; }
+    Mod+Backspace   { spawn "kitty"; }
 
     Mod+D       { spawn "nemo"; }
     Mod+Space   { spawn "fuzzel"; }
