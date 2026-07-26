@@ -35,6 +35,10 @@ let
 
     # https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.scrollback_pager
     "scrollback_pager" = "nvim --cmd 'set eventignore=FileType' +'nnoremap q ZQ' +'call nvim_open_term(0, {})' +'set nomodified nolist' +'$' -";
+
+    "cursor_trail" = 1;
+    "cursor_trail_decay" = "0.1 0.2";
+    "cursor_trail_start_threshold" = 1;
   };
 in
 {
