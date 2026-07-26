@@ -133,6 +133,7 @@
         nixd
         taplo
         pre-commit
+        gitu
 
         # cli
         wget
