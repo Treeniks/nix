@@ -72,6 +72,28 @@ in
         package = pkgs.kitty;
       };
 
+      xdg.configFile."kitty/open-actions.conf" = {
+        # I don't really know why I need this, but ctrl+shift+click on hyperlinks
+        # to text files doesn't open in my editor for some reason...
+        text = ''
+          protocol file
+          mime text/*
+          action launch --type=overlay $EDITOR $FILE_PATH
+        ''
+        # these don't work for some reason...
+        # + ''
+        #
+        #   protocol file
+        #   fragment_matches [0-9]+
+        #   action launch --type=overlay $EDITOR +$FRAGMENT $FILE_PATH
+        #
+        #   protocol file
+        #   mime image/*
+        #   action launch --type=overlay kitten icat --hold $FILE_PATH
+        # ''
+        ;
+      };
+
       programs.kitty = lib.mkMerge [
         {
           enable = true;
