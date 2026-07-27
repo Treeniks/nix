@@ -75,8 +75,10 @@ vim.keymap.set(
     all_modes,
     '<C-S-T>',
     function()
-        vim.cmd.tabnew()
-        vim.cmd.terminal()
+        vim.schedule(function()
+            vim.cmd('terminal')
+            vim.cmd('startinsert')
+        end)
     end,
     { desc = 'New Tab' }
 )
