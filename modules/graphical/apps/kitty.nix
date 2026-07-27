@@ -38,6 +38,8 @@ let
 
     "background_opacity" = 0.98;
 
+    "enabled_layouts" = "grid,tall";
+
     # https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.scrollback_pager
     "scrollback_pager" = "nvim --cmd 'set eventignore=FileType' +'nnoremap q ZQ' +'call nvim_open_term(0, {})' +'set nomodified nolist' +'$' -";
 
