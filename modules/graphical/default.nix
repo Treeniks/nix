@@ -1,53 +1,35 @@
 { self, ... }:
 {
-  flake.nixosModules.stackGraphical =
-    { lib, ... }:
-    {
-      imports = [
-        self.nixosModules.graphicalBase
-        self.nixosModules.graphicalDesktop
-        self.nixosModules.graphicalFonts
-        self.nixosModules.graphicalTheme
+  flake.nixosModules.stackGraphical = {
+    imports = [
+      self.nixosModules.graphicalBase
+      self.nixosModules.graphicalDesktop
+      self.nixosModules.graphicalFonts
+      self.nixosModules.graphicalTheme
 
-        self.nixosModules.niri
-        self.nixosModules.greetdNiriReGreet
+      self.nixosModules.niri
+      self.nixosModules.greetdNiriReGreet
 
-        self.nixosModules.noctalia
-      ];
+      self.nixosModules.noctalia
+    ];
+  };
 
-      options = {
-        my.noctalia-themeing = lib.mkOption {
-          type = lib.types.bool;
-        };
-      };
-    };
+  flake.homeModules.stackGraphical = {
+    imports = [
+      self.homeModules.graphicalBase
+      self.homeModules.graphicalTheme
 
-  flake.homeModules.stackGraphical =
-    { lib, ... }:
-    {
-      imports = [
-        self.homeModules.graphicalBase
-        self.homeModules.graphicalTheme
+      self.homeModules.noctalia
 
-        self.homeModules.noctalia
+      self.homeModules.kitty
+      self.homeModules.fuzzel
+      self.homeModules.nemo
 
-        self.homeModules.kitty
-        self.homeModules.fuzzel
-        self.homeModules.nemo
-
-        self.homeModules.mpv
-        self.homeModules.sublime
-        self.homeModules.zed
-      ];
-
-      options = {
-        my = {
-          noctalia-themeing = lib.mkOption {
-            type = lib.types.bool;
-          };
-        };
-      };
-    };
+      self.homeModules.mpv
+      self.homeModules.sublime
+      self.homeModules.zed
+    ];
+  };
 
   flake.nixosModules.graphicalBase =
     { pkgs, ... }:

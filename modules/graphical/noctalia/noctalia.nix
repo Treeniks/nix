@@ -181,112 +181,133 @@ let
   };
 in
 {
-  flake.nixosModules.noctalia = {
-    networking.networkmanager.enable = true;
-    hardware.bluetooth.enable = true;
-    services.tuned.enable = true;
-    services.upower.enable = true;
+  flake.nixosModules.noctalia = { lib, ... }: {
+    options = {
+      my.noctalia-themeing = lib.mkOption {
+        type = lib.types.bool;
+      };
+    };
+
+    config = {
+      networking.networkmanager.enable = true;
+      hardware.bluetooth.enable = true;
+      services.tuned.enable = true;
+      services.upower.enable = true;
+    };
   };
 
   flake.homeModules.noctalia =
     { config, lib, ... }:
     {
       imports = [ inputs.noctalia.homeModules.default ];
-      programs.noctalia-shell = {
-        enable = true;
 
-        settings = lib.mkMerge [
-          settings
-          (lib.mkIf config.my.noctalia-themeing {
-            # These are theme files exported by noctalia to keep themes of different applications in sync with noctalias colors.
-            # This is a bit scuffed when it comes to nix. Basically, we know where noctalia writes these, and then import them in the respective configs.
-            templates = {
-              enableUserTheming = true;
-
-              activeTemplates = [
-                # these all have additional configuration related to
-                # noctalia themeing
-                {
-                  id = "niri";
-                  enabled = true;
-                }
-                {
-                  id = "fuzzel";
-                  enabled = true;
-                }
-                {
-                  id = "kitty";
-                  enabled = true;
-                }
-                {
-                  id = "yazi";
-                  enabled = true;
-                }
-                {
-                  id = "neovim";
-                  enabled = true;
-                }
-                # needs to be enabled manually in the settings
-                # ...I think
-                {
-                  id = "zed";
-                  enabled = true;
-                }
-
-                # I hate these
-                {
-                  id = "gtk";
-                  enabled = true;
-                }
-                {
-                  id = "qt";
-                  enabled = true;
-                }
-                {
-                  id = "kcolorscheme";
-                  enabled = true;
-                }
-
-                # the rest are not managed by home manager or wrappers
-                # so this will just work
-                {
-                  id = "btop";
-                  enabled = true;
-                }
-                {
-                  id = "hyprtoolkit";
-                  enabled = true;
-                }
-                # TODO waiting for https://github.com/NixOS/nixpkgs/pull/487045
-                # {
-                #   id = "steam";
-                #   enabled = true;
-                # }
-              ];
-            };
-          })
-        ];
-
-        # we enable/disable user templates based on noctalia-theme settings
-        # so we can define this template always and just have it not activated
-        # when noctalia themeing is disabled
-        user-templates = {
-          config = { };
-          templates = {
-            neovim = {
-              input_path = "${./matugen-template.lua}";
-              output_path = "~/nix/modules/nvim/lua/plugins/catppuccin-matugen.lua";
-              post_hook = "pkill -SIGUSR1 nvim";
-            };
-          };
+      options = {
+        my.noctalia-themeing = lib.mkOption {
+          type = lib.types.bool;
         };
       };
 
-      home.activation.removeNvimThemeIfDisabled = lib.mkIf (!config.my.noctalia-themeing) (
-        lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-          rm -f "$HOME/nix/modules/nvim/lua/plugins/catppuccin-matugen.lua"
-        ''
-      );
+      config = {
+        programs.noctalia-shell = {
+          enable = true;
+
+          settings = lib.mkMerge [
+            settings
+            (lib.mkIf config.my.noctalia-themeing {
+              # These are theme files exported by noctalia to keep themes of different applications in sync with noctalias colors.
+              # This is a bit scuffed when it comes to nix. Basically, we know where noctalia writes these, and then import them in the respective configs.
+              templates = {
+                enableUserTheming = true;
+
+                activeTemplates = [
+                  # these all have additional configuration related to
+                  # noctalia themeing
+                  {
+                    id = "niri";
+                    enabled = true;
+                  }
+                  {
+                    id = "fuzzel";
+                    enabled = true;
+                  }
+                  {
+                    id = "kitty";
+                    enabled = true;
+                  }
+                  {
+                    id = "yazi";
+                    enabled = true;
+                  }
+                  {
+                    id = "neovim";
+                    enabled = true;
+                  }
+                  {
+                    id = "helix";
+                    enabled = true;
+                  }
+                  # needs to be enabled manually in the settings
+                  # ...I think
+                  {
+                    id = "zed";
+                    enabled = true;
+                  }
+
+                  # I hate these
+                  {
+                    id = "gtk";
+                    enabled = true;
+                  }
+                  {
+                    id = "qt";
+                    enabled = true;
+                  }
+                  {
+                    id = "kcolorscheme";
+                    enabled = true;
+                  }
+
+                  # the rest are not managed by home manager or wrappers
+                  # so this will just work
+                  {
+                    id = "btop";
+                    enabled = true;
+                  }
+                  {
+                    id = "hyprtoolkit";
+                    enabled = true;
+                  }
+                  # TODO waiting for https://github.com/NixOS/nixpkgs/pull/487045
+                  # {
+                  #   id = "steam";
+                  #   enabled = true;
+                  # }
+                ];
+              };
+            })
+          ];
+
+          # we enable/disable user templates based on noctalia-theme settings
+          # so we can define this template always and just have it not activated
+          # when noctalia themeing is disabled
+          user-templates = {
+            config = { };
+            templates = {
+              neovim = {
+                input_path = "${./matugen-template.lua}";
+                output_path = "~/nix/modules/nvim/lua/plugins/catppuccin-matugen.lua";
+                post_hook = "pkill -SIGUSR1 nvim";
+              };
+            };
+          };
+        };
+
+        home.activation.removeNvimThemeIfDisabled = lib.mkIf (!config.my.noctalia-themeing) (
+          lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+            rm -f "$HOME/nix/modules/nvim/lua/plugins/catppuccin-matugen.lua"
+          ''
+        );
+      };
     };
 
   # unused in this config

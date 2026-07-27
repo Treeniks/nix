@@ -17,9 +17,10 @@
       inputs.catppuccin.homeModules.catppuccin
 
       self.homeModules.common
-      self.homeModules.theme
+      self.homeModules.helix
       self.homeModules.fish
       self.homeModules.yazi
+      self.homeModules.theme
     ];
   };
 
