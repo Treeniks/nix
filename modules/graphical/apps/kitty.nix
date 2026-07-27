@@ -41,7 +41,16 @@ let
     "enabled_layouts" = "grid,tall";
 
     # https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.scrollback_pager
-    "scrollback_pager" = "nvim --cmd 'set eventignore=FileType' +'nnoremap q ZQ' +'call nvim_open_term(0, {})' +'set nomodified nolist' +'$' -";
+    # a few issues:
+    # - it starts at the bottom of the output, so I have to press 'gg' first (fixable)
+    # - it doens't integrate with my probably-running-in-another-tab neovim anyway
+    # - it doesn't work with helix yet
+    # so I might as well just stick with default (less) for now? idk
+    # "scrollback_pager" =
+    #   "nvim --cmd 'set eventignore=FileType' +'nnoremap q ZQ' +'call nvim_open_term(0, {})' +'set nomodified nolist' +'$' -";
+
+    # 200MB of scrollback (probably overkill, but I'd rather have too much)
+    "scrollback_pager_history_size" = 200;
 
     "cursor_trail" = 1;
     "cursor_trail_decay" = "0.1 0.2";
