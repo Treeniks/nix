@@ -3,12 +3,9 @@
   flake.homeModules.sublime =
     { pkgs, ... }:
     {
-      nixpkgs.config.problems.handlers = {
-        sublimetext4.broken = "warn"; # or "ignore"
-      };
-
       home.packages = with pkgs; [
-        sublime4
+        # sublime4 is broken because of openssl shit
+        sublime4-dev
         sublime-merge
       ];
       # xdg.configFile."sublime-text/Packages/User".source = "${inputs.dotfiles}/sublime/User";
