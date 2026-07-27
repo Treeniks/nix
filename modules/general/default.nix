@@ -121,7 +121,7 @@
         tree-sitter
         deno
         mono
-        nodejs-slim
+        nodejs
         (python3.withPackages (
           python-pkgs: with python-pkgs; [
             requests
