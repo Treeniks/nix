@@ -5,7 +5,7 @@
 # noctalia uses that to reload config on theme change so that causes issues
 let
   font = {
-    name = "JetBrains Mono";
+    name = "Maple Mono";
     size = 13;
   };
 
