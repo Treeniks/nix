@@ -17,6 +17,11 @@ let
 
     "ctrl+shift+m" = "detach_window ask";
 
+    # alternatives to ctrl+shift+[ and ctrl+shift+]
+    # as [ and ] is a bit more involved to press on my split keyboard
+    "ctrl+shift+;" = "previous_window";
+    "ctrl+shift+'" = "next_window";
+
     "cmd+w" = "close_window";
     "cmd+shift+w" = "close_tab";
   };
