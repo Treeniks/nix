@@ -12,6 +12,8 @@ vim.g.neovide_cursor_trail_size = 0.1
 vim.g.neovide_cursor_animation_length = 0.05
 vim.g.neovide_cursor_short_animation_length = 0.025
 
+-- we can have these settings, even if we're not in neovide, because kitty takes priority
+--
 -- this one is different to <leader>n, because it starts the new tab in terminal mode
 vim.keymap.set(
     all_modes,
@@ -25,12 +27,49 @@ vim.keymap.set(
     end,
     { desc = 'New Tab' }
 )
-vim.keymap.set(all_modes, '<C-S-w>', vim.cmd.tabclose, { desc = 'Close Tab' })
+vim.keymap.set(
+    all_modes,
+    '<C-S-w>',
+    function()
+        -- close the current window
+        -- but close the tab if it's the last window
+        -- but close neovim if it's the last tab
+        --
+        -- this mimics kitty's behavior
+        local current_tab = vim.api.nvim_get_current_tabpage()
+        local wins = vim.api.nvim_tabpage_list_wins(current_tab)
+        local tabs = vim.api.nvim_list_tabpages()
+
+        if #wins > 1 then
+            vim.cmd.wincmd('c')
+        elseif #tabs > 1 then
+            vim.cmd.tabclose()
+        else
+            vim.cmd('qa!')
+        end
+    end,
+    {desc = 'Close Tab'}
+)
 vim.keymap.set(all_modes, '<C-Tab>', vim.cmd.tabnext, { desc = 'Next Tab' })
 vim.keymap.set(all_modes, '<C-S-Tab>', vim.cmd.tabprev, { desc = 'Prev Tab' })
 -- wrapped in pcall because it fails if the tab is the first/last
 vim.keymap.set(all_modes, '<C-<>', function() pcall(vim.cmd.tabmove, '-1') end, { desc = 'Move Tab Left' })
 vim.keymap.set(all_modes, '<C->>', function() pcall(vim.cmd.tabmove, '+1') end, { desc = 'Move Tab Right' })
+
+vim.keymap.set(all_modes, '<C-:>', function() vim.cmd.wincmd('W') end, { desc = 'Focus Previous Window' })
+vim.keymap.set(all_modes, '<C-">', function() vim.cmd.wincmd('w') end, { desc = 'Focus Next Window' })
+vim.keymap.set(
+    all_modes,
+    '<C-S-CR>',
+    function()
+        -- TODO this should become more of a grid layout thing,
+        -- but I probably don't use it often enough for that anyway
+        vim.cmd('rightbelow vsplit')
+        vim.cmd('terminal')
+        vim.cmd('startinsert')
+    end,
+    { desc = 'Focus Next Window' }
+)
 
 -- https://github.com/neovide/neovide/discussions/2301#discussioncomment-8223203
 if vim.g.neovide then
