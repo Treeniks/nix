@@ -44,12 +44,18 @@ let
   };
 in
 {
-  flake.nixosModules.helix = {
+  flake.nixosModules.helix = { pkgs, ... }: {
     # TODO change all the other wrapper installs to this method
     imports = [ self.wrappers.helix.install ];
     wrappers.helix.enable = true;
 
-    environment.sessionVariables.EDITOR = "hx";
+    # environment.systemPackages = [
+    #   pkgs.steel
+    #   pkgs.steel-language-server
+    #   pkgs.steelix
+    # ];
+
+    # environment.sessionVariables.EDITOR = "hx";
   };
 
   flake.homeModules.helix = { config, lib, ... }: {

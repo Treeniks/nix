@@ -5,6 +5,7 @@
     {
       programs.neovim = {
         enable = true;
+        defaultEditor = true;
         package = (
           self.wrappers.neovim.wrap {
             inherit pkgs;
