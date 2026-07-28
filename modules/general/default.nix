@@ -117,6 +117,7 @@
         gcc
         gdb
         rustup
+        cargo-edit
         mdbook
         tree-sitter
         deno
