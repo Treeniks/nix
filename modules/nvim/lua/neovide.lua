@@ -146,23 +146,20 @@ vim.api.nvim_create_autocmd('VimEnter', {
 
 ---- insert mode behavior
 -- NOTE: This has far more wide-reaching effects than just neovide,
--- but I'm essentially trying to make the mode window-specific
--- by remembering the last mode each window was on
--- and applying that mode when entering a window.
+-- but I'm essentially trying to make the mode buffer-specific.
 --
 -- There is a near 100% chance that this fails in some weirder cases,
 -- so I'm not confident about it whatsoever.
--- I'm also not sure if this is even what I want.
 
 vim.api.nvim_create_autocmd('ModeChanged', {
-    callback = function(_)
-        vim.api.nvim_win_set_var(0, 'win_mode', vim.api.nvim_get_mode().mode)
+    callback = function(event)
+        vim.api.nvim_buf_set_var(event.buf, 'prev_mode', vim.api.nvim_get_mode().mode)
     end,
 })
 
-vim.api.nvim_create_autocmd('WinEnter', {
-    callback = function(_)
-        local prev_mode = vim.w.win_mode
+vim.api.nvim_create_autocmd('BufEnter', {
+    callback = function(event)
+        local prev_mode = vim.b[event.buf].prev_mode
         if prev_mode == nil then return end
 
         if prev_mode:match('n') then
