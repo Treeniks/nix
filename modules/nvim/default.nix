@@ -35,6 +35,7 @@
         neogit
         direnv-vim
         oil-nvim
+        hydra-nvim
       ];
 
       specs.themes = {

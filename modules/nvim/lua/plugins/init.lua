@@ -1,4 +1,5 @@
 require('plugins.catppuccin')
+require('plugins.hydra')
 require('plugins.mini')
 require('plugins.telescope')
 

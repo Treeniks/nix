@@ -59,6 +59,8 @@ miniclue.setup({
         { mode = { 'i', 'c' }, keys = '<C-r>' },
 
         -- Window commands
+        -- note that this technically also works in visual mode,
+        -- but the default clues from mini doesn't cover that so...
         { mode = 'n',          keys = '<C-w>' },
 
         -- `z` key
