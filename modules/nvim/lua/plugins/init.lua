@@ -12,3 +12,14 @@ if not ok then
     -- and use normal catppuccin as fallback
     require('plugins.catppuccin')
 end
+
+require('oil').setup({
+    view_options = { show_hidden = true },
+    float = {
+        preview_split = 'right',
+    },
+})
+-- vim.keymap.set(require('utils').all_modes, '<C-y>', function() vim.cmd(':Oil') end)
+-- vim.keymap.set(require('utils').all_modes, '<C-y>', function() vim.cmd(':Yazi') end)
+
+vim.keymap.set('n', '<leader>g', function() vim.cmd(':Neogit') end, { desc = 'Neogit' })

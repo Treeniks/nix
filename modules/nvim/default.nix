@@ -33,6 +33,7 @@
         yazi-nvim
         neogit
         direnv-vim
+        oil-nvim
       ];
 
       specs.themes = {

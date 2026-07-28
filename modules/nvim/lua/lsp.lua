@@ -17,29 +17,39 @@ end
 vim.diagnostic.config({
     jump = { on_jump = function(_, bufnr) vim.diagnostic.open_float({ bufnr = bufnr }) end }
 })
-vim.keymap.set('n', '<leader>g', vim.diagnostic.open_float, { desc = 'Diagnostic Float' })
+
+vim.keymap.set('n', '<leader>d', function() telescope_builtin.diagnostics({ bufnr = 0 }) end,
+    { desc = 'Diagnostic Picker (local)' })
+vim.keymap.set('n', '<leader>D', function() telescope_builtin.diagnostics({ workspace = true }) end,
+    { desc = 'Diagnostic Picker (workspace)' })
+vim.keymap.set({ 'n', 'i', 'v' }, '<C-h>', vim.diagnostic.open_float, { desc = 'Diagnostic Float' })
+
+-- TODO I'll probably want some better keybinds for next/prev diagnostic, but I can't use these anymore
+-- I'll have to see if the telescope diagnostic picker isn't good enough already
+--
 -- I've tried vim.diagnostic.jump but it's just way less reliable than [d and ]d and idk why
-vim.keymap.set('n', '<leader>d', '[d', { desc = 'Prev Diagnostic', remap = true })
-vim.keymap.set('n', '<leader>f', ']d', { desc = 'Next Diagnositc', remap = true })
+-- vim.keymap.set('n', '<leader>d', '[d', { desc = 'Prev Diagnostic', remap = true })
+-- vim.keymap.set('n', '<leader>f', ']d', { desc = 'Next Diagnositc', remap = true })
 
 -- lsp keybinds
 vim.api.nvim_create_autocmd('LspAttach', {
-    callback = function(event)
-        vim.keymap.set({ 'n', 'i', 'v' }, '<C-k>', vim.lsp.buf.hover)
+    callback = function(_)
+        vim.keymap.set({ 'n', 'i', 'v' }, '<C-k>', vim.lsp.buf.hover, { desc = 'LSP Hover' })
 
-        vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format, { desc = 'Format' })
-        vim.keymap.set({ 'n', 'v', 'i' }, '<S-M-f>', vim.lsp.buf.format, { desc = 'Format' })
-        vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, { desc = 'Code Action' })
-        vim.keymap.set('n', '<leader>lt', vim.lsp.buf.type_definition, { desc = 'Type Definition' })
+        vim.keymap.set('n', '<leader>s', vim.lsp.buf.format, { desc = 'LSP Format' })
+        vim.keymap.set({ 'n', 'v', 'i' }, '<S-M-f>', vim.lsp.buf.format, { desc = 'LSP Format' })
+        vim.keymap.set('n', '<leader>a', vim.lsp.buf.code_action, { desc = 'LSP Code Action' })
+        vim.keymap.set('n', 'gy', vim.lsp.buf.type_definition, { desc = 'LSP Type Definition' })
 
-        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'Goto Definition' })
-        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = 'Goto Declaration' })
+        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'LSP Goto Definition' })
+        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = 'LSP Goto Declaration' })
 
-        vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, { desc = 'Rename' })
+        vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, { desc = 'LSP Rename' })
 
         -- telescope related
-        vim.keymap.set('n', '<leader>lR', telescope_builtin.lsp_references, { desc = 'Find References' })
-        vim.keymap.set('n', '<leader>ls', telescope_builtin.lsp_document_symbols, { desc = 'Document Symbols' })
+        vim.keymap.set('n', 'gr', telescope_builtin.lsp_references, { desc = 'LSP Find References' })
+        vim.keymap.set('n', '<leader>s', telescope_builtin.lsp_document_symbols, { desc = 'LSP Symbols (local)' })
+        vim.keymap.set('n', '<leader>S', telescope_builtin.lsp_workspace_symbols, { desc = 'LSP Symbols (workspace)' })
     end
 })
 

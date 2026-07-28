@@ -16,6 +16,22 @@
 
         settings = {
           opener = {
+            edit = [
+              {
+                # prevent nested neovims if yazi is run inside a neovim
+                run = ''
+                  if [ -n "$NVIM" ]; then
+                    nvim --server "$NVIM" --remote %s
+                  else
+                    $EDITOR %s
+                  fi
+                '';
+                block = true;
+                orphan = true;
+                desc = "Open in Neovim";
+              }
+            ];
+
             extract = [
               {
                 run = "ya pub extract --list %s";

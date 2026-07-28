@@ -19,11 +19,9 @@ vim.keymap.set(
     all_modes,
     '<C-S-t>',
     function()
-        vim.schedule(function()
-            vim.cmd('tabnew')
-            vim.cmd('terminal')
-            vim.cmd('startinsert')
-        end)
+        vim.cmd('tabnew')
+        vim.cmd('terminal')
+        vim.cmd('startinsert')
     end,
     { desc = 'New Tab' }
 )
@@ -48,7 +46,7 @@ vim.keymap.set(
             vim.cmd('qa!')
         end
     end,
-    {desc = 'Close Tab'}
+    { desc = 'Close Tab' }
 )
 vim.keymap.set(all_modes, '<C-Tab>', vim.cmd.tabnext, { desc = 'Next Tab' })
 vim.keymap.set(all_modes, '<C-S-Tab>', vim.cmd.tabprev, { desc = 'Prev Tab' })
@@ -68,8 +66,10 @@ vim.keymap.set(
         vim.cmd('terminal')
         vim.cmd('startinsert')
     end,
-    { desc = 'Focus Next Window' }
+    { desc = 'Open Terminal Split' }
 )
+
+vim.keymap.set(all_modes, '<C-t>', function() vim.cmd('terminal') end, { desc = 'Open Terminal' })
 
 -- https://github.com/neovide/neovide/discussions/2301#discussioncomment-8223203
 if vim.g.neovide then
@@ -101,4 +101,14 @@ vim.api.nvim_create_autocmd('VimEnter', {
             end)
         end
     end,
+})
+
+vim.api.nvim_create_autocmd('BufEnter', {
+    callback = function()
+        if vim.bo.buftype == 'terminal' then
+            -- we don't want to use schedule here, or we get put into insert mode
+            -- when opening a file with telescope while a terminal is open
+            vim.cmd('startinsert')
+        end
+    end
 })

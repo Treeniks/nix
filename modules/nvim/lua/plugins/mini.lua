@@ -38,7 +38,7 @@ local miniclue = require('mini.clue')
 miniclue.setup({
     triggers = {
         -- Leader triggers
-        { mode = { 'n', 'x' }, keys = '<Leader>' },
+        { mode = { 'n', 'x' }, keys = '<leader>' },
 
         -- `[` and `]` keys
         { mode = 'n',          keys = '[' },
@@ -73,9 +73,6 @@ miniclue.setup({
         miniclue.gen_clues.registers(),
         miniclue.gen_clues.windows(),
         miniclue.gen_clues.z(),
-
-        { mode = 'n', keys = '<leader>l', desc = 'LSP' },
-        { mode = 'n', keys = '<leader>t', desc = 'Telescope' },
     },
 
     window = {
@@ -99,16 +96,23 @@ require('mini.files').setup({
     },
 })
 
+local function open_mini_files()
+    local path = vim.api.nvim_buf_get_name(0)
+    local ok, _ = pcall(MiniFiles.open, path, false)
+    if not ok then
+        MiniFiles.open(vim.fn.getcwd(), false)
+    end
+end
 vim.keymap.set(
     'n',
     '<leader>e',
-    function()
-        local path = vim.api.nvim_buf_get_name(0)
-        local ok, _ = pcall(MiniFiles.open, path, false)
-        if not ok then
-            MiniFiles.open(vim.fn.getcwd(), false)
-        end
-    end,
+    open_mini_files,
+    { desc = 'Mini Files' }
+)
+vim.keymap.set(
+    require('utils').all_modes,
+    '<C-y>',
+    open_mini_files,
     { desc = 'Mini Files' }
 )
 
