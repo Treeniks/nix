@@ -41,7 +41,6 @@
           catppuccin-nvim
           rose-pine
         ];
-        config = "vim.cmd.colorscheme('catppuccin-mocha')";
       };
 
       # for complete manual treesitter grammar install:

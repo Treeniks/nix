@@ -96,3 +96,5 @@ require('lsp')
 require('neovide')
 require('terminal')
 require('treesitter')
+
+vim.cmd.colorscheme('rose-pine')
