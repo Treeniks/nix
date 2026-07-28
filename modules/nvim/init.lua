@@ -69,8 +69,8 @@ vim.keymap.set('n', '<leader>k', vim.cmd.tabprev, { desc = 'Prev Tab' })
 vim.keymap.set('n', '<leader>J', function() vim.cmd.tabmove('-1') end, { desc = 'Move Tab Left' })
 vim.keymap.set('n', '<leader>K', function() vim.cmd.tabmove('+1') end, { desc = 'Move Tab Right' })
 
--- claude spit this one out, and it's a bit fucky with neovide
--- I'd rather have something more robust, but it beats the built-in keybinds
+-- claude spit this one out, and it's a bit fucky
+-- I'd rather have something more robust, but it beats the built-in keybinds for now
 vim.keymap.set({ 'n', 'v' }, '<C-w>r', function()
     -- NOTE h and l are technically the wrong way around here
     -- however I usually want to resize the right window of a vsplit
