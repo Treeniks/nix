@@ -23,3 +23,6 @@ require('oil').setup({
 -- vim.keymap.set(require('utils').all_modes, '<C-y>', function() vim.cmd(':Yazi') end)
 
 vim.keymap.set('n', '<leader>gg', function() vim.cmd(':Neogit') end, { desc = 'Neogit' })
+
+---- builtins
+vim.cmd.packadd('nvim.undotree')
