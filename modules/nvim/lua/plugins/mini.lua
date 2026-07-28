@@ -97,6 +97,7 @@ require('mini.files').setup({
 })
 
 local function open_mini_files()
+    vim.cmd('stopinsert')
     local path = vim.api.nvim_buf_get_name(0)
     local ok, _ = pcall(MiniFiles.open, path, false)
     if not ok then
