@@ -124,7 +124,7 @@ vim.keymap.set(
         if vim.w.last_term_buf ~= nil then
             vim.api.nvim_set_current_buf(vim.w.last_term_buf)
         else
-            vim.cmd('terminal')
+            vim.schedule(function() vim.cmd('terminal') end)
         end
     end,
     { desc = 'Open Terminal' }
@@ -137,9 +137,7 @@ vim.api.nvim_create_autocmd('VimEnter', {
     once = true,
     callback = function(_)
         if vim.g.neovide and vim.fn.argc() == 0 then
-            vim.schedule(function()
-                vim.cmd('terminal')
-            end)
+            vim.schedule(function() vim.cmd('terminal') end)
         end
     end,
 })
@@ -162,16 +160,16 @@ vim.api.nvim_create_autocmd('BufEnter', {
         local prev_mode = vim.b[event.buf].prev_mode
         if prev_mode == nil then return end
 
-        if prev_mode:match('n') then
-            vim.cmd('stopinsert')
-        else
-            vim.cmd('startinsert')
+        if prev_mode == 'n' then
+            vim.schedule(function() vim.cmd('stopinsert') end)
+        elseif prev_mode == 'i' or prev_mode == 't' then
+            vim.schedule(function() vim.cmd('startinsert') end)
         end
     end
 })
 
 vim.api.nvim_create_autocmd('TermOpen', {
     callback = function(_)
-        vim.cmd('startinsert')
+        vim.schedule(function() vim.cmd('startinsert') end)
     end
 })
