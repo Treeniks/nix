@@ -69,7 +69,15 @@ vim.keymap.set(
     { desc = 'Open Terminal Split' }
 )
 
-vim.keymap.set(all_modes, '<C-t>', function() vim.cmd('terminal') end, { desc = 'Open Terminal' })
+vim.keymap.set(
+    all_modes,
+    '<C-t>',
+    function()
+        vim.cmd('terminal')
+        vim.cmd('startinsert')
+    end,
+    { desc = 'Open Terminal' }
+)
 
 -- https://github.com/neovide/neovide/discussions/2301#discussioncomment-8223203
 if vim.g.neovide then
