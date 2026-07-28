@@ -31,8 +31,11 @@ vim.keymap.set({ 'n', 'i', 'v' }, '<C-h>', vim.diagnostic.open_float, { desc = '
 -- vim.keymap.set('n', '<leader>d', '[d', { desc = 'Prev Diagnostic', remap = true })
 -- vim.keymap.set('n', '<leader>f', ']d', { desc = 'Next Diagnositc', remap = true })
 
+local lsp_keybinds_group = vim.api.nvim_create_augroup('LspKeybinds', { clear = true })
+
 -- lsp keybinds
 vim.api.nvim_create_autocmd('LspAttach', {
+    group = lsp_keybinds_group,
     callback = function(_)
         vim.keymap.set({ 'n', 'i', 'v' }, '<C-k>', vim.lsp.buf.hover, { desc = 'LSP Hover' })
 
@@ -50,7 +53,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', '<leader>R', telescope_builtin.lsp_references, { desc = 'LSP Find References' })
         vim.keymap.set('n', '<leader>s', telescope_builtin.lsp_document_symbols, { desc = 'LSP Symbols (local)' })
         vim.keymap.set('n', '<leader>S', telescope_builtin.lsp_workspace_symbols, { desc = 'LSP Symbols (workspace)' })
-    end
+    end,
 })
 
 lazydev.setup({})

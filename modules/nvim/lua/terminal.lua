@@ -1,6 +1,9 @@
 local osc7_sequence = '\x1b\x5d\x37\x3b'
 
+local term_cd_sync_group = vim.api.nvim_create_augroup('TermCDSync', { clear = true })
+
 vim.api.nvim_create_autocmd('TermRequest', {
+    group = term_cd_sync_group,
     desc = 'Sync nvim cwd with shell cwd via OSC 7',
     -- allow triggering other autocmds
     -- in particular 'DirChanged' for direnv
@@ -26,11 +29,12 @@ vim.api.nvim_create_autocmd('TermRequest', {
 })
 
 vim.api.nvim_create_autocmd({ 'BufEnter', 'WinEnter', 'DirChanged' }, {
+    group = term_cd_sync_group,
     callback = function(_)
         if vim.b.last_osc7_payload ~= nil
             and vim.fn.isdirectory(vim.b.last_osc7_payload) == 1
         then
             vim.cmd.tcd(vim.b.last_osc7_payload)
         end
-    end
+    end,
 })

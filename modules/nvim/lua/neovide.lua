@@ -97,24 +97,28 @@ end
 -- we remember what the last terminal for each window was
 -- to prevent reopening new terminals all the time
 
+local last_term_group = vim.api.nvim_create_augroup('LastTermBuf', { clear = true })
+
 vim.api.nvim_create_autocmd({ 'TermOpen', 'BufWinEnter' }, {
+    group = last_term_group,
     callback = function(event)
         -- should always be true for TermOpen,
         -- but may not be true for the other cases
         if vim.bo[event.buf].buftype == 'terminal' then
             vim.api.nvim_win_set_var(0, 'last_term_buf', event.buf)
         end
-    end
+    end,
 })
 
 vim.api.nvim_create_autocmd('BufWipeout', {
+    group = last_term_group,
     callback = function(event)
         for _, win in pairs(vim.api.nvim_list_wins()) do
             if vim.w[win].last_term_buf == event.buf then
                 vim.api.nvim_win_del_var(win, 'last_term_buf')
             end
         end
-    end
+    end,
 })
 
 vim.keymap.set(
@@ -132,7 +136,10 @@ vim.keymap.set(
 
 ---- startup
 
+local neovide_open_group = vim.api.nvim_create_augroup('NeovideOpen', { clear = true })
+
 vim.api.nvim_create_autocmd('VimEnter', {
+    group = neovide_open_group,
     desc = 'Make neovide a terminal emulator, by opening into terminal mode by default.',
     once = true,
     callback = function(_)
@@ -143,19 +150,33 @@ vim.api.nvim_create_autocmd('VimEnter', {
 })
 
 ---- insert mode behavior
--- NOTE: This has far more wide-reaching effects than just neovide,
--- but I'm essentially trying to make the mode buffer-specific.
+
+local term_open_group = vim.api.nvim_create_augroup('TermOpenInsert', { clear = true })
+
+vim.api.nvim_create_autocmd('TermOpen', {
+    group = term_open_group,
+    callback = function(_)
+        vim.schedule(function() vim.cmd('startinsert') end)
+    end,
+})
+
+-- NOTE: The following has far more wide-reaching effects than just neovide.
+-- I'm essentially trying to make the mode buffer-specific.
 --
 -- There is a near 100% chance that this fails in some weirder cases,
 -- so I'm not confident about it whatsoever.
 
+local per_buffer_mode_group = vim.api.nvim_create_augroup('PerBufferMode', { clear = true })
+
 vim.api.nvim_create_autocmd('ModeChanged', {
+    group = per_buffer_mode_group,
     callback = function(event)
         vim.api.nvim_buf_set_var(event.buf, 'prev_mode', vim.api.nvim_get_mode().mode)
     end,
 })
 
 vim.api.nvim_create_autocmd('BufEnter', {
+    group = per_buffer_mode_group,
     callback = function(event)
         local prev_mode = vim.b[event.buf].prev_mode
         if prev_mode == nil then return end
@@ -165,11 +186,5 @@ vim.api.nvim_create_autocmd('BufEnter', {
         elseif prev_mode == 'i' or prev_mode == 't' then
             vim.schedule(function() vim.cmd('startinsert') end)
         end
-    end
-})
-
-vim.api.nvim_create_autocmd('TermOpen', {
-    callback = function(_)
-        vim.schedule(function() vim.cmd('startinsert') end)
-    end
+    end,
 })
