@@ -92,6 +92,7 @@
         rust-analyzer
         nixd
         lua-language-server
+        vscode-langservers-extracted
       ];
     };
 }

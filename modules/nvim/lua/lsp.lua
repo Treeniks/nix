@@ -6,6 +6,7 @@ local servers = {
     rust_analyzer = {},
     nixd = {},
     lua_ls = {},
+    jsonls = {},
 }
 
 for server, config in pairs(servers) do
