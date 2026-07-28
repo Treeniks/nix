@@ -94,6 +94,7 @@ require('plugins')
 
 require('lsp')
 require('neovide')
+require('sublime')
 require('terminal')
 require('treesitter')
 

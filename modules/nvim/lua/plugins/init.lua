@@ -22,4 +22,4 @@ require('oil').setup({
 -- vim.keymap.set(require('utils').all_modes, '<C-y>', function() vim.cmd(':Oil') end)
 -- vim.keymap.set(require('utils').all_modes, '<C-y>', function() vim.cmd(':Yazi') end)
 
-vim.keymap.set('n', '<leader>g', function() vim.cmd(':Neogit') end, { desc = 'Neogit' })
+vim.keymap.set('n', '<leader>gg', function() vim.cmd(':Neogit') end, { desc = 'Neogit' })

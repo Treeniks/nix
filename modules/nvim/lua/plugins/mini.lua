@@ -38,7 +38,7 @@ local miniclue = require('mini.clue')
 miniclue.setup({
     triggers = {
         -- Leader triggers
-        { mode = { 'n', 'x' }, keys = '<leader>' },
+        { mode = { 'n', 'v' }, keys = '<leader>' },
 
         -- `[` and `]` keys
         { mode = 'n',          keys = '[' },
@@ -48,21 +48,21 @@ miniclue.setup({
         { mode = 'i',          keys = '<C-x>' },
 
         -- `g` key
-        { mode = { 'n', 'x' }, keys = 'g' },
+        { mode = { 'n', 'v' }, keys = 'g' },
 
         -- Marks
-        { mode = { 'n', 'x' }, keys = "'" },
-        { mode = { 'n', 'x' }, keys = '`' },
+        { mode = { 'n', 'v' }, keys = "'" },
+        { mode = { 'n', 'v' }, keys = '`' },
 
         -- Registers
-        { mode = { 'n', 'x' }, keys = '"' },
+        { mode = { 'n', 'v' }, keys = '"' },
         { mode = { 'i', 'c' }, keys = '<C-r>' },
 
         -- Window commands
         { mode = 'n',          keys = '<C-w>' },
 
         -- `z` key
-        { mode = { 'n', 'x' }, keys = 'z' },
+        { mode = { 'n', 'v' }, keys = 'z' },
     },
 
     clues = {
@@ -73,6 +73,8 @@ miniclue.setup({
         miniclue.gen_clues.registers(),
         miniclue.gen_clues.windows(),
         miniclue.gen_clues.z(),
+
+        { mode = { 'n', 'v' }, keys = '<leader>g', desc = 'Git' },
     },
 
     window = {
