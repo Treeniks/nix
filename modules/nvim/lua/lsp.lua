@@ -47,7 +47,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, { desc = 'LSP Rename' })
 
         -- telescope related
-        vim.keymap.set('n', 'gr', telescope_builtin.lsp_references, { desc = 'LSP Find References' })
+        vim.keymap.set('n', '<leader>R', telescope_builtin.lsp_references, { desc = 'LSP Find References' })
         vim.keymap.set('n', '<leader>s', telescope_builtin.lsp_document_symbols, { desc = 'LSP Symbols (local)' })
         vim.keymap.set('n', '<leader>S', telescope_builtin.lsp_workspace_symbols, { desc = 'LSP Symbols (workspace)' })
     end
