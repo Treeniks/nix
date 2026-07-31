@@ -71,7 +71,7 @@ let
         { type = "nightlight"; }
         { type = "notification"; }
         { type = "power_profile"; }
-        { type = "wallpaper"; }
+        { type = "session"; }
       ];
     };
 
