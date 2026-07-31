@@ -1,18 +1,7 @@
 {
   inputs = {
-    # see https://github.com/NixOS/nixpkgs/issues/511900
-    # and https://github.com/NixOS/nixpkgs/pull/516804
-    # deno is super flaky on hydra right now and building it locally is rough
-    # deno is a dependency of yt-dlp, and thus also of mpv
-    # this is the last nixpkgs commit where both x86_64-linux and aarch64-linux built sucessfully on hydra
-    #
-    # check with:
-    # # https://hydra.nixos.org/job/nixos/unstable/nixpkgs.deno.x86_64-linux
-    # # https://hydra.nixos.org/job/nixos/unstable/nixpkgs.deno.aarch64-linux
-    # nixpkgs.url = "github:NixOS/nixpkgs/657e2fa0760e27167cdacb1ec5d84782be312013";
-    # # https://hydra.nixos.org/job/nixos/unstable/nixpkgs.lutris-free.x86_64-linux
-    # nixpkgs-lutris.url = "github:NixOS/nixpkgs/b12141ef619e0a9c1c84dc8c684040326f27cdcc";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
+    nixpkgs.url = "https://flakehub.com/f/DeterminateSystems/nixpkgs-weekly/0.1";
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";

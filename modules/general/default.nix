@@ -2,6 +2,10 @@
 {
   flake.nixosModules.stackCommon = {
     imports = [
+      # use determinate nix
+      # https://docs.determinate.systems/guides/advanced-installation/#nixos
+      inputs.determinate.nixosModules.default
+
       inputs.catppuccin.nixosModules.catppuccin
 
       self.nixosModules.common
@@ -27,10 +31,7 @@
   flake.nixosModules.common =
     { pkgs, ... }:
     {
-      nix.settings.experimental-features = "nix-command flakes";
-      nixpkgs = {
-        config.allowUnfree = true;
-      };
+      nixpkgs.config.allowUnfree = true;
 
       networking.networkmanager.enable = true;
 
@@ -78,9 +79,7 @@
     { pkgs, ... }:
     {
       programs.home-manager.enable = true;
-      nixpkgs = {
-        config.allowUnfree = true;
-      };
+      nixpkgs.config.allowUnfree = true;
 
       xdg.userDirs.createDirectories = true;
       xdg.userDirs.enable = true;
