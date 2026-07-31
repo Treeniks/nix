@@ -87,7 +87,11 @@
         enable = true;
         defaultApplications =
           let
-            editor = "Helix.desktop";
+            editor_sublime = "sublime_text.desktop";
+            editor_neovide = "neovide.desktop";
+            editor_helix = "Helix.desktop";
+            editor = editor_neovide;
+
             browser = "brave-browser.desktop";
             image = "org.gnome.eog.desktop";
             video = "mpv.desktop";
