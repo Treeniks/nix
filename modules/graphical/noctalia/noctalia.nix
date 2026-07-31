@@ -87,6 +87,8 @@ let
       blurred_desktop = true;
     };
 
+    osd.kinds.media = false;
+
     bar.default = {
       background_opacity = 0.80;
       font_family = "Roboto";
