@@ -1,4 +1,4 @@
-spawn-at-startup "noctalia-shell"
+spawn-at-startup "noctalia"
 spawn-at-startup "chameleos" "-c" "#FF0020"
 
 
@@ -11,7 +11,9 @@ binds {
 
     Mod+D       { spawn "nemo"; }
     Mod+Space   { spawn "fuzzel"; }
-    Mod+E       { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
+    // not as fast and doesn't have ctrl+p/n out of the box
+    // Mod+Space   { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
+    Mod+E       { spawn "noctalia" "msg" "panel-toggle" "session"; }
     Mod+Q       repeat=false { close-window; }
 
     Mod+H                   { focus-column-or-monitor-left; }
@@ -45,17 +47,17 @@ binds {
     Mod+X                   { focus-workspace-up; }
 
     // The allow-when-locked=true property makes them work even when the session is locked.
-    XF86AudioRaiseVolume allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "increase"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "decrease"; }
-    XF86AudioMute        allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
-    XF86AudioMicMute     allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "muteInput"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "noctalia" "msg" "volume-up"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "noctalia" "msg" "volume-down"; }
+    XF86AudioMute        allow-when-locked=true { spawn "noctalia" "msg" "volume-mute"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn "noctalia" "msg" "mic-mute"; }
 
-    XF86MonBrightnessUp     allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "increase"; }
-    XF86MonBrightnessDown   allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
+    XF86MonBrightnessUp     allow-when-locked=true { spawn "noctalia" "msg" "brightness-up"; }
+    XF86MonBrightnessDown   allow-when-locked=true { spawn "noctalia" "msg" "brightness-down"; }
 
-    XF86AudioPrev   allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "media" "previous"; }
-    XF86AudioPlay   allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "media" "playPause"; }
-    XF86AudioNext   allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "media" "next"; }
+    XF86AudioPrev   allow-when-locked=true { spawn "noctalia" "msg" "media" "previous"; }
+    XF86AudioPlay   allow-when-locked=true { spawn "noctalia" "msg" "media" "play"; }
+    XF86AudioNext   allow-when-locked=true { spawn "noctalia" "msg" "media" "next"; }
 
     Mod+WheelScrollDown         { focus-workspace-down; }
     Mod+WheelScrollUp           { focus-workspace-up; }
@@ -110,7 +112,7 @@ binds {
     // The quit action will show a confirmation dialog to avoid accidental exits.
     Mod+Shift+E { quit; }
 
-    Mod+Shift+Semicolon { spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
+    Mod+Shift+Semicolon { spawn "noctalia" "msg" "session" "lock"; }
     Mod+Shift+P { power-off-monitors; }
 
     Mod+1 { spawn "chamel" "toggle"; }

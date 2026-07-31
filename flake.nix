@@ -22,10 +22,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # TODO should update to v5 at some point
     noctalia = {
-      url = "github:noctalia-dev/noctalia-shell/legacy-v4";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # url = "github:noctalia-dev/noctalia";
+      # inputs.nixpkgs.follows = "nixpkgs";
+
+      # we want binary caching
+      url = "github:noctalia-dev/noctalia/cachix";
     };
 
     apple-silicon = {

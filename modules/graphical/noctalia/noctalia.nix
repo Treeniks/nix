@@ -1,187 +1,141 @@
 { inputs, ... }:
 let
   settings = {
-    general = {
-      clockFormat = "HH:mm:ss";
-
-      enableBlurBehind = true;
-      enableShadows = true;
-      shadowDirection = "center";
+    theme = {
+      # not used because I source from wallpaper,
+      # but in case I don't want it off the wallpaper, it's nice when it's set
+      builtin = "Rosé Pine";
+      source = "wallpaper";
+      wallpaper_scheme = "m3-tonal-spot";
     };
 
-    bar = {
-      density = "default";
-      position = "top";
-      backgroundOpacity = 0.5;
-      displayMode = "always_visible";
-      hideOnOverview = false;
+    shell = {
+      corner_radius_scale = 2.0;
+      font_family = "Roboto Medium";
+      animation.speed = 2.0;
 
-      mouseWheelAction = "workspace";
-      mouseWheelWrap = true;
+      offline_mode = true;
+      polkit_agent = true;
 
-      outerCorners = true;
+      panel = {
+        control_center_position = "center";
+        open_near_click_control_center = true;
+        open_near_click_session = true;
+        open_near_click_wallpaper = true;
+        session_placement = "floating";
+        session_position = "center";
 
-      middleClickAction = "settings";
-      middleClickFollowMouse = false;
-
-      rightClickAction = "none";
-
-      widgets = {
-        left = [
-          { id = "Workspace"; }
-          { id = "ActiveWindow"; }
-        ];
-        center = [
-          {
-            id = "Clock";
-            tooltipFormat = "";
-            formatHorizontal = "dddd yyyy-MM-dd | HH:mm:ss";
-
-            useCustomFont = false;
-          }
-        ];
-        right = [
-          { id = "SystemMonitor"; }
-          { id = "MediaMini"; }
-          { id = "Battery"; }
-          { id = "Brightness"; }
-          {
-            id = "Network";
-            displayMode = "alwaysShow";
-          }
-          {
-            id = "Bluetooth";
-            displayMode = "alwaysShow";
-          }
-          {
-            id = "Volume";
-            displayMode = "alwaysShow";
-          }
-          { id = "Tray"; }
-          { id = "NotificationHistory"; }
-          {
-            id = "ControlCenter";
-            useDistroLogo = true;
-          }
-        ];
+        # not used as wallpaper settings are attached
+        # but I may want to change that
+        wallpaper_position = "center";
       };
-    };
 
-    wallpaper = {
-      enabled = true;
-
-      overviewEnabled = false;
-
-      setWallpaperOnAllMonitors = true;
-      skipStartupTransition = false;
-      transitionType = [
-        "stripes"
-        "honeycomb"
-      ];
-    };
-
-    ui = {
-      boxBorderEnabled = false;
-      panelBackgroundOpacity = 0.8;
-      panelsAttachedToBar = true;
-      fontDefault = "Roboto Medium";
-      fontDefaultScale = 1.1;
-      fontFixed = "Maple Mono";
-      fontFixedScale = 1;
-    };
-
-    notifications = {
-      enabled = true;
-      density = "compact";
-      backgroundOpacity = 0.8;
-    };
-
-    idle = {
-      enabled = true;
-      fadeDuration = 5;
-      screenOffTimeout = 600;
-      lockTimeout = 660;
-      suspendTimeout = 0;
-    };
-
-    sessionMenu = {
-      enableCountdown = false;
-
-      largeButtonsStyle = true;
-      largeButtonsLayout = "single-row";
-
-      position = "center";
-
-      powerOptions = [
+      session.actions = [
+        # variant colors the button
+        # and it's commented out because it's a bit bugged with the shortcut overlay
         {
+          enabled = true;
           action = "lock";
-          enabled = true;
-          keybind = "1";
+          shortcut = "1";
+          # variant = "default";
         }
         {
+          enabled = true;
           action = "logout";
-          enabled = true;
-          keybind = "2";
+          shortcut = "2";
+          # variant = "primary";
         }
         {
+          enabled = true;
           action = "shutdown";
-          enabled = true;
-          keybind = "3";
+          shortcut = "3";
+          # variant = "destructive";
         }
         {
+          enabled = true;
           action = "reboot";
-          enabled = true;
-          keybind = "4";
-        }
-        {
-          action = "rebootToUefi";
-          enabled = true;
-          keybind = "5";
-        }
-
-        {
-          action = "suspend";
-          enabled = false;
-        }
-        {
-          action = "hibernate";
-          enabled = false;
-        }
-        {
-          action = "userspaceReboot";
-          enabled = false;
+          shortcut = "4";
+          # variant = "destructive";
         }
       ];
     };
 
-    nightLight = {
+    control_center = {
+      sidebar = "full";
+      sidebar_section = "full";
+      width = 900;
+
+      shortcuts = [
+        { type = "wifi"; }
+        { type = "bluetooth"; }
+        { type = "nightlight"; }
+        { type = "notification"; }
+        { type = "power_profile"; }
+        { type = "wallpaper"; }
+      ];
+    };
+
+    nightlight = {
       enabled = true;
-      autoSchedule = false;
-      forced = true;
-      nightTemp = "4500";
+      force = true;
     };
 
-    colorSchemes = {
-      darkMode = true;
-      schedulingMode = "off";
-      syncGsettings = true;
-      useWallpaperColors = true;
-      generationMethod = "content";
+    weather.enabled = false;
+
+    lockscreen = {
+      blur_intensity = 0.9;
+      blurred_desktop = true;
     };
 
-    location = {
-      autoLocate = false;
-      use12hourFormat = false;
-      weatherEnabled = false;
-      firstDayOfWeek = 1; # Monday
+    bar.default = {
+      background_opacity = 0.80;
+      font_family = "Roboto";
+      font_weight = 700;
+
+      margin_ends = 0;
+      radius_top_left = 0;
+      radius_top_right = 0;
+      widget_spacing = 12;
+
+      start = [
+        "workspaces"
+        "wallpaper"
+        "active_window"
+      ];
+      center = [
+        "clock"
+        "tray"
+      ];
+      end = [
+        "media"
+        "sysmon"
+        "clipboard"
+        "battery"
+        "brightness"
+        "network"
+        "bluetooth"
+        "volume"
+        "notifications"
+        "control-center"
+        "session"
+      ];
+
+      dead_zone.actions.middle = "settings-open";
     };
 
-    dock.enabled = false;
-    desktopWidgets.enabled = false;
+    widget.clock = {
+      anchor = true;
+      format = "{:%A %F | %H:%M:%S}";
+    };
+    widget.volume = {
+      actions.middle = "exec pavucontrol";
+    };
   };
 in
 {
   flake.nixosModules.noctalia = { lib, ... }: {
+    imports = [ inputs.noctalia.nixosModules.default ];
+
     options = {
       my.noctalia-themeing = lib.mkOption {
         type = lib.types.bool;
@@ -189,10 +143,18 @@ in
     };
 
     config = {
-      networking.networkmanager.enable = true;
-      hardware.bluetooth.enable = true;
-      services.tuned.enable = true;
-      services.upower.enable = true;
+      # cachix binary cache
+      nix.settings = {
+        extra-substituters = [ "https://noctalia.cachix.org" ];
+        extra-trusted-public-keys = [
+          "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+        ];
+      };
+
+      programs.noctalia = {
+        enable = true;
+        recommendedServices.enable = true;
+      };
     };
   };
 
@@ -208,115 +170,21 @@ in
       };
 
       config = {
-        programs.noctalia-shell = {
+        programs.noctalia = {
           enable = true;
-
-          settings = lib.mkMerge [
-            settings
-            (lib.mkIf config.my.noctalia-themeing {
-              # These are theme files exported by noctalia to keep themes of different applications in sync with noctalias colors.
-              # This is a bit scuffed when it comes to nix. Basically, we know where noctalia writes these, and then import them in the respective configs.
-              templates = {
-                enableUserTheming = true;
-
-                activeTemplates = [
-                  # these all have additional configuration related to
-                  # noctalia themeing
-                  {
-                    id = "niri";
-                    enabled = true;
-                  }
-                  {
-                    id = "fuzzel";
-                    enabled = true;
-                  }
-                  {
-                    id = "kitty";
-                    enabled = true;
-                  }
-                  {
-                    id = "yazi";
-                    enabled = true;
-                  }
-                  {
-                    id = "neovim";
-                    enabled = true;
-                  }
-                  {
-                    id = "helix";
-                    enabled = true;
-                  }
-                  # needs to be enabled manually in the settings
-                  # ...I think
-                  {
-                    id = "zed";
-                    enabled = true;
-                  }
-
-                  # I hate these
-                  {
-                    id = "gtk";
-                    enabled = true;
-                  }
-                  {
-                    id = "qt";
-                    enabled = true;
-                  }
-                  {
-                    id = "kcolorscheme";
-                    enabled = true;
-                  }
-
-                  # the rest are not managed by home manager or wrappers
-                  # so this will just work
-                  {
-                    id = "btop";
-                    enabled = true;
-                  }
-                  {
-                    id = "hyprtoolkit";
-                    enabled = true;
-                  }
-                  # TODO waiting for https://github.com/NixOS/nixpkgs/pull/487045
-                  # {
-                  #   id = "steam";
-                  #   enabled = true;
-                  # }
-                ];
-              };
-            })
-          ];
-
-          # we enable/disable user templates based on noctalia-theme settings
-          # so we can define this template always and just have it not activated
-          # when noctalia themeing is disabled
-          user-templates = {
-            config = { };
-            templates = {
-              neovim = {
-                input_path = "${./matugen-template.lua}";
-                output_path = "~/nix/modules/nvim/lua/plugins/catppuccin-matugen.lua";
-                post_hook = "pkill -SIGUSR1 nvim";
-              };
-            };
-          };
+          inherit settings;
         };
-
-        home.activation.removeNvimThemeIfDisabled = lib.mkIf (!config.my.noctalia-themeing) (
-          lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-            rm -f "$HOME/nix/modules/nvim/lua/plugins/catppuccin-matugen.lua"
-          ''
-        );
       };
     };
 
+  # TODO
   # unused in this config
   # due to noctalias rather ugly way of dealing with config files
   # wrappers didn't play nice
-  flake.wrappers.noctalia-shell =
-    { wlib, ... }:
-    {
-      imports = [ wlib.wrapperModules.noctalia-shell ];
-      inherit settings;
-    };
+  # flake.wrappers.noctalia-shell =
+  #   { wlib, ... }:
+  #   {
+  #     imports = [ wlib.wrapperModules.noctalia-shell ];
+  #     inherit settings;
+  #   };
 }
