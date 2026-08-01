@@ -73,6 +73,7 @@ in
       };
       networking.networkmanager.wifi.backend = "iwd";
 
+      hardware.asahi.enable = true;
       # https://github.com/nix-community/nixos-apple-silicon/issues/299#issuecomment-2901508921
       hardware.asahi.peripheralFirmwareDirectory = pkgs.requireFile {
         name = "vendorfw";
