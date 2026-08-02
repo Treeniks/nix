@@ -27,6 +27,7 @@ binds {
     // doesn't work because fuck you discord
     // F21 { spawn "niri-global-keybind" "discord" "F21"; }
     // F22 { spawn "niri-global-keybind" "discord" "F22"; }
+    // F22 { spawn-sh "for i in {1..256}; do niri msg action screenshot-window; wtype -k right; sleep 1.2; done"; }
 
     F23 { spawn "niri-global-keybind" "com.obsproject.Studio" "F23"; }
     F24 { spawn "niri-global-keybind" "com.obsproject.Studio" "F24"; }

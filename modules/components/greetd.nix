@@ -1,0 +1,57 @@
+{ self, ... }:
+let
+  themeName = "Catppuccin-GTK-Lavender-Dark";
+  cursorThemeName = "catppuccin-mocha-maroon-cursors";
+  iconThemeName = "Catppuccin-Mocha";
+in
+{
+  flake.nixosModules.greetdNiriReGreet =
+    {
+      config,
+      pkgs,
+      lib,
+      ...
+    }:
+    let
+      niriPackage = self.wrappers.niri-greetd.wrap {
+        inherit pkgs;
+        extraSettings = (map (include: { inherit include; }) config.my.greetd.niri.extraIncludes);
+      };
+    in
+    {
+      options = {
+        my.greetd.niri = {
+          extraIncludes = lib.mkOption {
+            type = lib.types.listOf lib.types.path;
+            default = [ ];
+            description = ''
+              Same as my.niri.extraIncludes except that it is used for greetd.
+              Useful primarily because the greetd version should be a proper path,
+              whereas we want hot reloading for the normal niri.
+            '';
+          };
+        };
+      };
+
+      config = {
+        programs.regreet = {
+          enable = true;
+          theme.name = themeName;
+          cursorTheme.name = cursorThemeName;
+          iconTheme.name = iconThemeName;
+        };
+
+        services.greetd = {
+          enable = true;
+          settings = {
+            default_session = {
+              # see also https://github.com/NixOS/nixpkgs/blob/1412caf7bf9e660f2f962917c14b1ea1c3bc695e/nixos/modules/programs/regreet.nix#L154
+              command = "${pkgs.dbus}/bin/dbus-run-session ${lib.getExe niriPackage}";
+            };
+          };
+        };
+
+        environment.systemPackages = [ pkgs.gammastep ];
+      };
+    };
+}

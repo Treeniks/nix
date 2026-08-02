@@ -1,7 +1,4 @@
-{
-  pkgs,
-  lib,
-}:
+{ pkgs, lib }:
 pkgs.writeScriptBin "niri-global-keybind" ''
   #!${lib.getExe pkgs.python3}
 

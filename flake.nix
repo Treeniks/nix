@@ -14,7 +14,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     wrappers = {
-      url = "github:BirdeeHub/nix-wrapper-modules";
+      # TODO this is temporary until my PR is merged
+      # so I can use a yazi wrapper
+      url = "github:Treeniks/nix-wrapper-modules/yazi-initlua";
+      # url = "github:BirdeeHub/nix-wrapper-modules";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     catppuccin = {
