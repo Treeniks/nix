@@ -87,6 +87,7 @@
 
       runtimePkgs = with pkgs; [
         rust-analyzer
+        nixfmt
         nixd
         lua-language-server
         vscode-langservers-extracted
