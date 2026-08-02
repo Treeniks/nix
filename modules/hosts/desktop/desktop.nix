@@ -189,6 +189,8 @@ in
       uzdoom
 
       godot
+
+      claude-code
     ];
 
     programs = {
