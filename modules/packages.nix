@@ -140,7 +140,5 @@
 
       chameleos
     ];
-
-    services.hyprpolkitagent.enable = true;
   };
 }
