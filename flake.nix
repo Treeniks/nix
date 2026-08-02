@@ -30,6 +30,7 @@
       # inputs.nixpkgs.follows = "nixpkgs";
 
       # we want binary caching
+      # which also means we can't have `inputs.nixpkgs.follows`
       url = "github:noctalia-dev/noctalia/cachix";
     };
 
