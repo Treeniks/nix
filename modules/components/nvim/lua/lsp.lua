@@ -40,7 +40,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(_)
         vim.keymap.set({ 'n', 'i', 'v' }, '<C-k>', vim.lsp.buf.hover, { desc = 'LSP Hover' })
 
-        vim.keymap.set('n', '<leader>s', vim.lsp.buf.format, { desc = 'LSP Format' })
+        -- not the best keybind, but I used to use '<leader>lf' so my muscle memory kinda works
+        vim.keymap.set('n', '<leader>l', vim.lsp.buf.format, { desc = 'LSP Format' })
         vim.keymap.set({ 'n', 'v', 'i' }, '<S-M-f>', vim.lsp.buf.format, { desc = 'LSP Format' })
         vim.keymap.set('n', '<leader>a', vim.lsp.buf.code_action, { desc = 'LSP Code Action' })
         vim.keymap.set('n', 'gy', vim.lsp.buf.type_definition, { desc = 'LSP Type Definition' })
