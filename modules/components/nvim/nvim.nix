@@ -82,6 +82,7 @@
         nvim-lspconfig
         blink-cmp
         lazydev-nvim
+        vim-rhai
       ];
 
       runtimePkgs = with pkgs; [
