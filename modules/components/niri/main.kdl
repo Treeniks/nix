@@ -8,6 +8,8 @@ binds {
 
     Mod+Return      { spawn "neovide"; }
     Mod+Backspace   { spawn "neovide"; }
+    Mod+T           { spawn "kitty"; }
+    Mod+G           { spawn "brave"; }
 
     Mod+D       { spawn "nemo"; }
     Mod+Space   { spawn "fuzzel"; }
