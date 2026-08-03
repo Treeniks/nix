@@ -1,8 +1,9 @@
 local function git_rel_path()
+    local file = vim.fn.expand('%:p')
     local file_dir = vim.fn.expand('%:p:h')
     local file_name = vim.fn.expand('%:t')
 
-    if vim.fn.filereadable(file_name) == 0 then
+    if vim.fn.filereadable(file) == 0 then
         vim.notify('Buffer has no file', vim.log.levels.WARN)
         return
     end
