@@ -1,3 +1,5 @@
+local all_modes = require('utils').all_modes
+
 local blink = require('blink.cmp')
 local telescope_builtin = require('telescope.builtin')
 local lazydev = require('lazydev')
@@ -23,14 +25,16 @@ vim.keymap.set('n', '<leader>d', function() telescope_builtin.diagnostics({ bufn
     { desc = 'Diagnostic Picker (local)' })
 vim.keymap.set('n', '<leader>D', function() telescope_builtin.diagnostics({ workspace = true }) end,
     { desc = 'Diagnostic Picker (workspace)' })
-vim.keymap.set({ 'n', 'i', 'v' }, '<C-h>', vim.diagnostic.open_float, { desc = 'Diagnostic Float' })
+vim.keymap.set(all_modes, '<C-h>', vim.diagnostic.open_float, { desc = 'Diagnostic Float' })
 
--- TODO I'll probably want some better keybinds for next/prev diagnostic, but I can't use these anymore
--- I'll have to see if the telescope diagnostic picker isn't good enough already
---
--- I've tried vim.diagnostic.jump but it's just way less reliable than [d and ]d and idk why
--- vim.keymap.set('n', '<leader>d', '[d', { desc = 'Prev Diagnostic', remap = true })
--- vim.keymap.set('n', '<leader>f', ']d', { desc = 'Next Diagnositc', remap = true })
+-- I don't love ALT keybinds, so this is more of a trial for now.
+-- Quickfix keybinds and Diagnostic keybinds would ideally be similar,
+-- but `<M-j>` and `<M-k>` are in use by `mini.move`.
+-- Maybe these should also just be swapped?
+vim.keymap.set(all_modes, '<M-h>', function() vim.cmd('normal [d') end, { desc = 'Diagnostic Prev' })
+vim.keymap.set(all_modes, "<M-l>", function() vim.cmd('normal ]d') end, { desc = 'Diagnostic Next' })
+vim.keymap.set(all_modes, '<C-,>', function() vim.cmd('normal [q') end, { desc = 'Quickfix Prev' })
+vim.keymap.set(all_modes, '<C-.>', function() vim.cmd('normal ]q') end, { desc = 'Quickfix Next' })
 
 local lsp_keybinds_group = vim.api.nvim_create_augroup('LspKeybinds', { clear = true })
 
@@ -38,11 +42,11 @@ local lsp_keybinds_group = vim.api.nvim_create_augroup('LspKeybinds', { clear = 
 vim.api.nvim_create_autocmd('LspAttach', {
     group = lsp_keybinds_group,
     callback = function(_)
-        vim.keymap.set({ 'n', 'i', 'v' }, '<C-k>', vim.lsp.buf.hover, { desc = 'LSP Hover' })
+        vim.keymap.set(all_modes, '<C-k>', vim.lsp.buf.hover, { desc = 'LSP Hover' })
 
         -- not the best keybind, but I used to use '<leader>lf' so my muscle memory kinda works
         vim.keymap.set('n', '<leader>l', vim.lsp.buf.format, { desc = 'LSP Format' })
-        vim.keymap.set({ 'n', 'v', 'i' }, '<S-M-f>', vim.lsp.buf.format, { desc = 'LSP Format' })
+        vim.keymap.set(all_modes, '<S-M-f>', vim.lsp.buf.format, { desc = 'LSP Format' })
         vim.keymap.set('n', '<leader>a', vim.lsp.buf.code_action, { desc = 'LSP Code Action' })
         vim.keymap.set('n', 'gy', vim.lsp.buf.type_definition, { desc = 'LSP Type Definition' })
 

@@ -26,7 +26,7 @@ vim.keymap.set(
         vim.cmd('tabnew')
         vim.cmd('terminal')
     end,
-    { desc = 'New Tab' }
+    { desc = 'Tab New' }
 )
 vim.keymap.set(
     all_modes,
@@ -49,17 +49,17 @@ vim.keymap.set(
             vim.cmd('qa!')
         end
     end,
-    { desc = 'Close Tab' }
+    { desc = 'Tab Close' }
 )
 
-vim.keymap.set(all_modes, '<C-Tab>', vim.cmd.tabnext, { desc = 'Next Tab' })
-vim.keymap.set(all_modes, '<C-S-Tab>', vim.cmd.tabprev, { desc = 'Prev Tab' })
+vim.keymap.set(all_modes, '<C-Tab>', vim.cmd.tabnext, { desc = 'Tab Next' })
+vim.keymap.set(all_modes, '<C-S-Tab>', vim.cmd.tabprev, { desc = 'Tab Prev' })
 -- wrapped in pcall because it fails if the tab is the first/last
-vim.keymap.set(all_modes, '<C-<>', function() pcall(vim.cmd.tabmove, '-1') end, { desc = 'Move Tab Left' })
-vim.keymap.set(all_modes, '<C->>', function() pcall(vim.cmd.tabmove, '+1') end, { desc = 'Move Tab Right' })
+vim.keymap.set(all_modes, '<C-<>', function() pcall(vim.cmd.tabmove, '-1') end, { desc = 'Tab Move Left' })
+vim.keymap.set(all_modes, '<C->>', function() pcall(vim.cmd.tabmove, '+1') end, { desc = 'Tab Move Right' })
 
-vim.keymap.set(all_modes, '<C-:>', function() vim.cmd.wincmd('W') end, { desc = 'Focus Previous Window' })
-vim.keymap.set(all_modes, '<C-">', function() vim.cmd.wincmd('w') end, { desc = 'Focus Next Window' })
+vim.keymap.set(all_modes, '<C-:>', function() vim.cmd.wincmd('W') end, { desc = 'Window Focus Prev' })
+vim.keymap.set(all_modes, '<C-">', function() vim.cmd.wincmd('w') end, { desc = 'Window Focus Next' })
 vim.keymap.set(
     all_modes,
     '<C-S-CR>',

@@ -62,12 +62,12 @@ vim.keymap.set('', '<C-b>', '10k')
 
 vim.keymap.set('n', '<ESC>', vim.cmd.nohlsearch)
 
-vim.keymap.set('n', '<leader>n', vim.cmd.tabnew, { desc = 'New Tab' })
-vim.keymap.set('n', '<leader>q', vim.cmd.tabclose, { desc = 'Close Tab' })
-vim.keymap.set('n', '<leader>j', vim.cmd.tabnext, { desc = 'Next Tab' })
-vim.keymap.set('n', '<leader>k', vim.cmd.tabprev, { desc = 'Prev Tab' })
-vim.keymap.set('n', '<leader>J', function() vim.cmd.tabmove('-1') end, { desc = 'Move Tab Left' })
-vim.keymap.set('n', '<leader>K', function() vim.cmd.tabmove('+1') end, { desc = 'Move Tab Right' })
+vim.keymap.set('n', '<leader>n', vim.cmd.tabnew, { desc = 'Tab New' })
+vim.keymap.set('n', '<leader>q', vim.cmd.tabclose, { desc = 'Tab Close' })
+vim.keymap.set('n', '<leader>j', vim.cmd.tabnext, { desc = 'Tab Next' })
+vim.keymap.set('n', '<leader>k', vim.cmd.tabprev, { desc = 'Tab Prev' })
+vim.keymap.set('n', '<leader>J', function() vim.cmd.tabmove('-1') end, { desc = 'Tab Move Left' })
+vim.keymap.set('n', '<leader>K', function() vim.cmd.tabmove('+1') end, { desc = 'Tab Move Right' })
 
 -- normal mode alt keybind
 -- particularly useful when in term mode
