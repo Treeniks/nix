@@ -102,6 +102,8 @@
     };
 
     home.packages = with pkgs; [
+      emacs-pgtk
+
       # debug stuff
       vulkan-tools
       sdl-jstest # testing joysticks with sdl
