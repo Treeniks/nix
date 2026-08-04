@@ -198,6 +198,11 @@ window-rule {
     background-effect { blur true; }
 }
 
+window-rule {
+    match app-id="^dev.zed.Zed$"
+    background-effect { blur true; }
+}
+
 screenshot-path "~/Pictures/Screenshots/Screenshot %Y-%m-%d %H.%M.%S.png"
 
 environment {
