@@ -63,6 +63,7 @@
         ]
       ))
       julia
+      pandoc
 
       # nix
       nixfmt
