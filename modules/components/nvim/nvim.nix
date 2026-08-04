@@ -37,6 +37,12 @@
         data = with pkgs.vimPlugins; [
           catppuccin-nvim
           rose-pine
+          tokyonight-nvim
+          nightfox-nvim
+          everforest
+          kanagawa-nvim
+          material-nvim
+          monokai-pro-nvim
         ];
       };
 
