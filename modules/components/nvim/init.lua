@@ -81,4 +81,4 @@ require('sublime')
 require('terminal')
 require('treesitter')
 
-vim.cmd.colorscheme('rose-pine')
+require('colorscheme')
