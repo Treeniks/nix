@@ -76,6 +76,8 @@ in
         self.packages.${pkgs.stdenv.hostPlatform.system}.yazi
         pkgs.starship
         pkgs.zoxide
+        pkgs.eza
+        pkgs.bat
       ];
 
       abbreviations = shellAbbrs;
