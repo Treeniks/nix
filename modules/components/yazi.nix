@@ -34,12 +34,12 @@ let
   '';
 in
 {
-  # we use the home-manager module instead of the wrapper for two reasons:
-  # 1. I couldn't be bothered manually setting up the catppuccin theme.
-  #    I should do that someday anyways, just so the wrapper is themed, but it doesn't matter too much.
-  # 2. Noctalia dynamic themeing doesn't work with the wrapper,
-  #    as yazi doesn't seem to be very flexible when it comes to theme locations.
-  flake.homeModules.yazi = {
+  den.aspects.yazi.homeManager = {
+    # we use the home-manager module instead of the wrapper for two reasons:
+    # 1. I couldn't be bothered manually setting up the catppuccin theme.
+    #    I should do that someday anyways, just so the wrapper is themed, but it doesn't matter too much.
+    # 2. Noctalia dynamic themeing doesn't work with the wrapper,
+    #    as yazi doesn't seem to be very flexible when it comes to theme locations.
     catppuccin.yazi.enable = true;
     programs.yazi = {
       enable = true;

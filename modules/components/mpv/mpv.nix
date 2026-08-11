@@ -1,6 +1,6 @@
 { self, ... }:
 {
-  flake.homeModules.mpv = {
+  den.aspects.mpv.homeManager = {
     imports = [ self.wrappers.mpv.install ];
     wrappers.mpv.enable = true;
   };

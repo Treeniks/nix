@@ -1,6 +1,6 @@
 { self, ... }:
 {
-  flake.homeModules.neovim = {
+  den.aspects.neovim.homeManager = {
     imports = [ self.wrappers.neovim.install ];
     wrappers.neovim = {
       enable = true;

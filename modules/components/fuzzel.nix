@@ -1,6 +1,6 @@
 { self, ... }:
 {
-  flake.homeModules.fuzzel = {
+  den.aspects.fuzzel.homeManager = {
     imports = [ self.wrappers.fuzzel.install ];
     wrappers.fuzzel.enable = true;
   };

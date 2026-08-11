@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.fonts = { pkgs, ... }: {
+  den.aspects.fonts.nixos = { pkgs, ... }: {
     fonts.enableDefaultPackages = true;
     fonts.packages = with pkgs; [
       # probably already included in default packages

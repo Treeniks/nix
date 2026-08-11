@@ -122,6 +122,9 @@ binds {
     Mod+3 { spawn "chamel" "clear"; }
     Mod+4 { spawn "chamel" "clear-and-deactivate"; }
     Mod+5 { spawn "sh" "-c" "pkill chameleos; sleep 1; chameleos"; }
+
+    // Ctrl+m { spawn "sh" "-c" "wtype -k Delete; wtype -k Delete; wtype -k Home"; }
+    // Ctrl+Comma { spawn "sh" "-c" "wtype -k Insert; wtype -k Insert; wtype -k End"; }
 }
 
 layout {

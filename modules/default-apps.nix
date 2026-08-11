@@ -1,9 +1,9 @@
 {
-  flake.nixosModules.defaultApps = { pkgs, ... }: {
+  den.aspects.defaultApps.nixos = {
     environment.sessionVariables.EDITOR = "nvim";
   };
 
-  flake.homeModules.defaultAppsGui = {
+  den.aspects.defaultAppsGui.homeManager = {
     xdg.mimeApps = {
       enable = true;
       defaultApplications =

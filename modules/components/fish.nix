@@ -45,24 +45,26 @@ let
   '';
 in
 {
-  flake.nixosModules.fish = {
-    programs.fish.enable = true;
-  };
+  den.aspects.fish = {
+    nixos = {
+      programs.fish.enable = true;
+    };
 
-  flake.homeModules.fish = {
-    programs.fish = {
-      enable = true;
+    homeManager = {
+      programs.fish = {
+        enable = true;
 
-      shellInit = ''
-        fish_add_path -g "$HOME/.cargo/bin/"
-      '';
+        shellInit = ''
+          fish_add_path -g "$HOME/.cargo/bin/"
+        '';
 
-      inherit interactiveShellInit;
-      inherit shellAbbrs;
-      inherit shellAliases;
+        inherit interactiveShellInit;
+        inherit shellAbbrs;
+        inherit shellAliases;
 
-      functions = {
-        yy = yaziFunction;
+        functions = {
+          yy = yaziFunction;
+        };
       };
     };
   };

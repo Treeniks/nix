@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.gpg = { pkgs, ... }: {
+  den.aspects.gpg.nixos = { pkgs, ... }: {
     programs = {
       gnupg.agent = {
         enable = true;

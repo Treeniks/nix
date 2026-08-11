@@ -2,7 +2,7 @@
 # but it's hard to disable until this gets solved:
 # https://github.com/NixOS/nixfmt/issues/91
 {
-  flake.nixosModules.pipewireVirtualSurround =
+  den.aspects.pipewireVirtualSurround.nixos =
     let
       # TODO
       # we currently just assume that hrir files are located at this path

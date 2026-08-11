@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.virtualisation = { pkgs, ... }: {
+  den.aspects.virtualisation.nixos = { pkgs, ... }: {
     virtualisation = {
       containers.enable = true;
       podman = {
@@ -23,7 +23,7 @@
     services.samba.enable = true;
   };
 
-  flake.nixosModules.virtualisationGui = { pkgs, ... }: {
+  den.aspects.virtualisationGui.nixos = { pkgs, ... }: {
     virtualisation.spiceUSBRedirection.enable = true;
     environment.systemPackages = [ pkgs.spice-gtk ];
 

@@ -7,7 +7,8 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
-    import-tree.url = "github:vic/import-tree";
+    den.url = "github:denful/den";
+    import-tree.url = "github:denful/import-tree";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -51,6 +52,8 @@
       imports = [
         inputs.home-manager.flakeModules.home-manager
         inputs.wrappers.flakeModules.wrappers
+        inputs.den.flakeModule
+
         (inputs.import-tree ./modules)
       ];
 

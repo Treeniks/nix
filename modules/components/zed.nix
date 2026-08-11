@@ -87,9 +87,9 @@ let
   ];
 in
 {
-  # TODO replace with a wrapper and have the settings be editable using zed's GUI
-  # similar to how niri and neovim are set up
-  flake.homeModules.zed = {
+  den.aspects.zed.homeManager = {
+    # TODO replace with a wrapper and have the settings be editable using zed's GUI
+    # similar to how niri and neovim are set up
     catppuccin.zed.enable = true;
     programs.zed-editor = {
       enable = true;

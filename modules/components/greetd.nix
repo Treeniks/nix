@@ -5,7 +5,7 @@ let
   iconThemeName = "Catppuccin-Mocha";
 in
 {
-  flake.nixosModules.greetdNiriReGreet =
+  den.aspects.greetdNiriReGreet.nixos =
     {
       config,
       pkgs,

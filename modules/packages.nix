@@ -1,102 +1,104 @@
 {
-  flake.nixosModules.commonPackages = { pkgs, ... }: {
-    programs = {
-      firejail.enable = true;
-      nix-index.enable = true;
-    };
-
-    environment.systemPackages = with pkgs; [
-      man-pages
-      man-pages-posix
-    ];
-  };
-
-  flake.homeModules.commonPackages = { pkgs, ... }: {
-    programs = {
-      git.enable = true;
-
-      bat.enable = true;
-      eza.enable = true;
-
-      starship.enable = true;
-      zoxide = {
-        enable = true;
-        enableFishIntegration = true;
-        options = [ "--cmd d" ];
+  den.aspects.commonPackages = {
+    nixos = { pkgs, ... }: {
+      programs = {
+        firejail.enable = true;
+        nix-index.enable = true;
       };
 
-      btop.enable = true;
-
-      direnv = {
-        enable = true;
-        enableFishIntegration = true;
-        nix-direnv.enable = true;
-      };
+      environment.systemPackages = with pkgs; [
+        man-pages
+        man-pages-posix
+      ];
     };
 
-    home.packages = with pkgs; [
-      # llvm
-      llvm
-      (lib.hiPrio clang) # take prio over gcc
-      clang-tools
-      lld
-      lldb
+    homeManager = { pkgs, ... }: {
+      programs = {
+        git.enable = true;
 
-      # dev (tools)
-      taplo
-      pre-commit
-      gnumake
-      just
+        bat.enable = true;
+        eza.enable = true;
 
-      # dev (languages)
-      gcc
-      gdb
-      tree-sitter
-      deno
-      mono
-      nodejs
-      (python3.withPackages (
-        python-pkgs: with python-pkgs; [
-          requests
-          dbus
-          pip
-        ]
-      ))
-      julia
-      pandoc
+        starship.enable = true;
+        zoxide = {
+          enable = true;
+          enableFishIntegration = true;
+          options = [ "--cmd d" ];
+        };
 
-      # nix
-      nixfmt
-      nixd
+        btop.enable = true;
 
-      # rust
-      rustup
-      cargo-edit
-      mdbook
+        direnv = {
+          enable = true;
+          enableFishIntegration = true;
+          nix-direnv.enable = true;
+        };
+      };
 
-      # cli
-      killall
-      wget
-      ripgrep
-      ouch
-      ffmpeg
-      net-tools
-      usbutils
+      home.packages = with pkgs; [
+        # llvm
+        llvm
+        (lib.hiPrio clang) # take prio over gcc
+        clang-tools
+        lld
+        lldb
 
-      # tui
-      gitu
+        # dev (tools)
+        taplo
+        pre-commit
+        gnumake
+        just
 
-      # TeX/typst
-      texliveFull
-      inkscape # used by tex's svg package
-      typst
+        # dev (languages)
+        gcc
+        gdb
+        tree-sitter
+        deno
+        mono
+        nodejs
+        (python3.withPackages (
+          python-pkgs: with python-pkgs; [
+            requests
+            dbus
+            pip
+          ]
+        ))
+        julia
+        pandoc
 
-      # misc
-      proton-vpn-cli
-    ];
+        # nix
+        nixfmt
+        nixd
+
+        # rust
+        rustup
+        cargo-edit
+        mdbook
+
+        # cli
+        killall
+        wget
+        ripgrep
+        ouch
+        ffmpeg
+        net-tools
+        usbutils
+
+        # tui
+        gitu
+
+        # TeX/typst
+        texliveFull
+        inkscape # used by tex's svg package
+        typst
+
+        # misc
+        proton-vpn-cli
+      ];
+    };
   };
 
-  flake.homeModules.commonPackagesGui = { pkgs, ... }: {
+  den.aspects.commonPackagesGui.homeManager = { pkgs, ... }: {
     programs = {
       neovide.enable = true;
       obsidian.enable = true;

@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.pipewire = {
+  den.aspects.pipewire.nixos = {
     services.pipewire = {
       enable = true;
 
@@ -31,7 +31,7 @@
     };
   };
 
-  flake.nixosModules.pipewireClockRates = {
+  den.aspects.pipewireClockRates.nixos = {
     services.pipewire = {
       extraConfig.pipewire = {
         "10-rates" = {
@@ -48,7 +48,7 @@
     };
   };
 
-  flake.nixosModules.pipewireVBCable = {
+  den.aspects.pipewireVBCable.nixos = {
     services.pipewire = {
       extraConfig.pipewire = {
         # loopback cable

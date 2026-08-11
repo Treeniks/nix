@@ -44,7 +44,7 @@ let
   };
 in
 {
-  flake.homeModules.helix = {
+  den.aspects.helix.homeManager = {
     imports = [ self.wrappers.helix.install ];
     wrappers.helix.enable = true;
   };

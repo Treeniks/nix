@@ -1,32 +1,20 @@
-{ self, ... }:
+{ den, ... }:
 {
-  flake.nixosModules.stackBase = {
-    imports = [
-      self.nixosModules.common
-      self.nixosModules.commonPackages
-      self.nixosModules.defaultApps
+  den.aspects.stackBase.includes = [
+    den.aspects.common
+    den.aspects.commonPackages
+    den.aspects.defaultApps
 
-      # we have fonts here, as they may be used for things like TeX
-      # (so they're not exclusive to gui installations)
-      self.nixosModules.fonts
-      self.nixosModules.gpg
-      self.nixosModules.virtualisation
+    # we have fonts here, as they may be used for things like TeX
+    # (so they're not exclusive to gui installations)
+    den.aspects.fonts
+    den.aspects.gpg
+    den.aspects.virtualisation
 
-      self.nixosModules.theme
-      self.nixosModules.fish
-    ];
-  };
-
-  flake.homeModules.stackBase = {
-    imports = [
-      self.homeModules.common
-      self.homeModules.commonPackages
-
-      self.homeModules.theme
-      self.homeModules.fish
-      self.homeModules.neovim
-      self.homeModules.helix
-      self.homeModules.yazi
-    ];
-  };
+    den.aspects.theme
+    den.aspects.fish
+    den.aspects.neovim
+    den.aspects.helix
+    den.aspects.yazi
+  ];
 }

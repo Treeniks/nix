@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.homeModules.sublime = { pkgs, ... }: {
+  den.aspects.sublime.homeManager = { pkgs, ... }: {
     home.packages = with pkgs; [
       # sublime4 is broken because of openssl shit
       sublime4-dev

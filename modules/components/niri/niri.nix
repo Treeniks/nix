@@ -14,7 +14,7 @@ let
     ];
 in
 {
-  flake.nixosModules.niri =
+  den.aspects.niri.nixos =
     {
       config,
       pkgs,

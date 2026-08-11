@@ -1,48 +1,31 @@
-{ self, ... }:
+{ den, ... }:
 {
-  flake.nixosModules.stackGui = {
-    imports = [
-      self.nixosModules.commonGui
-      self.nixosModules.stackPipewire
+  den.aspects.stackPipewire.includes = [
+    den.aspects.pipewire
+    den.aspects.pipewireClockRates
+    den.aspects.pipewireVBCable
+    den.aspects.pipewireVirtualSurround
+  ];
 
-      self.nixosModules.niri
-      self.nixosModules.greetdNiriReGreet
-      self.nixosModules.virtualisationGui
+  den.aspects.stackGui.includes = [
+    den.aspects.commonGui
+    den.aspects.commonPackagesGui
+    den.aspects.stackPipewire
+    den.aspects.defaultAppsGui
+    den.aspects.virtualisationGui
 
-      self.nixosModules.noctalia
-      self.nixosModules.nemo
+    den.aspects.niri
+    den.aspects.greetdNiriReGreet
 
-      self.nixosModules.gtkqtTheme
-      self.nixosModules.noctaliaDynamicTheme
-    ];
-  };
+    den.aspects.noctalia
+    den.aspects.fuzzel
+    den.aspects.kitty
+    den.aspects.nemo
+    den.aspects.mpv
+    den.aspects.sublime
+    den.aspects.zed
 
-  flake.nixosModules.stackPipewire = {
-    imports = [
-      self.nixosModules.pipewire
-      self.nixosModules.pipewireClockRates
-      self.nixosModules.pipewireVBCable
-      self.nixosModules.pipewireVirtualSurround
-    ];
-  };
-
-  flake.homeModules.stackGui = {
-    imports = [
-      self.homeModules.commonGui
-      self.homeModules.commonPackagesGui
-      self.homeModules.defaultAppsGui
-
-      self.homeModules.mpv
-      self.homeModules.fuzzel
-      self.homeModules.kitty
-      self.homeModules.sublime
-      self.homeModules.zed
-
-      self.homeModules.noctalia
-      self.homeModules.nemo
-
-      self.homeModules.gtkqtTheme
-      self.homeModules.noctaliaDynamicTheme
-    ];
-  };
+    den.aspects.gtkqtTheme
+    den.aspects.noctaliaDynamicTheme
+  ];
 }

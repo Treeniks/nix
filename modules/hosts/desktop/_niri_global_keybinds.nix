@@ -1,6 +1,6 @@
-{ pkgs, lib }:
+{ pkgs }:
 pkgs.writeScriptBin "niri-global-keybind" ''
-  #!${lib.getExe pkgs.python3}
+  #!${pkgs.lib.getExe pkgs.python3}
 
   import subprocess
   import json
@@ -23,7 +23,7 @@ pkgs.writeScriptBin "niri-global-keybind" ''
       exit(1)
 
   run(["niri", "msg", "action", "focus-window", "--id", str(obs_id)])
-  run(["${lib.getExe pkgs.wtype}", "-k", sys.argv[2]])
+  run(["${pkgs.lib.getExe pkgs.wtype}", "-k", sys.argv[2]])
   try:
       prev_focus_id = focused_window["id"]
       run(["niri", "msg", "action", "focus-window", "--id", str(prev_focus_id)])

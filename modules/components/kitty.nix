@@ -55,7 +55,7 @@ let
   };
 in
 {
-  flake.homeModules.kitty = {
+  den.aspects.kitty.homeManager = {
     imports = [ self.wrappers.kitty.install ];
     wrappers.kitty.enable = true;
   };
