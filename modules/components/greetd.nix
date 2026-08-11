@@ -1,9 +1,4 @@
-{ self, ... }:
-let
-  themeName = "adw-gtk3";
-  cursorThemeName = "catppuccin-mocha-maroon-cursors";
-in
-{
+{ self, ... }: {
   den.aspects.greetdNiriReGreet.nixos =
     {
       config,
@@ -33,16 +28,20 @@ in
       };
 
       config = {
-        environment.systemPackages = [
-          pkgs.adw-gtk3
-          pkgs.gammastep
-        ];
+        environment.systemPackages = [ pkgs.gammastep ];
 
         services.displayManager.regreet = {
           enable = true;
-          theme.name = themeName;
+
           settings.GTK.application_prefer_dark_theme = true;
-          cursorTheme.name = cursorThemeName;
+          theme = {
+            name = "adw-gtk3";
+            package = pkgs.adw-gtk3;
+          };
+          cursorTheme = {
+            name = "catppuccin-mocha-maroon-cursors";
+            package = pkgs.catppuccin-cursors.mochaMaroon;
+          };
         };
 
         services.greetd = {

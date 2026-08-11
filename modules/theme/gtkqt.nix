@@ -1,13 +1,13 @@
 {
   den.aspects.gtkqtTheme = {
-    nixos = { pkgs, ... }: {
-      environment.systemPackages = [ pkgs.adw-gtk3 ];
-    };
-
     homeManager = { pkgs, ... }: {
       # ===== GTK =====
       gtk = {
         enable = true;
+        iconTheme = {
+          name = "Papirus-Dark";
+          package = pkgs.papirus-icon-theme;
+        };
         colorScheme = "dark";
 
         gtk2.force = true;

@@ -26,11 +26,7 @@
   };
 
   den.aspects.gtkNoctalia = {
-    nixos = { pkgs, ... }: {
-      environment.systemPackages = [ pkgs.adw-gtk3 ];
-    };
-
-    homeManager = {
+    homeManager = { pkgs, ... }: {
       programs.noctalia.settings.theme.templates.builtin_ids = [
         "gtk3"
         "gtk4"
@@ -38,7 +34,10 @@
 
       gtk = {
         enable = true;
-        theme.name = "adw-gtk3";
+        theme = {
+          name = "adw-gtk3";
+          package = pkgs.adw-gtk3;
+        };
       };
     };
   };
