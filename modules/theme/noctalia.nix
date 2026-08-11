@@ -3,6 +3,7 @@
   den.aspects.noctaliaDynamicTheme = {
     includes = [
       den.aspects.niriNoctalia
+      den.aspects.gtkNoctalia
       den.aspects.fuzzelNoctalia
       den.aspects.kittyNoctalia
       den.aspects.yaziNoctalia
@@ -22,6 +23,24 @@
 
   den.aspects.niriNoctalia.homeManager = {
     programs.noctalia.settings.theme.templates.builtin_ids = [ "niri" ];
+  };
+
+  den.aspects.gtkNoctalia = {
+    nixos = { pkgs, ... }: {
+      environment.systemPackages = [ pkgs.adw-gtk3 ];
+    };
+
+    homeManager = {
+      programs.noctalia.settings.theme.templates.builtin_ids = [
+        "gtk3"
+        "gtk4"
+      ];
+
+      gtk = {
+        enable = true;
+        theme.name = "adw-gtk3";
+      };
+    };
   };
 
   den.aspects.fuzzelNoctalia.homeManager = {

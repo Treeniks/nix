@@ -1,21 +1,13 @@
-{ self, ... }:
 {
   den.aspects.gtkqtTheme = {
     nixos = { pkgs, ... }: {
-      environment.systemPackages = with pkgs; [
-        (pkgs.magnetic-catppuccin-gtk.override { accent = [ "lavender" ]; })
-        catppuccin-cursors.mochaLavender
-        catppuccin-cursors.mochaMaroon
-        self.packages.${pkgs.stdenv.hostPlatform.system}.fkorpsvart-catppuccin-icons
-      ];
+      environment.systemPackages = [ pkgs.adw-gtk3 ];
     };
 
     homeManager = { pkgs, ... }: {
       # ===== GTK =====
       gtk = {
         enable = true;
-        theme.name = "Catppuccin-GTK-Lavender-Dark";
-        iconTheme.name = "Catppuccin-Mocha";
         colorScheme = "dark";
 
         gtk2.force = true;

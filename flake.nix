@@ -1,7 +1,7 @@
 {
   inputs = {
-    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
     nixpkgs.url = "https://flakehub.com/f/DeterminateSystems/nixpkgs-weekly/0.1";
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";

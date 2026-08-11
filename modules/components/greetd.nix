@@ -1,8 +1,7 @@
 { self, ... }:
 let
-  themeName = "Catppuccin-GTK-Lavender-Dark";
+  themeName = "adw-gtk3";
   cursorThemeName = "catppuccin-mocha-maroon-cursors";
-  iconThemeName = "Catppuccin-Mocha";
 in
 {
   den.aspects.greetdNiriReGreet.nixos =
@@ -34,11 +33,16 @@ in
       };
 
       config = {
-        programs.regreet = {
+        environment.systemPackages = [
+          pkgs.adw-gtk3
+          pkgs.gammastep
+        ];
+
+        services.displayManager.regreet = {
           enable = true;
           theme.name = themeName;
+          settings.GTK.application_prefer_dark_theme = true;
           cursorTheme.name = cursorThemeName;
-          iconTheme.name = iconThemeName;
         };
 
         services.greetd = {
@@ -50,8 +54,6 @@ in
             };
           };
         };
-
-        environment.systemPackages = [ pkgs.gammastep ];
       };
     };
 }

@@ -1,6 +1,8 @@
-{ inputs, ... }:
+{ inputs, den, ... }:
 {
   den.aspects.theme = {
+    includes = [ den.aspects.cursors ];
+
     nixos = {
       imports = [ inputs.catppuccin.nixosModules.catppuccin ];
 
@@ -20,9 +22,25 @@
         enable = true;
         accent = "lavender";
         flavor = "mocha";
-
-        cursors.enable = true;
       };
+    };
+  };
+
+  den.aspects.cursors = {
+    # NOTE: Cursor theme is also set inside niri config
+    # and often deviates from the global catppuccin settings above.
+    # Makes cursors switch theme occassionally but I don't care enough to fix it.
+
+    nixos = { pkgs, ... }: {
+      environment.systemPackages = with pkgs; [
+        catppuccin-cursors.mochaLavender
+        catppuccin-cursors.mochaMaroon
+      ];
+    };
+
+    homeManage = {
+      home.pointerCursor.enable = true;
+      catppuccin.cursors.enable = true;
     };
   };
 }
