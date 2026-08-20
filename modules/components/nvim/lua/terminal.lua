@@ -22,7 +22,7 @@ vim.api.nvim_create_autocmd('TermRequest', {
 
             vim.api.nvim_buf_set_var(event.buf, 'last_osc7_payload', dir)
             if vim.api.nvim_get_current_buf() == event.buf then
-                vim.cmd.tcd(dir)
+                vim.cmd.lcd(dir)
             end
         end
     end,
@@ -34,7 +34,7 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'WinEnter', 'DirChanged' }, {
         if vim.b.last_osc7_payload ~= nil
             and vim.fn.isdirectory(vim.b.last_osc7_payload) == 1
         then
-            vim.cmd.tcd(vim.b.last_osc7_payload)
+            vim.cmd.lcd(vim.b.last_osc7_payload)
         end
     end,
 })
