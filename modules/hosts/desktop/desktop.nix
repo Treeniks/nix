@@ -227,6 +227,15 @@ in
         };
       };
 
+      gtk.gtk3.bookmarks = [
+        "file:///mnt/d d"
+        "file:///mnt/e e"
+        "file:///mnt/f f"
+        "file:///mnt/q q"
+        "file:///home/suteki/Games Games"
+        "file:///home/suteki/.local/share/Archipelago Archipelago"
+      ];
+
       home = {
         username = "suteki";
         homeDirectory = "/home/suteki";

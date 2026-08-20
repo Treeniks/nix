@@ -81,6 +81,11 @@
           "WebBrowser"
         ];
       };
+
+      gtk.gtk3.bookmarks = [
+        "file:///home/suteki/Documents Documents"
+        "file:///home/suteki/Downloads Downloads"
+      ];
     };
   };
 }
