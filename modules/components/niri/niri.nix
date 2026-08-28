@@ -55,6 +55,8 @@ in
         };
 
         environment.systemPackages = runtimePkgs pkgs;
+
+        services.displayManager.defaultSession = "niri";
       };
     };
 
