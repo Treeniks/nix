@@ -71,6 +71,11 @@ in
       ];
       systemd.services.dlm.wantedBy = [ "multi-user.target" ];
 
+      services.openssh = {
+        enable = true;
+        settings.PasswordAuthentication = false;
+      };
+
       system.stateVersion = "26.05";
     };
 
