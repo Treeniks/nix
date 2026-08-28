@@ -24,7 +24,6 @@ in
       imports = [
         ./_hardware.nix
         inputs.apple-silicon.nixosModules.apple-silicon-support
-        { nixpkgs.overlays = [ self.overlays.asahi-fairydust ]; }
       ];
 
       my = {
@@ -53,6 +52,7 @@ in
       networking.networkmanager.wifi.backend = "iwd";
 
       hardware.asahi.enable = true;
+      hardware.asahi.overlay = self.overlays.asahi-fairydust;
       # https://github.com/nix-community/nixos-apple-silicon/issues/299#issuecomment-2901508921
       hardware.asahi.peripheralFirmwareDirectory = pkgs.requireFile {
         name = "vendorfw";
@@ -81,5 +81,15 @@ in
         stateVersion = "26.05";
       };
     };
+  };
+
+  flake.nixosConfigurations."${hostname}-cross" = self.nixosConfigurations.${hostname}.extendModules {
+    modules = [
+      {
+        # cross compilation from x86-64 desktop
+        # nix build --print-out-paths .#nixosConfigurations.houjicha-nixos-cross.config.boot.kernelPackages.kernel
+        hardware.asahi.pkgsSystem = "x86_64-linux";
+      }
+    ];
   };
 }
