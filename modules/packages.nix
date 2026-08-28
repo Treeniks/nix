@@ -9,6 +9,7 @@
       environment.systemPackages = with pkgs; [
         man-pages
         man-pages-posix
+        exfatprogs
       ];
     };
 
@@ -73,6 +74,7 @@
         # rust
         rustup
         cargo-edit
+        cargo-flamegraph
         mdbook
 
         # cli
@@ -81,11 +83,18 @@
         ripgrep
         ouch
         ffmpeg
+        mkvtoolnix
         net-tools
         usbutils
+        yt-dlp
+        tree
+        jq
+        file
+        dust
 
         # tui
         gitu
+        tokei
 
         # TeX/typst
         texliveFull
@@ -115,6 +124,7 @@
       wl-clipboard-rs
       xwininfo
       hyprpicker
+      wtype
 
       # audio
       pavucontrol
@@ -142,6 +152,7 @@
       signal-desktop
       eduvpn-client
       appimage-run
+      gparted
 
       chameleos
     ];
