@@ -21,6 +21,9 @@ in
     nixos = { pkgs, ... }: {
       imports = [ ./_hardware.nix ];
 
+      # cross compile the asahi install on laptop
+      boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
       nixpkgs.overlays = [
         (final: prev: {
           # having some high-use apps be optimized a bit is a niceness I miss from Gentoo

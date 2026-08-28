@@ -92,8 +92,11 @@ in
     modules = [
       {
         # cross compilation from x86-64 desktop
-        # nix build --print-out-paths .#nixosConfigurations.houjicha-nixos-cross.config.boot.kernelPackages.kernel
+        # nixos-rebuild switch --flake .#houjicha-nixos --target-host houjicha-nixos --build-host localhost
         hardware.asahi.pkgsSystem = "x86_64-linux";
+
+        # to build just the kernel (doesn't help since it's not the only package that is required here)
+        # nix build --print-out-paths .#nixosConfigurations.houjicha-nixos-cross.config.boot.kernelPackages.kernel
       }
     ];
   };
