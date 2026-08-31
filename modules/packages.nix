@@ -1,4 +1,4 @@
-{
+{ inputs, ... }: {
   den.aspects.commonPackages = {
     nixos = { pkgs, ... }: {
       programs = {
@@ -154,7 +154,7 @@
       appimage-run
       gparted
 
-      chameleos
+      inputs.chameleos.packages.${pkgs.stdenv.hostPlatform.system}.chameleos
     ];
   };
 }

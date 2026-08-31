@@ -45,6 +45,12 @@
       url = "github:Treeniks/Vinimum";
       flake = false;
     };
+
+    chameleos = {
+      url = "github:Treeniks/chameleos";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
+    };
   };
 
   outputs =
