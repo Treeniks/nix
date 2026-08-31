@@ -1,5 +1,6 @@
 {
   den,
+  inputs,
   ...
 }:
 let
@@ -12,16 +13,27 @@ in
   den.homes.${system}."suteki@${hostname}" = { };
   den.aspects.suteki.provides.${hostname}.includes = [ den.aspects.${hostname} ];
 
+  den.aspects.cachyos-kernel = {
+    nixos = { pkgs, ... }: {
+      nix.settings = {
+        extra-substituters = [ "https://attic.xuyh0120.win/lantian" ];
+        extra-trusted-public-keys = [ "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=" ];
+      };
+      boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-zen4;
+      nixpkgs.overlays = [ inputs.nix-cachyos-kernel.overlays.pinned ];
+    };
+  };
+
   den.aspects.${hostname} = {
     includes = [
+      den.aspects.cachyos-kernel
+
       den.aspects.stackBase
       den.aspects.stackGui
     ];
 
     nixos = { pkgs, ... }: {
       imports = [ ./_hardware.nix ];
-
-      boot.kernelPackages = pkgs.linuxPackages_latest;
 
       # cross compile the asahi install on laptop
       boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
