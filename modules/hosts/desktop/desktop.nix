@@ -21,6 +21,8 @@ in
     nixos = { pkgs, ... }: {
       imports = [ ./_hardware.nix ];
 
+      boot.kernelPackages = pkgs.linuxPackages_latest;
+
       # cross compile the asahi install on laptop
       boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
