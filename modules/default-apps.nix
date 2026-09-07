@@ -31,6 +31,10 @@
           "text/x-python" = editor;
 
           "text/html" = browser;
+          "x-scheme-handler/http" = browser;
+          "x-scheme-handler/https" = browser;
+          "x-scheme-handler/about" = browser;
+          "x-scheme-handler/unknown" = browser;
 
           "image/bmp" = image;
           "image/gif" = image;
