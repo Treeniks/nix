@@ -1,6 +1,8 @@
 {
   inputs = {
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1";
+    # stupid bug that makes steam and other popups misbehave
+    nixpkgs-xwayland-satellite.url = "https://flakehub.com/f/NixOS/nixpkgs/=0.2605.1011966";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
 

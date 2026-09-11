@@ -6,7 +6,8 @@
 let
   runtimePkgs =
     pkgs: with pkgs; [
-      xwayland-satellite
+      (import inputs.nixpkgs-xwayland-satellite { inherit (pkgs.stdenv.hostPlatform) system; })
+      .xwayland-satellite
 
       xdg-desktop-portal
       xdg-desktop-portal-gtk

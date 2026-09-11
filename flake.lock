@@ -481,6 +481,20 @@
         "type": "github"
       }
     },
+    "nixpkgs-xwayland-satellite": {
+      "locked": {
+        "lastModified": 1786711500,
+        "narHash": "sha256-QvnceIGTBeDvDd9oCn+GvdsnkquliuwbVgpiRH68qaQ=",
+        "rev": "02e08985a27c65ffd33d434eeb2e660a2e4dc84d",
+        "revCount": 1011966,
+        "type": "tarball",
+        "url": "https://api.flakehub.com/f/pinned/NixOS/nixpkgs/0.2605.1011966%2Brev-02e08985a27c65ffd33d434eeb2e660a2e4dc84d/01a003f1-59bd-7782-b0ed-5cbf8697f61e/source.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://flakehub.com/f/NixOS/nixpkgs/%3D0.2605.1011966"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1787498568,
@@ -569,6 +583,7 @@
         "import-tree": "import-tree",
         "nix-cachyos-kernel": "nix-cachyos-kernel",
         "nixpkgs": "nixpkgs_4",
+        "nixpkgs-xwayland-satellite": "nixpkgs-xwayland-satellite",
         "noctalia": "noctalia",
         "sublime-vinimum": "sublime-vinimum",
         "wrappers": "wrappers"
