@@ -43,6 +43,9 @@
           kanagawa-nvim
           material-nvim
           monokai-pro-nvim
+          dracula-nvim
+          oxocarbon-nvim
+          fleet-theme-nvim
         ];
       };
 
