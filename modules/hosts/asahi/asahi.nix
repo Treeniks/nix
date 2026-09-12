@@ -26,15 +26,6 @@ in
         inputs.apple-silicon.nixosModules.apple-silicon-support
       ];
 
-      boot.kernelPackages = lib.mkForce (
-        (import inputs.nixpkgs {
-          crossSystem.system = system;
-          localSystem.system = "x86_64-linux";
-        }).callPackage
-          ./_linux-asahi-fairydust.nix
-          { }
-      );
-
       my = {
         niri.extraIncludes = [ "~/nix/modules/hosts/asahi/asahi.kdl" ];
         greetd.niri.extraIncludes = [ ./asahi.kdl ];
@@ -87,5 +78,18 @@ in
         stateVersion = "26.05";
       };
     };
+  };
+
+  flake.nixosConfigurations."${hostname}-cross" = self.nixosConfigurations.${hostname}.extendModules {
+    modules = [
+      {
+        # cross compilation from x86-64 desktop
+        # nixos-rebuild switch --flake .#houjicha-nixos --target-host houjicha-nixos --build-host localhost
+        hardware.asahi.pkgsSystem = "x86_64-linux";
+
+        # to build just the kernel (doesn't help since it's not the only package that is required here)
+        # nix build --print-out-paths .#nixosConfigurations.houjicha-nixos-cross.config.boot.kernelPackages.kernel
+      }
+    ];
   };
 }
