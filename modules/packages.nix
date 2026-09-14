@@ -153,6 +153,7 @@
       eduvpn-client
       appimage-run
       gparted
+      filen-desktop
 
       inputs.chameleos.packages.${pkgs.stdenv.hostPlatform.system}.chameleos
     ];

@@ -171,7 +171,7 @@ in
         # see https://github.com/NixOS/nixpkgs/issues/365156
         protonmail-desktop
         proton-pass
-        filen-desktop
+        spotify
 
         kdePackages.kdenlive
         teamspeak6-client
