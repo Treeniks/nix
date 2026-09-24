@@ -82,15 +82,19 @@
         wget
         ripgrep
         ouch
-        ffmpeg
-        mkvtoolnix
+        sd
         net-tools
         usbutils
-        yt-dlp
         tree
         jq
         file
         dust
+        tealdeer
+        # cli media
+        ffmpeg
+        yt-dlp
+        mkvtoolnix
+        imagemagick
 
         # tui
         gitu
@@ -155,6 +159,7 @@
       appimage-run
       gparted
       filen-desktop
+      ntfsprogs
 
       inputs.chameleos.packages.${pkgs.stdenv.hostPlatform.system}.chameleos
     ];
