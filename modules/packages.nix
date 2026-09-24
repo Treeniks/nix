@@ -137,6 +137,7 @@
 
       # gnome apps
       nautilus
+      file-roller
       eog
       gnome-font-viewer
       evince

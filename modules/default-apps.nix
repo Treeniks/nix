@@ -17,6 +17,7 @@
           video = "mpv.desktop";
           audio = "mpv.desktop";
           pdf = "org.gnome.Evince.desktop";
+          archive = "org.gnome.FileRoller.desktop";
         in
         {
           # see https://mimetype.io/all-types
@@ -64,6 +65,10 @@
           "audio/x-ms-wma" = audio;
 
           "application/pdf" = pdf;
+
+          "application/zip" = archive;
+          "application/x-7z-compressed" = archive;
+          "application/x-compressed-tar" = archive;
         };
     };
   };
