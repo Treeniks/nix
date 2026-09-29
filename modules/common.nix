@@ -53,6 +53,10 @@
       services.printing.enable = true;
       services.libinput.enable = true;
 
+      hardware.opentabletdriver.enable = true;
+      hardware.uinput.enable = true;
+      boot.kernelModules = [ "uinput" ];
+
       programs.dconf.enable = true;
 
       services.flatpak.enable = true;
