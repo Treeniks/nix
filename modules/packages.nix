@@ -83,6 +83,7 @@
         ripgrep
         ouch
         sd
+        fzf
         net-tools
         usbutils
         tree
