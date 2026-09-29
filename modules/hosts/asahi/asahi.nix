@@ -68,6 +68,12 @@ in
         settings.PasswordAuthentication = false;
       };
 
+      services.tlp = {
+        enable = true;
+        pd.enable = true;
+      };
+      services.power-profiles-daemon.enable = false;
+
       system.stateVersion = "26.05";
     };
 
