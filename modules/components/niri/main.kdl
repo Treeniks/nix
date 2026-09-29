@@ -1,6 +1,5 @@
 spawn-at-startup "noctalia"
-spawn-at-startup "chameleos" "-c" "#FF0020"
-
+spawn-at-startup "chameleos" "-w" "6" "-c" "#8000FF"
 
 binds {
     Mod+B       { toggle-overview; }
@@ -122,7 +121,10 @@ binds {
     Mod+Shift+2 { spawn "chamel" "redo"; }
     Mod+3 { spawn "chamel" "clear"; }
     Mod+4 { spawn "chamel" "toggle-hide"; }
-    Mod+5 { spawn-sh "chamel exit; sleep 1; chameleos -c '#FF0020'"; }
+    Mod+5 { spawn-sh "chamel exit; sleep 1; chameleos -w 6 -c '#8000FF'"; }
+    Mod+F1 { spawn-sh "chamel stroke-width 6; chamel stroke-color '#8000FF'"; }
+    Mod+F2 { spawn-sh "chamel stroke-width 32; chamel stroke-color '#FFFF0020'"; }
+    Mod+F3 { spawn-sh "chamel stroke-width 32; chamel stroke-color '#00002040'"; }
 
     // Ctrl+m { spawn "sh" "-c" "wtype -k Delete; wtype -k Delete; wtype -k Home"; }
     // Ctrl+Comma { spawn "sh" "-c" "wtype -k Insert; wtype -k Insert; wtype -k End"; }
