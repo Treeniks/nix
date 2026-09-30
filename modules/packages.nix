@@ -15,8 +15,6 @@
 
     homeManager = { pkgs, ... }: {
       programs = {
-        git.enable = true;
-
         bat.enable = true;
         eza.enable = true;
 
@@ -45,6 +43,8 @@
         lldb
 
         # dev (tools)
+        # not with programs.git as I don't want the gitconfig set through nix (for now)
+        git
         taplo
         pre-commit
         gnumake
