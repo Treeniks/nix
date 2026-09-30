@@ -63,7 +63,7 @@ in
   flake.wrappers.kitty = { wlib, ... }: {
     imports = [ wlib.wrapperModules.kitty ];
 
-    themeFile = "Catppuccin-Mocha";
+    themeFile = "rose-pine";
 
     inherit font;
     inherit keybindings;
