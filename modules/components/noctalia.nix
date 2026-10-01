@@ -142,6 +142,11 @@ in
         enable = true;
         recommendedServices.enable = true;
       };
+
+      programs.umbriel.enable = true;
+      # not needed yet, but might be nice to use once it matures
+      # (currently lacks mouse sensitivity settings for example)
+      # services.displayManager.noctalia-greeter.enable = true;
     };
 
     homeManager = {
