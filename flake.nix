@@ -1,8 +1,8 @@
 {
   inputs = {
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1";
-    # stupid bug that makes steam and other popups misbehave
-    nixpkgs-xwayland-satellite.url = "https://flakehub.com/f/NixOS/nixpkgs/=0.2605.1011966";
+    # filen-desktop no worky on latest nixpkgs, no idea why
+    nixpkgs-weekly.url = "https://flakehub.com/f/DeterminateSystems/nixpkgs-weekly/0.1";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
 
@@ -27,15 +27,6 @@
     catppuccin = {
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    noctalia = {
-      # url = "github:noctalia-dev/noctalia";
-      # inputs.nixpkgs.follows = "nixpkgs";
-
-      # we want binary caching
-      # which also means we can't have `inputs.nixpkgs.follows`
-      url = "github:noctalia-dev/noctalia/cachix";
     };
 
     apple-silicon = {

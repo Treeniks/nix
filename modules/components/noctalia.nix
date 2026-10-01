@@ -138,32 +138,16 @@ in
 {
   den.aspects.noctalia = {
     nixos = {
-      imports = [ inputs.noctalia.nixosModules.default ];
-
-      config = {
-        # cachix binary cache
-        nix.settings = {
-          extra-substituters = [ "https://noctalia.cachix.org" ];
-          extra-trusted-public-keys = [
-            "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
-          ];
-        };
-
-        programs.noctalia = {
-          enable = true;
-          recommendedServices.enable = true;
-        };
+      programs.noctalia = {
+        enable = true;
+        recommendedServices.enable = true;
       };
     };
 
     homeManager = {
-      imports = [ inputs.noctalia.homeModules.default ];
-
-      config = {
-        programs.noctalia = {
-          enable = true;
-          inherit settings;
-        };
+      programs.noctalia = {
+        enable = true;
+        inherit settings;
       };
     };
   };
