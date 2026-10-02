@@ -21,6 +21,8 @@
         in
         {
           # see https://mimetype.io/all-types
+          # also check using `xdg-mime query filetype`
+
           "text/javascript" = editor;
           "text/markdown" = editor;
           "text/plain" = editor;
@@ -50,6 +52,7 @@
           "video/ogg" = video;
           "video/quicktime" = video;
           "video/webm" = video;
+          "video/matroska" = video;
           "video/x-m4v" = video;
           "video/x-matroska" = video;
 
