@@ -1,0 +1,13 @@
+#sidebar-panel-header {
+    display: none;
+}
+
+#TabsToolbar {
+    display: none !important;
+}
+
+/* #main-window:has(#sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"][checked="true"]) { */
+    /* #TabsToolbar { */
+    /*     display: none !important; */
+    /* } */
+/* } */

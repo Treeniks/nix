@@ -24,6 +24,7 @@
     den.aspects.mpv
     den.aspects.sublime
     den.aspects.zed
+    den.aspects.firefox
 
     den.aspects.gtkqtTheme
     den.aspects.noctaliaDynamicTheme

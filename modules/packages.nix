@@ -137,7 +137,6 @@
 
       # browsers
       brave
-      firefox
       thunderbird
 
       # gnome apps
