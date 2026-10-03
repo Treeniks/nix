@@ -1,6 +1,7 @@
-{ inputs, ... }:
 let
   settings = {
+    audio.enable_sounds = false;
+
     theme = {
       # not used because I source from wallpaper,
       # but in case I don't want it off the wallpaper, it's nice when it's set
