@@ -8,7 +8,8 @@
       enable = true;
       defaultApplications =
         let
-          editor = "sublime_text.desktop";
+          editor = "com.system76.CosmicEdit.desktop";
+          # editor = "sublime_text.desktop";
           # editor = "neovide.desktop";
           # editor = "Helix.desktop";
 
