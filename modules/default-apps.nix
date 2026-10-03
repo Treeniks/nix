@@ -12,7 +12,7 @@
           # editor = "neovide.desktop";
           # editor = "Helix.desktop";
 
-          browser = "brave-browser.desktop";
+          browser = "firefox.desktop";
           image = "org.gnome.eog.desktop";
           video = "mpv.desktop";
           audio = "mpv.desktop";
