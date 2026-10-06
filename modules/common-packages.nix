@@ -1,4 +1,5 @@
-{ inputs, ... }: {
+{ inputs, ... }:
+{
   den.aspects.commonPackages = {
     nixos = { pkgs, ... }: {
       programs = {

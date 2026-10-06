@@ -1,4 +1,5 @@
-{ self, ... }: {
+{ self, ... }:
+{
   den.aspects.greetdNiriReGreet.nixos =
     {
       config,
