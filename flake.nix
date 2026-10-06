@@ -21,7 +21,7 @@
       # TODO this is temporary until my PR is merged
       # so I can use a yazi wrapper
       url = "github:Treeniks/nix-wrapper-modules/yazi-initlua";
-      # url = "github:BirdeeHub/nix-wrapper-modules";
+      # url = "github:nix-community/nix-wrapper-modules";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     catppuccin = {

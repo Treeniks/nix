@@ -1,6 +1,8 @@
-{ inputs, ... }:
+{ inputs, den, ... }:
 {
   den.aspects.common = {
+    includes = [ den.aspects.nixpkgsWeekly ];
+
     nixos = { pkgs, ... }: {
       imports = [
         # use determinate nix

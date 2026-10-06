@@ -159,7 +159,7 @@
       eduvpn-client
       appimage-run
       gparted
-      (import inputs.nixpkgs-weekly { system = pkgs.stdenv.hostPlatform.system; }).filen-desktop
+      filen-desktop
       ntfsprogs
 
       inputs.chameleos.packages.${pkgs.stdenv.hostPlatform.system}.chameleos
