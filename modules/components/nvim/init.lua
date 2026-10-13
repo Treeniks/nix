@@ -35,6 +35,8 @@ vim.opt.termguicolors = true
 vim.opt.scrolloff = 1
 vim.opt.signcolumn = 'yes' -- or 'number'
 
+vim.opt.colorcolumn = "100"
+
 -- whitespace visuals
 vim.opt.list = true
 vim.opt.listchars:append({
