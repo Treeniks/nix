@@ -8,7 +8,7 @@
     in
     {
       inherit (pkgsWeekly)
-        filen-desktop
+        # filen-desktop
         ;
     };
 
