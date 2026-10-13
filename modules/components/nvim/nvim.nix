@@ -100,6 +100,7 @@
         nixd
         lua-language-server
         vscode-langservers-extracted
+        clang-tools
       ];
     };
 }

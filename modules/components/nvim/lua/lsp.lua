@@ -9,6 +9,7 @@ local servers = {
     nixd = {},
     lua_ls = {},
     jsonls = {},
+    clangd = {},
 }
 
 for server, config in pairs(servers) do
