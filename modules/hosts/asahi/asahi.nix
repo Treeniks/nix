@@ -78,6 +78,14 @@ in
     };
 
     homeManager = {
+      nixpkgs.overlays = [
+        # julia 1.13 currently has build failures on arm
+        # https://hydra.nixos.org/job/nixos/unstable/nixpkgs.julia.aarch64-linux
+        (final: prev: {
+          julia = final.julia_112;
+        })
+      ];
+
       home = {
         username = "suteki";
         homeDirectory = "/home/suteki";
