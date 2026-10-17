@@ -9,6 +9,15 @@
         # https://docs.determinate.systems/guides/advanced-installation/#nixos
         inputs.determinate.nixosModules.default
       ];
+
+      nix.settings = {
+        # the cachyos binary cache is sometimes dead
+        # and I cba to wait for 2 minutes for my devShell every time it happens
+        fallback = true;
+        connect-timeout = 10;
+        download-attempts = 2;
+      };
+
       nixpkgs.config.allowUnfree = true;
 
       networking.networkmanager.enable = true;
