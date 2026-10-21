@@ -1,7 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1";
-    # filen-desktop no worky on latest nixpkgs, no idea why
+    # see modules/overlay.nix
     nixpkgs-weekly.url = "https://flakehub.com/f/DeterminateSystems/nixpkgs-weekly/0.1";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
 
