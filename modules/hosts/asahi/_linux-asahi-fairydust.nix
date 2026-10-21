@@ -33,10 +33,10 @@ let
         extraMeta.branch = "fairydust";
 
         src = fetchFromGitHub {
-          owner = "AsahiLinux";
+          owner = "Treeniks";
           repo = "linux";
-          rev = "ce9f2eba72c061a50b2d790450e90af3439d8c24";
-          hash = "sha256-W3yMSUe6xa+M/X0k86kbCS4g3d7jJmO3WV9L/5rQRhI=";
+          rev = "f319c2173daf67497d8038dad654bdba564d379c";
+          hash = "sha256-vrN5E+WEsN585TqdCAtToyu0MlrOlQkAcZeBLYrdt/U=";
         };
 
         kernelPatches = [
@@ -53,15 +53,6 @@ let
               # Might lead to the machine rebooting if not loaded soon enough
               APPLE_WATCHDOG = yes;
 
-              # === fairydust ===
-              APPLE_MAILBOX = yes;
-
-              APPLE_RTKIT = yes;
-              APPLE_RTKIT_HELPER = yes;
-              RUST_APPLE_RTKIT = yes;
-              RUST_FW_LOADER_ABSTRACTIONS = yes;
-              # === ========= ===
-
               # Can not be built as a module, defaults to no
               APPLE_M1_CPU_PMU = yes;
 
@@ -70,6 +61,9 @@ let
 
               APPLE_PMGR_MISC = yes;
               APPLE_PMGR_PWRSTATE = yes;
+
+              # Defaults to 'n', but needed to prevent bluetooth stuttering
+              BT_BRCMEXT = yes;
             };
             features.rust = true;
           }
