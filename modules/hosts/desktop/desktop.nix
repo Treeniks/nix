@@ -51,7 +51,6 @@ in
         greetd.niri.extraIncludes = [ ./desktop.kdl ];
       };
 
-      # TODO battery
       networking.hostName = hostname;
 
       hardware.graphics = {
