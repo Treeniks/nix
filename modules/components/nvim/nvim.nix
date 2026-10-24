@@ -1,11 +1,20 @@
-{ self, ... }:
+{ inputs, self, ... }:
 {
   den.aspects.neovim.homeManager = {
-    imports = [ self.wrappers.neovim.install ];
+    imports = [
+      self.wrappers.neovim.install
+      self.wrappers.neovim-nightly.install
+    ];
+
     wrappers.neovim = {
       enable = true;
       # make neovim hot reload the lua config
       # installing packages etc. is still an hms
+      settings.config_directory = "/home/suteki/nix/modules/components/nvim/";
+    };
+
+    wrappers.neovim-nightly = {
+      enable = true;
       settings.config_directory = "/home/suteki/nix/modules/components/nvim/";
     };
   };
@@ -103,4 +112,12 @@
         clang-tools
       ];
     };
+
+  flake.wrappers.neovim-nightly = { pkgs, ... }: {
+    imports = [ self.wrapperModules.neovim ];
+    binName = "nvim-nightly";
+    package = inputs.neovim-nightly.packages.${pkgs.stdenv.hostPlatform.system}.default;
+    # avoid overlap with normal neovim
+    settings.dont_link = true;
+  };
 }
