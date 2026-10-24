@@ -131,7 +131,7 @@ in
         };
       };
       # TODO replace with wrapper once noctalia-v5 has wrapper modules
-      noctalia = inputs.noctalia.packages.${system}.default;
+      noctalia = pkgs.noctalia;
     in
     {
       imports = [ wlib.wrapperModules.niri ];
