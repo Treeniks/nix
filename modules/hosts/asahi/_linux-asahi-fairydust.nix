@@ -33,10 +33,11 @@ let
         extraMeta.branch = "fairydust";
 
         src = fetchFromGitHub {
-          owner = "Treeniks";
+          owner = "AsahiLinux";
           repo = "linux";
-          rev = "f319c2173daf67497d8038dad654bdba564d379c";
-          hash = "sha256-vrN5E+WEsN585TqdCAtToyu0MlrOlQkAcZeBLYrdt/U=";
+          rev = "0878e04ab76c178e278375bd4a4100d89508216a";
+          # nix flake prefetch github:AsahiLinux/linux/REV
+          hash = "sha256-q2eHsJN8rHLAUJQMeIcWYpD6rd3kH8xeeFgYyh8gScE=";
         };
 
         kernelPatches = [
