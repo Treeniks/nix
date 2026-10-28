@@ -58,7 +58,7 @@
   };
 
   den.aspects.commonGui = {
-    nixos = {
+    nixos = { pkgs, ... }: {
       hardware.bluetooth.enable = true;
       services.blueman.enable = true;
       services.printing.enable = true;
@@ -82,6 +82,17 @@
       services.desktopManager.plasma6.enable = true;
       services.desktopManager.cosmic.enable = true;
       programs.hyprland.enable = true;
+
+      programs.nix-ld = {
+        enable = true;
+        libraries = [
+          pkgs.libxkbcommon
+          pkgs.libGL
+          pkgs.vulkan-loader
+          pkgs.wayland
+          pkgs.fontconfig
+        ];
+      };
     };
 
     homeManager = {
