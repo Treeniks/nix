@@ -22,6 +22,11 @@
       roboto-serif
 
       stix-two
+
+      # typst/cv stuff
+      font-awesome
+      source-sans
+      source-sans-pro
     ];
   };
 }
