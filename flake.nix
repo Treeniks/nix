@@ -30,6 +30,10 @@
       inputs.flake-parts.follows = "flake-parts";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    umbriel = {
+      url = "github:noctalia-dev/umbriel";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     apple-silicon = {
       url = "github:nix-community/nixos-apple-silicon";

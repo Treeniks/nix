@@ -525,6 +525,7 @@
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-weekly": "nixpkgs-weekly",
         "sublime-vinimum": "sublime-vinimum",
+        "umbriel": "umbriel",
         "wrappers": "wrappers"
       }
     },
@@ -582,6 +583,27 @@
         "type": "github"
       }
     },
+    "umbriel": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "xdg-desktop-portal-umbriel": "xdg-desktop-portal-umbriel"
+      },
+      "locked": {
+        "lastModified": 1793501003,
+        "narHash": "sha256-HcEnedDUxIiEFrdxJC58NeyM8nmUVdovRQRj+bzNAq4=",
+        "owner": "noctalia-dev",
+        "repo": "umbriel",
+        "rev": "250045c4f2d78e74936fba37ca6a48a487e4473a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "noctalia-dev",
+        "repo": "umbriel",
+        "type": "github"
+      }
+    },
     "wrappers": {
       "inputs": {
         "nixpkgs": [
@@ -599,6 +621,27 @@
       "original": {
         "owner": "nix-community",
         "repo": "nix-wrapper-modules",
+        "type": "github"
+      }
+    },
+    "xdg-desktop-portal-umbriel": {
+      "inputs": {
+        "nixpkgs": [
+          "umbriel",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1793360888,
+        "narHash": "sha256-9slx9KEkSo013x0RtdLkdwMrAOiyn4rWd9Ys2YVUv3A=",
+        "owner": "noctalia-dev",
+        "repo": "xdg-desktop-portal-umbriel",
+        "rev": "17739df892537e4c9a89eb60dd8a1f1eadf750e5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "noctalia-dev",
+        "repo": "xdg-desktop-portal-umbriel",
         "type": "github"
       }
     }

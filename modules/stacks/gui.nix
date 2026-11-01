@@ -18,6 +18,8 @@
     den.aspects.greetdNiriReGreet
 
     den.aspects.noctalia
+    den.aspects.umbriel
+
     den.aspects.fuzzel
     den.aspects.kitty
     den.aspects.nemo

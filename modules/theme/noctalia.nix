@@ -2,6 +2,8 @@
 {
   den.aspects.noctaliaDynamicTheme = {
     includes = [
+      den.aspects.umbrielNoctalia
+
       den.aspects.niriNoctalia
       den.aspects.gtkNoctalia
       den.aspects.fuzzelNoctalia
@@ -10,19 +12,26 @@
     ];
   };
 
-  den.aspects.niriNoctalia.nixos = {
-    wrappers.niri.extraSettings = [
-      {
-        include = [
-          { optional = true; }
-          "~/.config/niri/noctalia.kdl"
-        ];
-      }
-    ];
+  den.aspects.umbrielNoctalia.homeManager = {
+    programs.noctalia.settings.theme.templates.builtin_ids = [ "umbriel" ];
+    programs.umbriel.settings.include.optional.files = [ "~/.config/umbriel/noctalia.toml" ];
   };
 
-  den.aspects.niriNoctalia.homeManager = {
-    programs.noctalia.settings.theme.templates.builtin_ids = [ "niri" ];
+  den.aspects.niriNoctalia = {
+    nixos = {
+      wrappers.niri.extraSettings = [
+        {
+          include = [
+            { optional = true; }
+            "~/.config/niri/noctalia.kdl"
+          ];
+        }
+      ];
+    };
+
+    homeManager = {
+      programs.noctalia.settings.theme.templates.builtin_ids = [ "niri" ];
+    };
   };
 
   den.aspects.gtkNoctalia = {
