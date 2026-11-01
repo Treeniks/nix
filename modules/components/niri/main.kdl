@@ -247,7 +247,7 @@ window-rule {
 }
 
 window-rule {
-    match app-id="Proton Pass"
+    match app-id="^proton-pass$"
     block-out-from "screen-capture"
 }
 
