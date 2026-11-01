@@ -77,6 +77,7 @@ let
 
         "Mod+Space" = norepeat "spawn fuzzel";
         "Mod+Q" = norepeat "window-close";
+        "Mod+Shift+Q" = norepeat "window-kill";
 
         "Mod+Backspace" = norepeat "spawn neovide";
         "Mod+T" = norepeat "spawn kitty";
@@ -114,6 +115,12 @@ let
 
         "Mod+V" = "window-toggle-floating";
         "Mod+Shift+V" = "window-focus-switch-floating";
+
+        "Mod+S" = norepeat "spawn noctalia msg screenshot-region";
+
+        "Mod+Shift+E" = norepeat "session-quit";
+        "Mod+Shift+Semicolon" = norepeat "spawn noctalia msg session lock";
+        "Mod+Shift+P" = norepeat "dpms-off";
       };
 
     layout = {
@@ -129,9 +136,7 @@ let
       empty_above = true;
     };
 
-    colors.overview = {
-      background_tint = "#191724"; # Rosé Pine (Base)
-    };
+    overview.workspace_wallpaper = false;
 
     # pulse effect
     include.optional.files = [
@@ -161,6 +166,32 @@ let
 
       shadow.enabled = false;
     };
+
+    window_rule = [
+      {
+        match.is_alone = true;
+        default_maximize = true;
+      }
+
+      {
+        match.content_type = "game";
+        vrr = "always";
+      }
+
+      {
+        match.app_id = [
+          "^neovide$"
+          "^kitty$"
+          "^dev.zed.Zed$"
+        ];
+        blur = true;
+      }
+
+      {
+        match.app_id = [ "^proton-pass$" ];
+        block_capture = true;
+      }
+    ];
   };
 in
 {
