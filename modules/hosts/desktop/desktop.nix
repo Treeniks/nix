@@ -117,6 +117,11 @@ in
         protonplus
       ];
 
+      # TODO lutris still relies on gtk2 for some reason
+      # and gtk2 is being phased out
+      # see https://github.com/NixOS/nixpkgs/issues/410814
+      nixpkgs.config.problems.handlers."gtk+".broken = "warn";
+
       # NixOS's mesa drivers are quite monolithic and will in particular include the software "GPU" llvmpipe.
       # This "disables" llvmpipe in hopes of preventing Steam from shitting itself.
       # It probably does nothing though.

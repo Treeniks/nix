@@ -81,6 +81,8 @@
       programs.xwayland.enable = true;
       services.desktopManager.plasma6.enable = true;
       services.desktopManager.cosmic.enable = true;
+      # TODO hyprland casues hydra cache misses right now
+      # see https://github.com/NixOS/nixpkgs/issues/581197
       programs.hyprland.enable = true;
 
       programs.nix-ld = {
