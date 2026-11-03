@@ -188,7 +188,10 @@ in
             "OPEN_ON_STARTUP" = false;
           };
         };
-        obs-studio.enable = true;
+        obs-studio = {
+          enable = true;
+          plugins = with pkgs.obs-studio-plugins; [ obs-wayland-hotkeys ];
+        };
 
         mangohud = {
           enable = true;
