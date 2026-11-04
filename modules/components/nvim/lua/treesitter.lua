@@ -5,7 +5,8 @@ local treesitter_group = vim.api.nvim_create_augroup('TreesitterHighlighting', {
 vim.api.nvim_create_autocmd('FileType', {
     group = treesitter_group,
     callback = function(ev)
-        if vim.treesitter.language.add(ev.match) then
+        local lang = vim.treesitter.language.get_lang(ev.match)
+        if lang and vim.treesitter.language.add(lang) then
             vim.treesitter.start(ev.buf)
 
             vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
