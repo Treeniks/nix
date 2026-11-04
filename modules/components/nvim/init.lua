@@ -2,10 +2,11 @@ local all_modes = require('utils').all_modes
 
 vim.filetype.add({
     extension = {
-        styx = "styx",
-        rml = "rust",
+        styx = 'styx',
+        rml = 'ramiel',
     },
 })
+vim.treesitter.language.register('rust', 'ramiel')
 
 -- ===== opt =====
 -- line numbers
