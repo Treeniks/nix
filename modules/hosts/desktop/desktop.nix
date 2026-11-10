@@ -23,27 +23,6 @@ in
       # cross compile the asahi install on laptop
       boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
-      nixpkgs.overlays = [
-        (final: prev: {
-          # having some high-use apps be optimized a bit is a niceness I miss from Gentoo
-          # so I'll try emulating it for a few packages here
-
-          # idk if the stdenv override actually does anything, docs on this are...scarce
-          niri = (prev.niri.override { stdenv = final.llvmPackages.stdenv; }).overrideAttrs (prevAttrs: {
-            nativeBuildInputs = (prevAttrs.nativeBuildInputs or [ ]) ++ [
-              final.llvmPackages.clang
-              # use bintools instead of lld
-              # see https://wiki.nixos.org/wiki/Rust#Using_LLD_instead_of_LD
-              final.llvmPackages.bintools
-            ];
-
-            env.RUSTFLAGS =
-              (prevAttrs.env.RUSTFLAGS or "")
-              + " -C target-cpu=native -C strip=debuginfo -C lto=thin -C linker-plugin-lto -C linker=clang -C link-arg=-fuse-ld=lld";
-          });
-        })
-      ];
-
       nixpkgs.config.rocmSupport = true;
 
       my = {
