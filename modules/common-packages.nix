@@ -138,6 +138,7 @@
 
       # browsers
       brave
+      brave-origin
       thunderbird
 
       # gnome apps
