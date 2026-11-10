@@ -75,6 +75,12 @@ vim.keymap.set('n', '<leader>k', vim.cmd.tabprev, { desc = 'Tab Prev' })
 vim.keymap.set('n', '<leader>J', function() vim.cmd.tabmove('-1') end, { desc = 'Tab Move Left' })
 vim.keymap.set('n', '<leader>K', function() vim.cmd.tabmove('+1') end, { desc = 'Tab Move Right' })
 
+vim.keymap.set({ 'n', 'v' }, '<leader>s', function()
+    local pat = vim.fn.input('pattern: ')
+    vim.cmd.normal({ 'zq/' .. vim.fn.escape(pat, '/') .. vim.keycode('<CR>'), bang = true })
+    vim.bo.follow = true
+end, { desc = 'Multicursor Pattern' })
+
 -- normal mode alt keybind
 -- particularly useful when in term mode
 vim.keymap.set(all_modes, '<C-\'>', function() vim.cmd('stopinsert') end)
