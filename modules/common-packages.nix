@@ -161,6 +161,7 @@
       gparted
       filen-desktop
       ntfsprogs
+      ghostty
 
       inputs.chameleos.packages.${pkgs.stdenv.hostPlatform.system}.chameleos
     ];
