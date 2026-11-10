@@ -3,6 +3,7 @@
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1";
     # see modules/overlay.nix
     nixpkgs-weekly.url = "https://flakehub.com/f/DeterminateSystems/nixpkgs-weekly/0.1";
+    nixpkgs-stable.url = "https://flakehub.com/f/NixOS/nixpkgs/*";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
 
     flake-parts = {

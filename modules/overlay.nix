@@ -5,10 +5,17 @@
     final: prev:
     let
       pkgsWeekly = (import inputs.nixpkgs-weekly { system = final.stdenv.hostPlatform.system; });
+      pkgsStable = (import inputs.nixpkgs-stable { system = final.stdenv.hostPlatform.system; });
     in
     {
       inherit (pkgsWeekly)
         # filen-desktop
+        ;
+      inherit (pkgsStable)
+        # they removed it for a few days and it has since been readded
+        # for some reason nixpkgs stable already includes it again, while unstable does not...
+        brave
+        brave-origin
         ;
     };
 
