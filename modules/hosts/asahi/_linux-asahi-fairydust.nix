@@ -28,16 +28,16 @@ let
         inherit stdenv lib;
 
         pname = "linux-asahi";
-        version = "7.2.14";
+        version = "7.2.15";
         modDirVersion = version;
         extraMeta.branch = "fairydust";
 
         src = fetchFromGitHub {
           owner = "AsahiLinux";
           repo = "linux";
-          rev = "ad2ca9b65c1b2594588d08cb86d77cbf0ef4b80e";
+          rev = "432e09dca5d88e145eba6ff6080cd77aa5b8ccf8";
           # nix flake prefetch github:AsahiLinux/linux/REV
-          hash = "sha256-K7JbQQe0rYIgKE7golf4jU2ljlSzYKAkrLMlMp44NBc=";
+          hash = "sha256-oB40IG6UgwgklAO8J09KY8/FPzF5nklvKvZe8A2/2Pg=";
         };
 
         kernelPatches = [
