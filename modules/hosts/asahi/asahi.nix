@@ -44,7 +44,10 @@ in
       networking.networkmanager.wifi.backend = "iwd";
 
       hardware.asahi.enable = true;
-      hardware.asahi.overlay = lib.composeExtensions inputs.apple-silicon.overlays.default self.overlays.asahi-fairydust;
+
+      # lots of issues with the switch to 7.3
+      # hardware.asahi.overlay = lib.composeExtensions inputs.apple-silicon.overlays.default self.overlays.asahi-fairydust;
+
       # https://github.com/nix-community/nixos-apple-silicon/issues/299#issuecomment-2901508921
       hardware.asahi.peripheralFirmwareDirectory = pkgs.requireFile {
         name = "vendorfw";
