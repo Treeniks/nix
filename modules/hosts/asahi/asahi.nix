@@ -33,6 +33,8 @@ in
 
       networking.hostName = hostname;
 
+      programs.hyprland.enable = lib.mkForce false;
+
       networking.wireless.iwd = {
         enable = true;
         settings = {
