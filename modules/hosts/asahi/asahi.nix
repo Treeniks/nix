@@ -18,6 +18,8 @@ in
     includes = [
       den.aspects.stackBase
       den.aspects.stackGui
+
+      den.aspects.asahi-broky-wifi
     ];
 
     nixos = { pkgs, lib, ... }: {
@@ -97,6 +99,10 @@ in
         stateVersion = "26.05";
       };
     };
+  };
+
+  den.aspects.asahi-broky-wifi.homeManager = {
+    programs.fish.shellAbbrs.fixwifi = "sudo modprobe -r brcmfmac_wcc brcmfmac && sudo modprobe brcmfmac";
   };
 
   flake.nixosConfigurations."${hostname}-cross" = self.nixosConfigurations.${hostname}.extendModules {
