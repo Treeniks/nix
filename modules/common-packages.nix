@@ -109,6 +109,7 @@
 
         # misc
         proton-vpn-cli
+        nix-output-monitor
       ];
     };
   };
