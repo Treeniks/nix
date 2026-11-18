@@ -40,6 +40,7 @@
         direnv-vim
         oil-nvim
         hydra-nvim
+        octo-nvim
       ];
 
       specs.themes = {

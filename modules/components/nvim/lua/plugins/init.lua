@@ -16,5 +16,11 @@ require('oil').setup({
 
 vim.keymap.set('n', '<leader>gg', function() vim.cmd(':Neogit') end, { desc = 'Neogit' })
 
+require('octo').setup({
+    file_panel = {
+        icons = function(name, _ext) return require('mini.icons').get('file', name) end,
+    },
+})
+
 ---- builtins
 vim.cmd.packadd('nvim.undotree')
