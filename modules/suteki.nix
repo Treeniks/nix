@@ -27,6 +27,11 @@
       treeniks.yazi
     ];
 
+    # also covers root, which den.batteries.user-shell doesn't touch
+    nixos = { pkgs, ... }: {
+      users.defaultUserShell = pkgs.fish;
+    };
+
     user.extraGroups = [
       "video"
       "audio"
