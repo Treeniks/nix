@@ -1,6 +1,6 @@
 { self, ... }:
 {
-  den.aspects.mpv.homeManager = {
+  treeniks.mpv.homeManager = {
     imports = [ self.wrappers.mpv.install ];
     wrappers.mpv.enable = true;
   };

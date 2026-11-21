@@ -1,8 +1,5 @@
-# this file really suffers from automatic formatting
-# but it's hard to disable until this gets solved:
-# https://github.com/NixOS/nixfmt/issues/91
 {
-  den.aspects.pipewireVirtualSurround.nixos =
+  treeniks.pipewire.virtual-surround.nixos =
     let
       # TODO
       # we currently just assume that hrir files are located at this path
@@ -28,6 +25,7 @@
                   "node.description" = "Virtual Surround Sink 7.1";
                   "media.name" = "Virtual Surround Sink 7.1";
                   "filter.graph" = {
+                    /*nixfmt:disable*/
                     nodes = [
                       # duplicate inputs
                       { type = "builtin"; label = "copy"; name = "copyFL"; }
@@ -104,19 +102,24 @@
 
                     inputs = [ "copyFL:In" "copyFR:In" "copyFC:In" "copyLFE:In" "copyRL:In" "copyRR:In" "copySL:In" "copySR:In" ];
                     outputs = [ "mixL:Out" "mixR:Out" ];
+                    /*nixfmt:enable*/
                   };
 
                   "capture.props" = {
                     "node.name" = "effect_input.virtual-surround-7.1-hesuvi";
                     "media.class" = "Audio/Sink";
                     "audio.channels" = 8;
+                    /*nixfmt:disable*/
                     "audio.position" = [ "FL" "FR" "FC" "LFE" "RL" "RR" "SL" "SR" ];
+                    /*nixfmt:enable*/
                   };
                   "playback.props" = {
                     "node.name" = "effect_output.virtual-surround-7.1-hesuvi";
                     "node.passive" = true;
                     "audio.channels" = 2;
+                    /*nixfmt:disable*/
                     "audio.position" = [ "FL" "FR" ];
+                    /*nixfmt:enable*/
                   };
                 };
               }

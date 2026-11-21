@@ -1,6 +1,5 @@
-{ inputs, ... }:
 {
-  den.aspects.commonPackages = {
+  treeniks.common.pkgs = {
     nixos = { pkgs, ... }: {
       programs = {
         firejail.enable = true;
@@ -114,7 +113,7 @@
     };
   };
 
-  den.aspects.commonPackagesGui.homeManager = { pkgs, ... }: {
+  treeniks.common.pkgs.gui.homeManager = { inputs', pkgs, ... }: {
     programs = {
       neovide.enable = true;
       obsidian.enable = true;
@@ -165,7 +164,7 @@
       ntfsprogs
       ghostty
 
-      inputs.chameleos.packages.${pkgs.stdenv.hostPlatform.system}.chameleos
+      inputs'.chameleos.packages.chameleos
     ];
   };
 }

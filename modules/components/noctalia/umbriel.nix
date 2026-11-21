@@ -1,5 +1,6 @@
-{ inputs, ... }: {
-  den.aspects.umbriel = {
+{ inputs, ... }:
+{
+  treeniks.umbriel = {
     nixos = {
       imports = [ inputs.umbriel.nixosModules.default ];
       programs.umbriel.enable = true;

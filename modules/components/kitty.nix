@@ -55,7 +55,7 @@ let
   };
 in
 {
-  den.aspects.kitty.homeManager = {
+  treeniks.kitty.homeManager = {
     imports = [ self.wrappers.kitty.install ];
     wrappers.kitty.enable = true;
   };

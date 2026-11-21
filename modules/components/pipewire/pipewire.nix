@@ -1,37 +1,24 @@
+{ treeniks, ... }:
 {
-  den.aspects.pipewire.nixos = {
-    services.pipewire = {
-      enable = true;
+  treeniks.pipewire = {
+    includes = [
+      treeniks.pipewire.clock-rates
+      treeniks.pipewire.vb-cable
+      treeniks.pipewire.virtual-surround
+    ];
 
-      pulse.enable = true;
-      wireplumber.enable = true;
-      alsa.enable = true;
+    nixos = {
+      services.pipewire = {
+        enable = true;
 
-      extraConfig.pipewire = {
-        # Disallow discord from changing volumes.
-        # Discord is so fucking shit, that it will randomly put my microphone to 100% volume, destroying the ears of my friends.
-        # Fuck you discord. Fuck you.
-        wireplumber.extraConfig = {
-          "fuck-discord" = {
-            "access.rules" = [
-              {
-                matches = [
-                  { "application.process.binary" = ".Discord-wrapped"; }
-                ];
-                actions = {
-                  update-props = {
-                    default_permissions = "rx";
-                  };
-                };
-              }
-            ];
-          };
-        };
+        pulse.enable = true;
+        wireplumber.enable = true;
+        alsa.enable = true;
       };
     };
   };
 
-  den.aspects.pipewireClockRates.nixos = {
+  treeniks.pipewire.clock-rates.nixos = {
     services.pipewire = {
       extraConfig.pipewire = {
         "10-rates" = {
@@ -48,7 +35,7 @@
     };
   };
 
-  den.aspects.pipewireVBCable.nixos = {
+  treeniks.pipewire.vb-cable.nixos = {
     services.pipewire = {
       extraConfig.pipewire = {
         # loopback cable

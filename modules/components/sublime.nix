@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  den.aspects.sublime.homeManager = { pkgs, ... }: {
+  treeniks.sublime.homeManager = { pkgs, ... }: {
     home.packages = with pkgs; [
       # sublime4 is broken because of openssl shit
       sublime4-dev

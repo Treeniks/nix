@@ -51,6 +51,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
+
+    treefmt = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -60,6 +65,22 @@
         inputs.home-manager.flakeModules.home-manager
         inputs.wrappers.flakeModules.wrappers
         inputs.den.flakeModule
+
+        ({ den, ... }: {
+          # make user aspects work in hosts
+          den.schema.host.includes = [ den.batteries.user-aspects ];
+
+          den.default.includes = [
+            den.batteries.define-user
+            den.batteries.hostname
+
+            den.batteries.inputs'
+            den.batteries.self'
+          ];
+        })
+
+        # "treeniks" namespace (exported to flake outputs)
+        (inputs.den.namespace "treeniks" true)
 
         (inputs.import-tree ./modules)
       ];

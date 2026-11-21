@@ -1,7 +1,7 @@
 {
   inputs,
   self,
-  den,
+  treeniks,
   ...
 }:
 let
@@ -10,16 +10,12 @@ let
 in
 {
   den.hosts.${system}.${hostname}.users.suteki = { };
-
   den.homes.${system}."suteki@${hostname}" = { };
-  den.aspects.suteki.provides.${hostname}.includes = [ den.aspects.${hostname} ];
 
-  den.aspects.${hostname} = {
+  den.aspects."suteki@${hostname}" = {
     includes = [
-      den.aspects.stackBase
-      den.aspects.stackGui
-
-      den.aspects.asahi-broky-wifi
+      treeniks.suteki.gui
+      treeniks.asahi-broky-wifi
     ];
 
     nixos = { pkgs, lib, ... }: {
@@ -32,8 +28,6 @@ in
         niri.extraIncludes = [ "~/nix/modules/hosts/asahi/asahi.kdl" ];
         greetd.niri.extraIncludes = [ ./asahi.kdl ];
       };
-
-      networking.hostName = hostname;
 
       programs.hyprland.enable = lib.mkForce false;
 
@@ -93,15 +87,11 @@ in
         })
       ];
 
-      home = {
-        username = "suteki";
-        homeDirectory = "/home/suteki";
-        stateVersion = "26.05";
-      };
+      home.stateVersion = "26.05";
     };
   };
 
-  den.aspects.asahi-broky-wifi.homeManager = {
+  treeniks.asahi-broky-wifi.homeManager = {
     programs.fish.shellAbbrs.fixwifi = "sudo modprobe -r brcmfmac_wcc brcmfmac && sudo modprobe brcmfmac";
   };
 

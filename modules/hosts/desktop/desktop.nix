@@ -1,19 +1,14 @@
-{ den, ... }:
+{ treeniks, ... }:
 let
   hostname = "matcha-nixos";
   system = "x86_64-linux";
 in
 {
   den.hosts.${system}.${hostname}.users.suteki = { };
-
   den.homes.${system}."suteki@${hostname}" = { };
-  den.aspects.suteki.provides.${hostname}.includes = [ den.aspects.${hostname} ];
 
-  den.aspects.${hostname} = {
-    includes = [
-      den.aspects.stackBase
-      den.aspects.stackGui
-    ];
+  den.aspects."suteki@${hostname}" = {
+    includes = [ treeniks.suteki.gui ];
 
     nixos = { pkgs, ... }: {
       imports = [ ./_hardware.nix ];
@@ -29,8 +24,6 @@ in
         niri.extraIncludes = [ "~/nix/modules/hosts/desktop/desktop.kdl" ];
         greetd.niri.extraIncludes = [ ./desktop.kdl ];
       };
-
-      networking.hostName = hostname;
 
       hardware.graphics = {
         enable = true;
@@ -165,13 +158,6 @@ in
       ];
 
       programs = {
-        discord = {
-          enable = true;
-          settings = {
-            "MINIMIZE_TO_TRAY" = false;
-            "OPEN_ON_STARTUP" = false;
-          };
-        };
         obs-studio = {
           enable = true;
           plugins = with pkgs.obs-studio-plugins; [ obs-wayland-hotkeys ];
@@ -224,11 +210,7 @@ in
         "file:///home/suteki/.local/share/Archipelago Archipelago"
       ];
 
-      home = {
-        username = "suteki";
-        homeDirectory = "/home/suteki";
-        stateVersion = "26.05";
-      };
+      home.stateVersion = "26.05";
     };
   };
 }

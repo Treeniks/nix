@@ -1,9 +1,9 @@
 {
-  den.aspects.defaultApps.nixos = {
+  treeniks.default-apps.nixos = {
     environment.sessionVariables.EDITOR = "nvim";
   };
 
-  den.aspects.defaultAppsGui.homeManager = {
+  treeniks.default-apps.gui.homeManager = {
     xdg.mimeApps = {
       enable = true;
       defaultApplications =

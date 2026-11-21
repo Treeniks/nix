@@ -1,4 +1,3 @@
-{ self, ... }:
 let
   settings = {
     opener = {
@@ -34,7 +33,7 @@ let
   '';
 in
 {
-  den.aspects.yazi.homeManager = {
+  treeniks.yazi.homeManager = {
     # we use the home-manager module instead of the wrapper for two reasons:
     # 1. I couldn't be bothered manually setting up the catppuccin theme.
     #    I should do that someday anyways, just so the wrapper is themed, but it doesn't matter too much.

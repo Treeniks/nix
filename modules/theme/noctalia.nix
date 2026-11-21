@@ -1,23 +1,20 @@
-{ den, ... }:
+{ treeniks, ... }:
 {
-  den.aspects.noctaliaDynamicTheme = {
-    includes = [
-      den.aspects.umbrielNoctalia
+  treeniks.theme.noctalia.includes = [
+    treeniks.umbriel.noctalia
+    treeniks.niri.noctalia
+    treeniks.gtk.noctalia
+    treeniks.fuzzel.noctalia
+    treeniks.kitty.noctalia
+    treeniks.yazi.noctalia
+  ];
 
-      den.aspects.niriNoctalia
-      den.aspects.gtkNoctalia
-      den.aspects.fuzzelNoctalia
-      den.aspects.kittyNoctalia
-      den.aspects.yaziNoctalia
-    ];
-  };
-
-  den.aspects.umbrielNoctalia.homeManager = {
+  treeniks.umbriel.noctalia.homeManager = {
     programs.noctalia.settings.theme.templates.builtin_ids = [ "umbriel" ];
     programs.umbriel.settings.include.optional.files = [ "~/.config/umbriel/noctalia.toml" ];
   };
 
-  den.aspects.niriNoctalia = {
+  treeniks.niri.noctalia = {
     nixos = {
       wrappers.niri.extraSettings = [
         {
@@ -34,35 +31,33 @@
     };
   };
 
-  den.aspects.gtkNoctalia = {
-    homeManager = { pkgs, ... }: {
-      programs.noctalia.settings.theme.templates.builtin_ids = [
-        "gtk3"
-        "gtk4"
-      ];
+  treeniks.gtk.noctalia.homeManager = { pkgs, ... }: {
+    programs.noctalia.settings.theme.templates.builtin_ids = [
+      "gtk3"
+      "gtk4"
+    ];
 
-      gtk = {
-        enable = true;
-        theme = {
-          name = "adw-gtk3";
-          package = pkgs.adw-gtk3;
-        };
+    gtk = {
+      enable = true;
+      theme = {
+        name = "adw-gtk3";
+        package = pkgs.adw-gtk3;
       };
     };
   };
 
-  den.aspects.fuzzelNoctalia.homeManager = {
+  treeniks.fuzzel.noctalia.homeManager = {
     programs.noctalia.settings.theme.templates.community_ids = [ "fuzzel" ];
     wrappers.fuzzel.settings.main.include = "~/.config/fuzzel/themes/noctalia";
   };
 
-  den.aspects.kittyNoctalia.homeManager = { lib, ... }: {
+  treeniks.kitty.noctalia.homeManager = { lib, ... }: {
     programs.noctalia.settings.theme.templates.builtin_ids = [ "kitty" ];
     wrappers.kitty.themeFile = lib.mkForce null;
     wrappers.kitty.settings.include = "~/.config/kitty/themes/noctalia.conf";
   };
 
-  den.aspects.yaziNoctalia.homeManager = { lib, ... }: {
+  treeniks.yazi.noctalia.homeManager = { lib, ... }: {
     programs.noctalia.settings.theme.templates.community_ids = [ "yazi" ];
     catppuccin.yazi.enable = lib.mkForce false;
     programs.yazi.theme.flavor = {

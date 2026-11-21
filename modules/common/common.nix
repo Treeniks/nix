@@ -1,9 +1,9 @@
-{ inputs, den, ... }:
+{ inputs, treeniks, ... }:
 {
-  den.aspects.common = {
-    includes = [ den.aspects.nixpkgsWeekly ];
+  treeniks.common = {
+    includes = [ treeniks.nixpkgs-alts ];
 
-    nixos = { pkgs, ... }: {
+    nixos = {
       imports = [
         # use determinate nix
         # https://docs.determinate.systems/guides/advanced-installation/#nixos
@@ -11,8 +11,6 @@
       ];
 
       nix.settings = {
-        # the cachyos binary cache is sometimes dead
-        # and I cba to wait for 2 minutes for my devShell every time it happens
         fallback = true;
         connect-timeout = 10;
         download-attempts = 2;
@@ -25,17 +23,6 @@
       time.timeZone = "Europe/Berlin";
       i18n.defaultLocale = "en_US.UTF-8";
       services.xserver.xkb.layout = "us";
-
-      users.users.suteki = {
-        isNormalUser = true;
-        extraGroups = [
-          "wheel"
-          "networkmanager"
-          "video"
-          "audio"
-        ];
-      };
-      users.defaultUserShell = pkgs.fish;
 
       documentation = {
         # enables the bottom three
@@ -57,7 +44,7 @@
     };
   };
 
-  den.aspects.commonGui = {
+  treeniks.common.gui = {
     nixos = { pkgs, ... }: {
       hardware.bluetooth.enable = true;
       services.blueman.enable = true;

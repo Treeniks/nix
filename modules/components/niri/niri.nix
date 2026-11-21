@@ -14,7 +14,7 @@ let
     ];
 in
 {
-  den.aspects.niri.nixos =
+  treeniks.niri.nixos =
     {
       config,
       pkgs,

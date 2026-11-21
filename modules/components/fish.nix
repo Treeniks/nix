@@ -45,7 +45,7 @@ let
   '';
 in
 {
-  den.aspects.fish = {
+  treeniks.fish = {
     nixos = {
       programs.fish.enable = true;
     };

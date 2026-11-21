@@ -1,6 +1,6 @@
 { self, ... }:
 {
-  den.aspects.fuzzel.homeManager = {
+  treeniks.fuzzel.homeManager = {
     imports = [ self.wrappers.fuzzel.install ];
     wrappers.fuzzel.enable = true;
   };
