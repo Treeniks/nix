@@ -1,20 +1,20 @@
-{ den, ... }:
+{ treeniks, ... }:
 {
-  den.aspects.stackBase.includes = [
-    den.aspects.common
-    den.aspects.commonPackages
-    den.aspects.defaultApps
+  treeniks.stackBase.includes = [
+    treeniks.common
+    treeniks.commonPackages
+    treeniks.defaultApps
 
     # we have fonts here, as they may be used for things like TeX
     # (so they're not exclusive to gui installations)
-    den.aspects.fonts
-    den.aspects.gpg
-    den.aspects.virtualisation
+    treeniks.fonts
+    treeniks.gpg
+    treeniks.virtualisation
 
-    den.aspects.theme
-    den.aspects.fish
-    den.aspects.neovim
-    den.aspects.helix
-    den.aspects.yazi
+    treeniks.theme
+    treeniks.fish
+    treeniks.neovim
+    treeniks.helix
+    treeniks.yazi
   ];
 }

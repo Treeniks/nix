@@ -1,7 +1,7 @@
-{ inputs, den, ... }:
+{ inputs, treeniks, ... }:
 {
-  den.aspects.common = {
-    includes = [ den.aspects.nixpkgsWeekly ];
+  treeniks.common = {
+    includes = [ treeniks.nixpkgsWeekly ];
 
     nixos = { pkgs, ... }: {
       imports = [
@@ -57,7 +57,7 @@
     };
   };
 
-  den.aspects.commonGui = {
+  treeniks.commonGui = {
     nixos = { pkgs, ... }: {
       hardware.bluetooth.enable = true;
       services.blueman.enable = true;

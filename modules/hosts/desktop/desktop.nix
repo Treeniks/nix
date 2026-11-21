@@ -1,4 +1,4 @@
-{ den, ... }:
+{ treeniks, ... }:
 let
   hostname = "matcha-nixos";
   system = "x86_64-linux";
@@ -9,8 +9,8 @@ in
 
   den.aspects."suteki@${hostname}" = {
     includes = [
-      den.aspects.stackBase
-      den.aspects.stackGui
+      treeniks.stackBase
+      treeniks.stackGui
     ];
 
     nixos = { pkgs, ... }: {

@@ -87,7 +87,7 @@ let
   ];
 in
 {
-  den.aspects.zed.homeManager = {
+  treeniks.zed.homeManager = {
     # TODO replace with a wrapper and have the settings be editable using zed's GUI
     # similar to how niri and neovim are set up
     catppuccin.zed.enable = true;

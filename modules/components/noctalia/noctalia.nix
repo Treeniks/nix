@@ -137,7 +137,7 @@ let
   };
 in
 {
-  den.aspects.noctalia = {
+  treeniks.noctalia = {
     nixos = {
       programs.noctalia = {
         enable = true;

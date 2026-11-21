@@ -1,5 +1,5 @@
 {
-  den.aspects.nemo = {
+  treeniks.nemo = {
     nixos = {
       # required for nemo to list other drives
       services.gvfs.enable = true;

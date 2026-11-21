@@ -1,34 +1,34 @@
-{ den, ... }:
+{ treeniks, ... }:
 {
-  den.aspects.stackPipewire.includes = [
-    den.aspects.pipewire
-    den.aspects.pipewireClockRates
-    den.aspects.pipewireVBCable
-    den.aspects.pipewireVirtualSurround
+  treeniks.stackPipewire.includes = [
+    treeniks.pipewire
+    treeniks.pipewireClockRates
+    treeniks.pipewireVBCable
+    treeniks.pipewireVirtualSurround
   ];
 
-  den.aspects.stackGui.includes = [
-    den.aspects.commonGui
-    den.aspects.commonPackagesGui
-    den.aspects.stackPipewire
-    den.aspects.defaultAppsGui
-    den.aspects.virtualisationGui
+  treeniks.stackGui.includes = [
+    treeniks.commonGui
+    treeniks.commonPackagesGui
+    treeniks.stackPipewire
+    treeniks.defaultAppsGui
+    treeniks.virtualisationGui
 
-    den.aspects.niri
-    den.aspects.greetdNiriReGreet
+    treeniks.niri
+    treeniks.greetdNiriReGreet
 
-    den.aspects.noctalia
-    den.aspects.umbriel
+    treeniks.noctalia
+    treeniks.umbriel
 
-    den.aspects.fuzzel
-    den.aspects.kitty
-    den.aspects.nemo
-    den.aspects.mpv
-    den.aspects.sublime
-    den.aspects.zed
-    den.aspects.firefox
+    treeniks.fuzzel
+    treeniks.kitty
+    treeniks.nemo
+    treeniks.mpv
+    treeniks.sublime
+    treeniks.zed
+    treeniks.firefox
 
-    den.aspects.gtkqtTheme
-    den.aspects.noctaliaDynamicTheme
+    treeniks.gtkqtTheme
+    treeniks.noctaliaDynamicTheme
   ];
 }

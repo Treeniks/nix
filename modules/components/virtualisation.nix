@@ -1,5 +1,5 @@
 {
-  den.aspects.virtualisation.nixos = { pkgs, ... }: {
+  treeniks.virtualisation.nixos = { pkgs, ... }: {
     virtualisation = {
       containers.enable = true;
       podman = {
@@ -23,7 +23,7 @@
     services.samba.enable = true;
   };
 
-  den.aspects.virtualisationGui.nixos = { pkgs, ... }: {
+  treeniks.virtualisationGui.nixos = { pkgs, ... }: {
     virtualisation.spiceUSBRedirection.enable = true;
     environment.systemPackages = [ pkgs.spice-gtk ];
 

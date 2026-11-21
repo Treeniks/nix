@@ -1,6 +1,6 @@
 { self, ... }:
 {
-  den.aspects.greetdNiriReGreet.nixos =
+  treeniks.greetdNiriReGreet.nixos =
     {
       config,
       pkgs,

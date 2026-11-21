@@ -1,6 +1,6 @@
 { inputs, self, ... }:
 {
-  den.aspects.neovim.homeManager = {
+  treeniks.neovim.homeManager = {
     imports = [
       self.wrappers.neovim.install
       self.wrappers.neovim-nightly.install

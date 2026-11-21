@@ -1,5 +1,5 @@
 {
-  den.aspects.firefox.homeManager = {
+  treeniks.firefox.homeManager = {
     programs.firefox = {
       enable = true;
       profiles.nix = {

@@ -1,23 +1,23 @@
-{ den, ... }:
+{ treeniks, ... }:
 {
-  den.aspects.noctaliaDynamicTheme = {
+  treeniks.noctaliaDynamicTheme = {
     includes = [
-      den.aspects.umbrielNoctalia
+      treeniks.umbrielNoctalia
 
-      den.aspects.niriNoctalia
-      den.aspects.gtkNoctalia
-      den.aspects.fuzzelNoctalia
-      den.aspects.kittyNoctalia
-      den.aspects.yaziNoctalia
+      treeniks.niriNoctalia
+      treeniks.gtkNoctalia
+      treeniks.fuzzelNoctalia
+      treeniks.kittyNoctalia
+      treeniks.yaziNoctalia
     ];
   };
 
-  den.aspects.umbrielNoctalia.homeManager = {
+  treeniks.umbrielNoctalia.homeManager = {
     programs.noctalia.settings.theme.templates.builtin_ids = [ "umbriel" ];
     programs.umbriel.settings.include.optional.files = [ "~/.config/umbriel/noctalia.toml" ];
   };
 
-  den.aspects.niriNoctalia = {
+  treeniks.niriNoctalia = {
     nixos = {
       wrappers.niri.extraSettings = [
         {
@@ -34,7 +34,7 @@
     };
   };
 
-  den.aspects.gtkNoctalia = {
+  treeniks.gtkNoctalia = {
     homeManager = { pkgs, ... }: {
       programs.noctalia.settings.theme.templates.builtin_ids = [
         "gtk3"
@@ -51,18 +51,18 @@
     };
   };
 
-  den.aspects.fuzzelNoctalia.homeManager = {
+  treeniks.fuzzelNoctalia.homeManager = {
     programs.noctalia.settings.theme.templates.community_ids = [ "fuzzel" ];
     wrappers.fuzzel.settings.main.include = "~/.config/fuzzel/themes/noctalia";
   };
 
-  den.aspects.kittyNoctalia.homeManager = { lib, ... }: {
+  treeniks.kittyNoctalia.homeManager = { lib, ... }: {
     programs.noctalia.settings.theme.templates.builtin_ids = [ "kitty" ];
     wrappers.kitty.themeFile = lib.mkForce null;
     wrappers.kitty.settings.include = "~/.config/kitty/themes/noctalia.conf";
   };
 
-  den.aspects.yaziNoctalia.homeManager = { lib, ... }: {
+  treeniks.yaziNoctalia.homeManager = { lib, ... }: {
     programs.noctalia.settings.theme.templates.community_ids = [ "yazi" ];
     catppuccin.yazi.enable = lib.mkForce false;
     programs.yazi.theme.flavor = {

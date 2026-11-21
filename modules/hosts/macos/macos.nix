@@ -1,6 +1,6 @@
 {
   inputs,
-  den,
+  treeniks,
   ...
 }:
 let
@@ -12,16 +12,16 @@ in
 
   den.aspects."suteki@${hostname}" = {
     includes = [
-      den.aspects.common
+      treeniks.common
 
-      den.aspects.fish
-      den.aspects.neovim
-      den.aspects.helix
-      den.aspects.yazi
+      treeniks.fish
+      treeniks.neovim
+      treeniks.helix
+      treeniks.yazi
 
-      den.aspects.mpv
-      den.aspects.kitty
-      den.aspects.zed
+      treeniks.mpv
+      treeniks.kitty
+      treeniks.zed
     ];
 
     homeManager = { pkgs, lib, ... }: {

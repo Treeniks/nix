@@ -66,6 +66,9 @@
           den.schema.host.includes = [ den.batteries.user-aspects ];
         })
 
+        # "treeniks" namespace (exported to flake outputs)
+        (inputs.den.namespace "treeniks" true)
+
         (inputs.import-tree ./modules)
       ];
 

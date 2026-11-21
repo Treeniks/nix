@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  den.aspects.commonPackages = {
+  treeniks.commonPackages = {
     nixos = { pkgs, ... }: {
       programs = {
         firejail.enable = true;
@@ -114,7 +114,7 @@
     };
   };
 
-  den.aspects.commonPackagesGui.homeManager = { pkgs, ... }: {
+  treeniks.commonPackagesGui.homeManager = { pkgs, ... }: {
     programs = {
       neovide.enable = true;
       obsidian.enable = true;

@@ -1,5 +1,5 @@
 {
-  den.aspects.gpg.nixos = { pkgs, ... }: {
+  treeniks.gpg.nixos = { pkgs, ... }: {
     programs = {
       gnupg.agent = {
         enable = true;

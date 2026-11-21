@@ -44,7 +44,7 @@ let
   };
 in
 {
-  den.aspects.helix.homeManager = {
+  treeniks.helix.homeManager = {
     imports = [ self.wrappers.helix.install ];
     wrappers.helix.enable = true;
   };

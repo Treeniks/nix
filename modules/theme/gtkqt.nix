@@ -1,5 +1,5 @@
 {
-  den.aspects.gtkqtTheme = {
+  treeniks.gtkqtTheme = {
     homeManager = { pkgs, ... }: {
       # ===== GTK =====
       gtk = {

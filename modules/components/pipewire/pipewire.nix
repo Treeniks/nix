@@ -1,5 +1,5 @@
 {
-  den.aspects.pipewire.nixos = {
+  treeniks.pipewire.nixos = {
     services.pipewire = {
       enable = true;
 
@@ -31,7 +31,7 @@
     };
   };
 
-  den.aspects.pipewireClockRates.nixos = {
+  treeniks.pipewireClockRates.nixos = {
     services.pipewire = {
       extraConfig.pipewire = {
         "10-rates" = {
@@ -48,7 +48,7 @@
     };
   };
 
-  den.aspects.pipewireVBCable.nixos = {
+  treeniks.pipewireVBCable.nixos = {
     services.pipewire = {
       extraConfig.pipewire = {
         # loopback cable

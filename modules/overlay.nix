@@ -17,7 +17,7 @@
         ;
     };
 
-  den.aspects.nixpkgsWeekly = {
+  treeniks.nixpkgsWeekly = {
     nixos = {
       nixpkgs.overlays = [ self.overlays.nixpkgs-alts ];
     };

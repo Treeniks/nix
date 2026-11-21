@@ -1,7 +1,7 @@
 {
   inputs,
   self,
-  den,
+  treeniks,
   ...
 }:
 let
@@ -14,10 +14,10 @@ in
 
   den.aspects."suteki@${hostname}" = {
     includes = [
-      den.aspects.stackBase
-      den.aspects.stackGui
+      treeniks.stackBase
+      treeniks.stackGui
 
-      den.aspects.asahi-broky-wifi
+      treeniks.asahi-broky-wifi
     ];
 
     nixos = { pkgs, lib, ... }: {
@@ -99,7 +99,7 @@ in
     };
   };
 
-  den.aspects.asahi-broky-wifi.homeManager = {
+  treeniks.asahi-broky-wifi.homeManager = {
     programs.fish.shellAbbrs.fixwifi = "sudo modprobe -r brcmfmac_wcc brcmfmac && sudo modprobe brcmfmac";
   };
 
