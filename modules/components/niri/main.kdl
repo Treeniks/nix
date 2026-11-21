@@ -17,10 +17,10 @@ binds {
     Mod+E       { spawn "noctalia" "msg" "panel-toggle" "session"; }
     Mod+Q       repeat=false { close-window; }
 
-    Mod+H                   { focus-column-or-monitor-left; }
+    Mod+H                   { focus-column-left; }
     Mod+J                   { focus-window-or-monitor-down; }
     Mod+K                   { focus-window-or-monitor-up; }
-    Mod+L                   { focus-column-or-monitor-right; }
+    Mod+L                   { focus-column-right; }
     Mod+Shift+H             { move-column-left-or-to-monitor-left; }
     Mod+Shift+J             { move-window-down; }
     Mod+Shift+K             { move-window-up; }
