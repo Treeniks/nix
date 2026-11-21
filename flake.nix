@@ -64,6 +64,14 @@
         ({ den, ... }: {
           # make user aspects work in hosts
           den.schema.host.includes = [ den.batteries.user-aspects ];
+
+          den.default.includes = [
+            den.batteries.define-user
+            den.batteries.hostname
+
+            den.batteries.inputs'
+            den.batteries.self'
+          ];
         })
 
         # "treeniks" namespace (exported to flake outputs)

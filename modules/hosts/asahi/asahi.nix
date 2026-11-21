@@ -31,8 +31,6 @@ in
         greetd.niri.extraIncludes = [ ./asahi.kdl ];
       };
 
-      networking.hostName = hostname;
-
       programs.hyprland.enable = lib.mkForce false;
 
       networking.wireless.iwd = {
@@ -91,11 +89,7 @@ in
         })
       ];
 
-      home = {
-        username = "suteki";
-        homeDirectory = "/home/suteki";
-        stateVersion = "26.05";
-      };
+      home.stateVersion = "26.05";
     };
   };
 

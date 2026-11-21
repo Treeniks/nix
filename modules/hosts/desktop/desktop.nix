@@ -28,8 +28,6 @@ in
         greetd.niri.extraIncludes = [ ./desktop.kdl ];
       };
 
-      networking.hostName = hostname;
-
       hardware.graphics = {
         enable = true;
         enable32Bit = true;
@@ -222,11 +220,7 @@ in
         "file:///home/suteki/.local/share/Archipelago Archipelago"
       ];
 
-      home = {
-        username = "suteki";
-        homeDirectory = "/home/suteki";
-        stateVersion = "26.05";
-      };
+      home.stateVersion = "26.05";
     };
   };
 }

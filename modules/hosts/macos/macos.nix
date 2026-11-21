@@ -70,11 +70,7 @@ in
         nixd
       ];
 
-      home = {
-        username = "suteki";
-        homeDirectory = "/Users/suteki";
-        stateVersion = "26.05";
-      };
+      home.stateVersion = "26.05";
     };
   };
   #
