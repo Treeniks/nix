@@ -24,6 +24,9 @@
           # see https://mimetype.io/all-types
           # also check using `xdg-mime query filetype`
 
+          "inode/directory" = "nemo.desktop";
+          "application/x-gnome-saved-search" = "nemo.desktop";
+
           "text/javascript" = editor;
           "text/markdown" = editor;
           "text/plain" = editor;
