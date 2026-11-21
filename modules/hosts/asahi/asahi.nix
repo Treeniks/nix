@@ -10,11 +10,9 @@ let
 in
 {
   den.hosts.${system}.${hostname}.users.suteki = { };
-
   den.homes.${system}."suteki@${hostname}" = { };
-  den.aspects.suteki.provides.${hostname}.includes = [ den.aspects.${hostname} ];
 
-  den.aspects.${hostname} = {
+  den.aspects."suteki@${hostname}" = {
     includes = [
       den.aspects.stackBase
       den.aspects.stackGui

@@ -9,9 +9,8 @@ let
 in
 {
   den.homes.${system}."suteki@${hostname}" = { };
-  den.aspects.suteki.provides.${hostname}.includes = [ den.aspects.${hostname} ];
 
-  den.aspects.${hostname} = {
+  den.aspects."suteki@${hostname}" = {
     includes = [
       den.aspects.common
 

@@ -61,6 +61,11 @@
         inputs.wrappers.flakeModules.wrappers
         inputs.den.flakeModule
 
+        ({ den, ... }: {
+          # make user aspects work in hosts
+          den.schema.host.includes = [ den.batteries.user-aspects ];
+        })
+
         (inputs.import-tree ./modules)
       ];
 
