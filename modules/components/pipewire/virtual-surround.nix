@@ -1,5 +1,5 @@
 {
-  treeniks.pipewireVirtualSurround.nixos =
+  treeniks.pipewire.virtual-surround.nixos =
     let
       # TODO
       # we currently just assume that hrir files are located at this path

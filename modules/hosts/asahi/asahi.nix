@@ -14,9 +14,7 @@ in
 
   den.aspects."suteki@${hostname}" = {
     includes = [
-      treeniks.stackBase
-      treeniks.stackGui
-
+      treeniks.suteki.gui
       treeniks.asahi-broky-wifi
     ];
 

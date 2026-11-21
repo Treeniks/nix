@@ -1,4 +1,3 @@
-{ self, ... }:
 let
   settings = {
     opener = {

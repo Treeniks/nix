@@ -11,6 +11,9 @@ in
   den.homes.${system}."suteki@${hostname}" = { };
 
   den.aspects."suteki@${hostname}" = {
+    # the shared bundle assumes linux, so pick the parts by hand instead
+    excludes = [ treeniks.suteki ];
+
     includes = [
       treeniks.common
 
@@ -27,7 +30,7 @@ in
     homeManager = { pkgs, lib, ... }: {
       wrappers.neovim.settings.config_directory = lib.mkForce "/Users/suteki/nix/modules/components/nvim/";
 
-      # Now ideally we fix up commonPackages and the like to be darwin-friendly
+      # Now ideally we fix up the other aspects to be darwin-friendly
       # but I use macos so rarely that it's kind of not worth it.
       #
       # So instead, we just kinda...copy it here as needed.

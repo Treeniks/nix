@@ -1,5 +1,5 @@
 {
-  treeniks.commonPackages = {
+  treeniks.common.pkgs = {
     nixos = { pkgs, ... }: {
       programs = {
         firejail.enable = true;
@@ -113,7 +113,7 @@
     };
   };
 
-  treeniks.commonPackagesGui.homeManager = { inputs', pkgs, ... }: {
+  treeniks.common.pkgs.gui.homeManager = { inputs', pkgs, ... }: {
     programs = {
       neovide.enable = true;
       obsidian.enable = true;

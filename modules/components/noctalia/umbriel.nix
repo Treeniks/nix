@@ -1,4 +1,5 @@
-{ inputs, ... }: {
+{ inputs, ... }:
+{
   treeniks.umbriel = {
     nixos = {
       imports = [ inputs.umbriel.nixosModules.default ];

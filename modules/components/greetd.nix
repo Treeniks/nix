@@ -1,6 +1,6 @@
 { self, ... }:
 {
-  treeniks.greetdNiriReGreet.nixos =
+  treeniks.greetd.niri-regreet.nixos =
     {
       config,
       pkgs,

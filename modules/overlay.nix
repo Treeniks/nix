@@ -4,25 +4,21 @@
   flake.overlays.nixpkgs-alts =
     final: prev:
     let
-      pkgsWeekly = (import inputs.nixpkgs-weekly { system = final.stdenv.hostPlatform.system; });
-      pkgsStable = (import inputs.nixpkgs-stable { system = final.stdenv.hostPlatform.system; });
+      pkgs-weekly = (import inputs.nixpkgs-weekly { system = final.stdenv.hostPlatform.system; });
+      pkgs-stable = (import inputs.nixpkgs-stable { system = final.stdenv.hostPlatform.system; });
     in
     {
-      inherit (pkgsWeekly)
+      inherit (pkgs-weekly)
         # filen-desktop
         ;
-      inherit (pkgsStable)
+      inherit (pkgs-stable)
         # brave
         # brave-origin
         ;
     };
 
-  treeniks.nixpkgsWeekly = {
-    nixos = {
-      nixpkgs.overlays = [ self.overlays.nixpkgs-alts ];
-    };
-    homeManager = {
-      nixpkgs.overlays = [ self.overlays.nixpkgs-alts ];
-    };
+  treeniks.nixpkgs-alts = {
+    nixos.nixpkgs.overlays = [ self.overlays.nixpkgs-alts ];
+    homeManager.nixpkgs.overlays = [ self.overlays.nixpkgs-alts ];
   };
 }

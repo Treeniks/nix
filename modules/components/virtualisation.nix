@@ -23,7 +23,7 @@
     services.samba.enable = true;
   };
 
-  treeniks.virtualisationGui.nixos = { pkgs, ... }: {
+  treeniks.virtualisation.gui.nixos = { pkgs, ... }: {
     virtualisation.spiceUSBRedirection.enable = true;
     environment.systemPackages = [ pkgs.spice-gtk ];
 

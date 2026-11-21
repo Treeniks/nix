@@ -1,9 +1,9 @@
 { inputs, treeniks, ... }:
 {
   treeniks.common = {
-    includes = [ treeniks.nixpkgsWeekly ];
+    includes = [ treeniks.nixpkgs-alts ];
 
-    nixos = { pkgs, ... }: {
+    nixos = {
       imports = [
         # use determinate nix
         # https://docs.determinate.systems/guides/advanced-installation/#nixos
@@ -23,17 +23,6 @@
       time.timeZone = "Europe/Berlin";
       i18n.defaultLocale = "en_US.UTF-8";
       services.xserver.xkb.layout = "us";
-
-      users.users.suteki = {
-        isNormalUser = true;
-        extraGroups = [
-          "wheel"
-          "networkmanager"
-          "video"
-          "audio"
-        ];
-      };
-      users.defaultUserShell = pkgs.fish;
 
       documentation = {
         # enables the bottom three
@@ -55,7 +44,7 @@
     };
   };
 
-  treeniks.commonGui = {
+  treeniks.common.gui = {
     nixos = { pkgs, ... }: {
       hardware.bluetooth.enable = true;
       services.blueman.enable = true;

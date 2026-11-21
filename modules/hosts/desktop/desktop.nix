@@ -8,10 +8,7 @@ in
   den.homes.${system}."suteki@${hostname}" = { };
 
   den.aspects."suteki@${hostname}" = {
-    includes = [
-      treeniks.stackBase
-      treeniks.stackGui
-    ];
+    includes = [ treeniks.suteki.gui ];
 
     nixos = { pkgs, ... }: {
       imports = [ ./_hardware.nix ];
@@ -161,13 +158,6 @@ in
       ];
 
       programs = {
-        discord = {
-          enable = true;
-          settings = {
-            "MINIMIZE_TO_TRAY" = false;
-            "OPEN_ON_STARTUP" = false;
-          };
-        };
         obs-studio = {
           enable = true;
           plugins = with pkgs.obs-studio-plugins; [ obs-wayland-hotkeys ];
