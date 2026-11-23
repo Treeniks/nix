@@ -86,3 +86,34 @@ blink.setup({
         default = { "lsp", "path", "snippets", "buffer" },
     },
 })
+
+-- technically unrelated to LSP but it's a format keybind so...
+-- remux fmt on <leader>f in KDL buffers
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "kdl",
+    callback = function(args)
+        local apply = function()
+            local buf = args.buf
+            vim.cmd("silent write")
+            local file = vim.api.nvim_buf_get_name(buf)
+
+            vim.system({ "remux", "fmt", file }, { text = true, env = { NO_COLOR = "1" } }, function(res)
+                vim.schedule(function()
+                    if res.code ~= 0 then
+                        vim.notify(res.stderr, vim.log.levels.ERROR, { title = "remux fmt" })
+                        return
+                    end
+                    -- reload the rewritten file, keeping cursor and scroll position
+                    vim.api.nvim_buf_call(buf, function()
+                        local view = vim.fn.winsaveview()
+                        vim.cmd("silent edit")
+                        vim.fn.winrestview(view)
+                    end)
+                end)
+            end)
+        end
+
+        vim.keymap.set('n', '<leader>l', apply, { desc = 'remux fmt' })
+        vim.keymap.set(all_modes, '<S-M-f>', apply, { desc = 'remux fmt' })
+    end,
+})
