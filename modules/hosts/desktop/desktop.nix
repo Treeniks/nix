@@ -163,6 +163,15 @@ in
           plugins = with pkgs.obs-studio-plugins; [ obs-wayland-hotkeys ];
         };
 
+        yazi.keymap = {
+          mgr.prepend_keymap = [
+            /*nixfmt:disable*/
+            { on = [ "g" "m" ]; run = "cd /mnt"; desc = "Go /mnt"; }
+            { on = [ "g" "q" ]; run = "cd /mnt/q"; desc = "Go /mnt/q"; }
+            /*nixfmt:enable*/
+          ];
+        };
+
         mangohud = {
           enable = true;
           settings = {

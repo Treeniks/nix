@@ -26,6 +26,8 @@ let
     };
   };
 
+  keymap = { };
+
   initLua = ''
     require("session"):setup {
       sync_yanked = true,
@@ -43,6 +45,7 @@ in
     programs.yazi = {
       enable = true;
       inherit settings;
+      inherit keymap;
       inherit initLua;
     };
   };
@@ -50,6 +53,7 @@ in
   flake.wrappers.yazi = { wlib, ... }: {
     imports = [ wlib.wrapperModules.yazi ];
     settings.yazi = settings;
+    settings.keymap = keymap;
     inherit initLua;
   };
 }
