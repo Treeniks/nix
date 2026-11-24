@@ -33,11 +33,7 @@ in
 
       networking.wireless.iwd = {
         enable = true;
-        settings = {
-          General = {
-            AddressRandomization = "once";
-          };
-        };
+        settings.General.AddressRandomization = "once";
       };
       networking.networkmanager.wifi.backend = "iwd";
 
