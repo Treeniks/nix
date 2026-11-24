@@ -136,18 +136,18 @@ vim.keymap.set(
 
 ---- startup
 
-local neovide_open_group = vim.api.nvim_create_augroup('NeovideOpen', { clear = true })
-
-vim.api.nvim_create_autocmd('VimEnter', {
-    group = neovide_open_group,
-    desc = 'Make neovide a terminal emulator, by opening into terminal mode by default.',
-    once = true,
-    callback = function(_)
-        if vim.g.neovide and vim.fn.argc() == 0 then
-            vim.schedule(function() vim.cmd('terminal') end)
-        end
-    end,
-})
+-- local neovide_open_group = vim.api.nvim_create_augroup('NeovideOpen', { clear = true })
+--
+-- vim.api.nvim_create_autocmd('VimEnter', {
+--     group = neovide_open_group,
+--     desc = 'Make neovide a terminal emulator, by opening into terminal mode by default.',
+--     once = true,
+--     callback = function(_)
+--         if vim.g.neovide and vim.fn.argc() == 0 then
+--             vim.schedule(function() vim.cmd('terminal') end)
+--         end
+--     end,
+-- })
 
 ---- insert mode behavior
 
