@@ -82,8 +82,9 @@ vim.keymap.set({ 'n', 'v' }, '<leader>s', function()
 end, { desc = 'Multicursor Pattern' })
 
 -- normal mode alt keybind
+vim.keymap.set(all_modes, '<C-\'>', '<ESC>', { remap = true })
 -- particularly useful when in term mode
-vim.keymap.set(all_modes, '<C-\'>', function() vim.cmd('stopinsert') end)
+vim.keymap.set('t', '<C-\'>', function() vim.cmd('stopinsert') end)
 
 require('plugins')
 
