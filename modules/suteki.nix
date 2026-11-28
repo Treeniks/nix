@@ -51,6 +51,7 @@
 
     treeniks.noctalia
     treeniks.umbriel
+    treeniks.luciole
 
     treeniks.theme.cursors
     treeniks.theme.gtkqt

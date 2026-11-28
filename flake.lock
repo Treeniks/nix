@@ -361,6 +361,26 @@
         "type": "github"
       }
     },
+    "luciole": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1795890426,
+        "narHash": "sha256-fjO2CF176f4jDcnzXNQmXhfRNyNPWovic6Vbo4DrXho=",
+        "owner": "noctalia-dev",
+        "repo": "luciole",
+        "rev": "350d0824115cccbdcc3f6a438a7528cfaeba59d2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "noctalia-dev",
+        "repo": "luciole",
+        "type": "github"
+      }
+    },
     "neovim-nightly": {
       "inputs": {
         "flake-parts": [
@@ -535,6 +555,7 @@
         "flake-parts": "flake-parts_2",
         "home-manager": "home-manager",
         "import-tree": "import-tree",
+        "luciole": "luciole",
         "neovim-nightly": "neovim-nightly",
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-stable": "nixpkgs-stable",
