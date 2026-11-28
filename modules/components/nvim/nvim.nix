@@ -93,7 +93,10 @@
         nvim-treesitter-textobjects
       ];
 
-      specs.telescope.data = with pkgs.vimPlugins; [ telescope-nvim ];
+      specs.telescope.data = with pkgs.vimPlugins; [
+        telescope-nvim
+        telescope-ui-select-nvim
+      ];
 
       specs.mini.data = with pkgs.vimPlugins; [ mini-nvim ];
 
